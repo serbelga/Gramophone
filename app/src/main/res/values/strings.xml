@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Gramophone</string>
+    <string name="albums">Álbumes</string>
+    <string name="artists">Artistas</string>
+    <string name="songs">Canciones</string>
+    <string name="categories">Géneros</string>
+    <string name="playlists">Playlists</string>
+</resources>
