@@ -5,14 +5,14 @@
         <!-- Main color -->
         <item name="colorPrimary">@color/blue</item>
         <!-- If isn't status bar color, the status bar color will be primary dark -->
-        <item name="colorPrimaryDark">@color/tealDark</item>
+        <item name="colorPrimaryDark">@color/blueDark</item>
 
         <!-- Status Bar color and windowLightStatusBar true if Status bar is Light and false if it's dark-->
         <item name="android:statusBarColor">@color/whiteDark</item>
         <item name="android:windowLightStatusBar">true</item>
 
         <!-- Color Secondary - Color used in FAB and checkboxes, switches ... -->
-        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondary">@color/black</item>
 
         <!-- Color On Primary - Color of text and icons in colored components as Buttons and BottomNavigationView -->
         <item name="colorOnPrimary">@color/white</item>
@@ -30,6 +30,154 @@
         <item name="toolbarStyle">
             @style/Widget.MaterialComponents.Toolbar.Surface
         </item>
+
+        <item name="actionBarStyle">
+            @style/Widget.MaterialComponents.ActionBar.Surface
+        </item>
+
+        <!-- Shape System -->
+        <item name="shapeAppearanceSmallComponent">@style/SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/LargeComponent</item>
+
+        <item name="textAppearanceHeadline1">
+            @style/Headline1Text
+        </item>
+
+        <item name="textAppearanceHeadline2">
+            @style/Headline2Text
+        </item>
+
+        <item name="textAppearanceHeadline3">
+            @style/Headline3Text
+        </item>
+
+        <item name="textAppearanceHeadline6">
+            @style/Headline6Text
+        </item>
+
+        <item name="textAppearanceButton">
+            @style/ButtonText
+        </item>
+
+        <item name="textAppearanceCaption">
+            @style/CaptionText
+        </item>
+
+        <item name="textAppearanceBody1">
+            @style/Body1Text
+        </item>
+
+        <item name="textAppearanceBody2">
+            @style/Body2Text
+        </item>
+
+        <item name="textAppearanceOverline">
+            @style/OverlineText
+        </item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
+
+
+        <item name="colorSecondary">@color/whiteDark</item>
+
+        <item name="toolbarStyle">
+            @style/Widget.MaterialComponents.Toolbar.Surface
+        </item>
+
+        <item name="actionBarStyle">
+            @style/Widget.MaterialComponents.ActionBar.Surface
+        </item>
+
+        <item name="textAppearanceHeadline1">
+            @style/Headline1Text
+        </item>
+
+        <item name="textAppearanceHeadline2">
+            @style/Headline2Text
+        </item>
+
+        <item name="textAppearanceHeadline3">
+            @style/Headline3Text
+        </item>
+
+        <item name="textAppearanceHeadline6">
+            @style/Headline6Text
+        </item>
+
+        <item name="textAppearanceButton">
+            @style/ButtonText
+        </item>
+
+        <item name="textAppearanceCaption">
+            @style/CaptionText
+        </item>
+
+        <item name="textAppearanceBody1">
+            @style/Body1Text
+        </item>
+
+        <item name="textAppearanceBody2">
+            @style/Body2Text
+        </item>
+
+        <item name="textAppearanceOverline">
+            @style/OverlineText
+        </item>
+    </style>
+
+
+    <style name="SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+
+    <style name="ButtonText" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="Headline1Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="Headline2Text" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="Headline3Text" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="Headline6Text" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="CaptionText" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="Body1Text" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="Body2Text" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="OverlineText" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/montserrat</item>
     </style>
 
 </resources>
