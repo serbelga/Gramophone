@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_songs.*
  *
  */
 class SongsFragment : Fragment() {
+    lateinit var songSelectedListener : SongSelectedListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +38,13 @@ class SongsFragment : Fragment() {
         songs.add(song1)
         val adapter = SongsAdapter(songs, object : SongsAdapter.OnItemClickListener{
             override fun onItemClick(song: Song) {
-                Log.d("Clicked: ", song.title)
+                songSelectedListener.onSongSelected(song)
             }
         })
         recyclerView.adapter = adapter
+    }
+
+    interface SongSelectedListener {
+        fun onSongSelected(song: Song)
     }
 }

@@ -191,5 +191,4 @@
     <style name="OverlineText" parent="TextAppearance.MaterialComponents.Overline">
         <item name="fontFamily">@font/montserrat</item>
     </style>
-
 </resources>

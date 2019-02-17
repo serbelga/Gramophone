@@ -34,9 +34,9 @@ class SongsAdapter(private var songs: ArrayList<Song>, private var listener: OnI
         fun bindSong(song : Song, listener : OnItemClickListener){
             songTitleTextView.text = song.title
             artistTextView.text = song.artist
-            itemView.setOnClickListener(View.OnClickListener {
+            itemView.setOnClickListener {
                 listener.onItemClick(song)
-            })
+            }
         }
     }
 

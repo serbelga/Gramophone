@@ -12,7 +12,7 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.preferences.SettingsActivity">
         </activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.mainmenu.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

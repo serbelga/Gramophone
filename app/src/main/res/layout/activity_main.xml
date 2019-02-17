@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.mainmenu.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
 
@@ -76,4 +76,76 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
     </androidx.viewpager.widget.ViewPager>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/playerBottomSheet"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            style="@style/Widget.MaterialComponents.BottomSheet.Modal"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:elevation="16dp"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                    android:background="?android:attr/selectableItemBackground"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:padding="14dp"
+                    android:layout_height="72dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    <ImageView
+                            android:src="@color/whiteDark"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"/>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <TextView
+                                style="@style/Subtitle1Text"
+                                android:id="@+id/playerSongTitleTextView"
+                                android:layout_marginStart="14dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        <TextView
+                                style="@style/Body2Text"
+                                android:id="@+id/playerSongArtistTextView"
+                                android:layout_marginStart="14dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <ImageButton
+                            android:background="@color/white"
+                            android:src="@drawable/ic_outline_play_arrow_24px"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                    android:background="@color/whiteDark"
+                    android:layout_marginStart="68dp"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp">
+            </View>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
