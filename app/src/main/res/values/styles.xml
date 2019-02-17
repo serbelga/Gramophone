@@ -75,6 +75,10 @@
         <item name="textAppearanceOverline">
             @style/OverlineText
         </item>
+
+        <item name="textAppearanceSubtitle1">
+            @style/Subtitle1Text
+        </item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
@@ -88,6 +92,10 @@
 
         <item name="actionBarStyle">
             @style/Widget.MaterialComponents.ActionBar.Surface
+        </item>
+
+        <item name="textAppearanceSubtitle1">
+            @style/Subtitle1Text
         </item>
 
         <item name="textAppearanceHeadline1">
@@ -145,6 +153,10 @@
 
 
     <style name="ButtonText" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="Subtitle1Text" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="fontFamily">@font/montserrat</item>
     </style>
 
