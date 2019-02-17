@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.sergiobelda.gramophone.R
-import com.example.sergiobelda.gramophone.ui.mainmenu.tabs.*
+import com.example.sergiobelda.gramophone.ui.mainmenu.pages.*
 import com.example.sergiobelda.gramophone.ui.ErrorFragment
 
 class PagerAdapter(fm : FragmentManager, private var context : Context) : FragmentStatePagerAdapter(fm) {

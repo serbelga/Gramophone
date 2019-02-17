@@ -1,4 +1,4 @@
-package com.example.sergiobelda.gramophone.ui.mainmenu.tabs
+package com.example.sergiobelda.gramophone.ui.mainmenu.pages
 
 
 import android.os.Bundle
