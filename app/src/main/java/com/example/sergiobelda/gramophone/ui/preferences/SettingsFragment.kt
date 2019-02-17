@@ -10,7 +10,7 @@ import androidx.preference.PreferenceFragmentCompat
 import com.example.sergiobelda.gramophone.R
 
 /**
- * A simple [Fragment] subclass.
+ *
  *
  */
 class SettingsFragment : PreferenceFragmentCompat() {
