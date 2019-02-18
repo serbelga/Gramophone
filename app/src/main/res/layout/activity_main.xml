@@ -22,8 +22,10 @@
                 android:layout_height="wrap_content"
                 android:contentInsetStart="0dp"
                 app:contentInsetStart="0dp"
-                app:title="">
+                app:layout_scrollFlags="scroll|enterAlways|snap">
 
+
+<!--
             <TextView
                     android:text="GRAMOPHONE"
                     android:textSize="20sp"
@@ -33,6 +35,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/monoton"/>
+
+                                <ImageView
+
+                    android:src="@drawable/logo"
+                    android:layout_width="160dp"
+                    android:layout_height="72dp"/>
+
+
+                    -->
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
