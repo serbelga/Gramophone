@@ -1,3 +1,4 @@
+sudo: required
 language: android
 jdk: oraclejdk8
 env:
@@ -22,8 +23,6 @@ android:
   - extra-android-m2repository
   - addon-google_apis-google-$ANDROID_API_LEVEL
 before_script:
-# Prepare pre-accepted licenses to not be promted at installation
-- mkdir -p "$ANDROID_HOME/licenses"
-- cp ./google-licenses/* "$ANDROID_HOME/licenses/"
+- chmod +x gradlew
 script:
-- ./gradlew build check
+- ./gradlew build --stacktrace
