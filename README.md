@@ -3,22 +3,22 @@
 Music Player for Android. Implementation through Android Jetpack
 
 ## Material Theming
-- Color system
-- Shape system
-- Typography
-- Brand logo
+- [ ] Color system
+- [ ] Shape system
+- [ ] Typography
+- [ ] Brand logo
 
 ## Android Jetpack
 
 ### Android Architecture Components
-- Navigation
-- ViewModel
-- Paging
+- [ ] Navigation
+- [ ] ViewModel
+- [ ] Paging
 
-### Foundation
-- Android KTX
+### Foundation
+- [ ] Android KTX
 
-### UI
-- Palette
-- Animation & Transitions
-- Constraint Layout + MotionLayout
+### UI
+- [ ] Palette
+- [ ] Animation & Transitions
+- [ ] Constraint Layout + MotionLayout
