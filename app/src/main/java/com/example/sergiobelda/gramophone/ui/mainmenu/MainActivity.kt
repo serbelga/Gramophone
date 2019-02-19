@@ -14,6 +14,7 @@ import com.example.sergiobelda.gramophone.R
 import com.example.sergiobelda.gramophone.ui.ErrorFragment
 import com.example.sergiobelda.gramophone.ui.mainmenu.pages.*
 import com.example.sergiobelda.gramophone.ui.preferences.SettingsActivity
+import com.example.sergiobelda.gramophone.util.Album
 import com.example.sergiobelda.gramophone.util.Song
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
@@ -82,6 +83,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 1 -> {
                     fragment = AlbumsFragment()
+                    fragment.albumSelectedListener = object : AlbumsFragment.AlbumSelectedListener {
+                        override fun onAlbumSelected(album: Album) {
+
+                        }
+                    }
                 }
                 2 -> {
                     fragment = SongsFragment()
