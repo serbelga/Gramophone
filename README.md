@@ -7,6 +7,7 @@ Music Player for Android. Implementation through Android Jetpack
 - [x] Shape system
 - [ ] Typography
 - [ ] Brand logo
+- [ ] Dark Theme
 
 ## Android Jetpack
 
