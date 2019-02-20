@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.sergiobelda.gramophone.R
+import com.example.sergiobelda.gramophone.ui.album.AlbumDetailFragment
 import com.example.sergiobelda.gramophone.util.Album
 import com.example.sergiobelda.gramophone.util.Song
 import kotlinx.android.synthetic.main.fragment_songs.*
@@ -39,7 +40,11 @@ class AlbumsFragment : Fragment() {
         albums.add(album1)
         val adapter = AlbumsAdapter(albums, object : AlbumsAdapter.OnItemClickListener{
             override fun onItemClick(album: Album) {
-                albumSelectedListener.onAlbumSelected(album)
+                //albumSelectedListener.onAlbumSelected(album)
+                fragmentManager!!
+                    .beginTransaction()
+                    .replace(R.id.frameLayout, AlbumDetailFragment())
+                    .commit()
             }
         })
         recyclerView.adapter = adapter

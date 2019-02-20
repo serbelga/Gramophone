@@ -5,14 +5,16 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/albumCardView"
             android:orientation="vertical"
-            style="@style/Widget.MaterialComponents.CardView"
             android:layout_gravity="center"
             app:cardElevation="4dp"
             app:cardCornerRadius="8dp"
+            android:clickable="true"
             android:layout_height="244dp"
-            android:layout_width="172dp">
+            android:layout_width="172dp"
+            android:focusable="true">
 
         <ImageView
                 android:background="@color/whiteDark"
@@ -46,7 +48,7 @@
                         android:layout_height="wrap_content"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.appcompat.widget.LinearLayoutCompat>
 
 

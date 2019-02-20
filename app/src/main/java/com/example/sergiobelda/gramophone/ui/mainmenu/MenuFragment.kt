@@ -1,76 +1,47 @@
 package com.example.sergiobelda.gramophone.ui.mainmenu
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+
 import com.example.sergiobelda.gramophone.R
 import com.example.sergiobelda.gramophone.ui.ErrorFragment
 import com.example.sergiobelda.gramophone.ui.mainmenu.pages.*
-import com.example.sergiobelda.gramophone.ui.preferences.SettingsActivity
 import com.example.sergiobelda.gramophone.util.Album
 import com.example.sergiobelda.gramophone.util.Song
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_menu.*
 
-class MainActivity : AppCompatActivity() {
-    lateinit var playerBottomSheetBehavior : BottomSheetBehavior<View>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationIcon(R.drawable.ic_search_black_24dp);
+/**
+ * A simple [Fragment] subclass.
+ *
+ */
+class MenuFragment : Fragment() {
+    lateinit var menuListener: MenuListener
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_menu, container, false)
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setViewPager()
-        setBottomSheetBehavior()
-    }
-
-    private fun setBottomSheetBehavior() {
-        playerBottomSheetBehavior = BottomSheetBehavior.from(playerBottomSheet)
-        playerBottomSheetBehavior.setBottomSheetCallback(bottomSheetCallback())
-        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-    }
-
-    private fun bottomSheetCallback() : BottomSheetBehavior.BottomSheetCallback {
-        return object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-
-            }
-
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                when (newState) {
-                    BottomSheetBehavior.STATE_EXPANDED -> Log.d("state: ", "expanded")
-                    BottomSheetBehavior.STATE_COLLAPSED -> Log.d("state: ", "collapsed")
-
-                }
-            }
-        }
     }
 
     private fun setViewPager() {
-        val pagerAdapter = PagerAdapter(supportFragmentManager)
+        val pagerAdapter = PagerAdapter(this.fragmentManager!!)
         viewPager.adapter = pagerAdapter
         tabLayout.setupWithViewPager(viewPager)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val id = item?.itemId
-        if (id == R.id.settings) {
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     inner class PagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm) {
@@ -85,7 +56,10 @@ class MainActivity : AppCompatActivity() {
                     fragment = AlbumsFragment()
                     fragment.albumSelectedListener = object : AlbumsFragment.AlbumSelectedListener {
                         override fun onAlbumSelected(album: Album) {
-
+                            //val intent = Intent(context, AlbumActivity::class.java)
+                            //startActivity(intent)
+                            menuListener.onAlbumSelected(album)
+                            //fragmentManager?.beginTransaction()?.replace(R.id.frameLayout, SongsFragment())?.commit()
                         }
                     }
                 }
@@ -93,9 +67,9 @@ class MainActivity : AppCompatActivity() {
                     fragment = SongsFragment()
                     fragment.songSelectedListener = object : SongsFragment.SongSelectedListener {
                         override fun onSongSelected(song: Song) {
-                            playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-                            playerSongTitleTextView.text = song.title
-                            playerSongArtistTextView.text = song.artist
+                            //playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                            //playerSongTitleTextView.text = song.title
+                            //playerSongArtistTextView.text = song.artist
                         }
                     }
                 }
@@ -124,5 +98,9 @@ class MainActivity : AppCompatActivity() {
                 else -> null
             }
         }
+    }
+
+    interface MenuListener {
+        fun onAlbumSelected(album: Album)
     }
 }

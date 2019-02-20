@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.example.sergiobelda.gramophone">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.sergiobelda.gramophone">
 
     <application
             android:allowBackup="true"
@@ -10,9 +11,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.album.AlbumActivity">
+        </activity>
         <activity android:name=".ui.preferences.SettingsActivity">
         </activity>
-        <activity android:name=".ui.mainmenu.MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
