@@ -21,13 +21,13 @@ class AlbumsAdapter(private var albums: ArrayList<Album>, private var listener: 
 
     override fun onBindViewHolder(holder: AlbumsAdapter.AlbumsViewHolder, position: Int) {
         val album = albums[position]
-        holder.bingAlbum(album, listener)
+        holder.bindAlbum(album, listener)
     }
 
     class AlbumsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var albumNameTextView : TextView = itemView.findViewById(R.id.albumNameTextView)
         private var artistTextView : TextView = itemView.findViewById(R.id.artistTextView)
-        fun bingAlbum(album: Album, listener: OnItemClickListener) {
+        fun bindAlbum(album: Album, listener: OnItemClickListener) {
             albumNameTextView.text = album.name
         }
     }
