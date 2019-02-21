@@ -3,10 +3,11 @@
 Music Player for Android. Implementation through Android Jetpack
 
 ## Material Theming
-- [ ] Color system
-- [ ] Shape system
+- [x] Color system
+- [x] Shape system
 - [ ] Typography
 - [ ] Brand logo
+- [ ] Dark Theme
 
 ## Android Jetpack
 
