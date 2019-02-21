@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.navigation.fragment.NavHostFragment.findNavController
 
 import com.example.sergiobelda.gramophone.R
 import com.example.sergiobelda.gramophone.ui.ErrorFragment
 import com.example.sergiobelda.gramophone.ui.mainmenu.pages.*
 import com.example.sergiobelda.gramophone.util.Album
 import com.example.sergiobelda.gramophone.util.Song
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_menu.*
 
 
@@ -22,7 +24,6 @@ import kotlinx.android.synthetic.main.fragment_menu.*
  *
  */
 class MenuFragment : Fragment() {
-    lateinit var menuListener: MenuListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +59,7 @@ class MenuFragment : Fragment() {
                         override fun onAlbumSelected(album: Album) {
                             //val intent = Intent(context, AlbumActivity::class.java)
                             //startActivity(intent)
-                            menuListener.onAlbumSelected(album)
+                            //menuListener.onAlbumSelected(album)
                             //fragmentManager?.beginTransaction()?.replace(R.id.frameLayout, SongsFragment())?.commit()
                         }
                     }
@@ -98,9 +99,5 @@ class MenuFragment : Fragment() {
                 else -> null
             }
         }
-    }
-
-    interface MenuListener {
-        fun onAlbumSelected(album: Album)
     }
 }

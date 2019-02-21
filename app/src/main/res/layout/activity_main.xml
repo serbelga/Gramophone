@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <FrameLayout
-            android:id="@+id/frameLayout"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    <fragment
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    </FrameLayout>
+            android:layout_height="match_parent"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:navGraph="@navigation/nav_graph"
+            app:defaultNavHost="true"
+            android:id="@+id/navHostFragment">
+    </fragment>
 
     <com.google.android.material.appbar.AppBarLayout
 
@@ -31,26 +34,6 @@
                 app:contentInsetStart="0dp"
                 app:layout_scrollFlags="scroll|enterAlways|snap">
 
-
-<!--
-            <TextView
-                    android:text="GRAMOPHONE"
-                    android:textSize="20sp"
-                    android:textAlignment="center"
-                    android:layout_marginEnd="24dp"
-                    android:textColor="@color/black"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/monoton"/>
-
-                                <ImageView
-
-                    android:src="@drawable/logo"
-                    android:layout_width="160dp"
-                    android:layout_height="72dp"/>
-
-
-                    -->
             <TextView
                     android:text="@string/my_library"
                     style="@style/Headline6Text"
@@ -61,10 +44,6 @@
                     android:layout_height="wrap_content"/>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
-
-
-
 
     <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/playerBottomSheet"

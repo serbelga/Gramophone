@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import com.example.sergiobelda.gramophone.R
 import com.example.sergiobelda.gramophone.ui.mainmenu.MenuFragment
 import com.example.sergiobelda.gramophone.ui.preferences.SettingsActivity
@@ -15,7 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var playerBottomSheetBehavior : BottomSheetBehavior<View>
+    private lateinit var playerBottomSheetBehavior : BottomSheetBehavior<View>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,16 +25,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.ic_search_black_24dp);
         setBottomSheetBehavior()
-        val fragment = MenuFragment()
-        fragment.menuListener = object : MenuFragment.MenuListener {
-            override fun onAlbumSelected(album: Album) {
-                Log.d("Album: ",  album.name)
-            }
-        }
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.frameLayout, fragment)
-            .commit()
     }
 
     private fun setBottomSheetBehavior() {
