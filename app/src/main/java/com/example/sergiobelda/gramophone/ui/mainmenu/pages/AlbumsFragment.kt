@@ -31,7 +31,7 @@ class AlbumsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         val album = Album("The Dark Side Of The Moon", 1973, "LP", 1)
-        val album1 = Album("The Dark Side Of The Moon", 1973, "LP", 1)
+        val album1 = Album("The Wall", 1973, "LP", 1)
         val albums = ArrayList<Album>()
         albums.add(album)
         albums.add(album1)

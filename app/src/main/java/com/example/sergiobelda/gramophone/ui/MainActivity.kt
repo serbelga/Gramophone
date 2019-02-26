@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     private fun setBottomSheetBehavior() {
         playerBottomSheetBehavior = BottomSheetBehavior.from(playerBottomSheet)
         playerBottomSheetBehavior.setBottomSheetCallback(bottomSheetCallback())
-        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
     private fun bottomSheetCallback() : BottomSheetBehavior.BottomSheetCallback {
