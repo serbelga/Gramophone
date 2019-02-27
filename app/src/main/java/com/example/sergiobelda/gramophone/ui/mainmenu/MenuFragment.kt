@@ -57,10 +57,7 @@ class MenuFragment : Fragment() {
                     fragment = AlbumsFragment()
                     fragment.albumSelectedListener = object : AlbumsFragment.AlbumSelectedListener {
                         override fun onAlbumSelected(album: Album) {
-                            //val intent = Intent(context, AlbumActivity::class.java)
-                            //startActivity(intent)
-                            //menuListener.onAlbumSelected(album)
-                            //fragmentManager?.beginTransaction()?.replace(R.id.frameLayout, SongsFragment())?.commit()
+
                         }
                     }
                 }
