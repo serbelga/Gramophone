@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sergiobelda.gramophone.R
-import com.example.sergiobelda.gramophone.util.Album
+import com.example.sergiobelda.gramophone.entities.Album
 import com.google.android.material.card.MaterialCardView
 
 class AlbumsAdapter(private var albums: ArrayList<Album>) : RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>() {
