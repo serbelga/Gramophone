@@ -50,10 +50,10 @@
             app:layout_behavior="@string/bottom_sheet_behavior"
             style="@style/Widget.MaterialComponents.BottomSheet.Modal"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="match_parent"
             android:elevation="16dp"
             app:behavior_hideable="true"
-            app:behavior_peekHeight="0dp">
+            app:behavior_peekHeight="72dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:orientation="vertical"

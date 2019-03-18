@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sergiobelda.gramophone.R
-import com.example.sergiobelda.gramophone.util.Song
+import com.example.sergiobelda.gramophone.entities.Song
 
 
 

@@ -1,7 +1,6 @@
 package com.example.sergiobelda.gramophone.ui.album
 
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,10 +10,9 @@ import androidx.fragment.app.Fragment
 
 import com.example.sergiobelda.gramophone.R
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sergiobelda.gramophone.ui.mainmenu.pages.SongsAdapter
-import com.example.sergiobelda.gramophone.util.Song
+import com.example.sergiobelda.gramophone.entities.Song
 import kotlinx.android.synthetic.main.fragment_songs.*
 
 

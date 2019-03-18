@@ -2,7 +2,6 @@ package com.example.sergiobelda.gramophone.ui.mainmenu.pages
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.sergiobelda.gramophone.R
-import com.example.sergiobelda.gramophone.util.Song
+import com.example.sergiobelda.gramophone.entities.Song
+import com.example.sergiobelda.gramophone.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_songs.*
 
 /**
@@ -43,6 +43,7 @@ class SongsFragment : Fragment() {
         val adapter = SongsAdapter(songs, object : SongsAdapter.OnItemClickListener{
             override fun onItemClick(song: Song) {
                 songSelectedListener.onSongSelected(song)
+                (activity as MainActivity).expandBottomSheet()
             }
         })
         recyclerView.adapter = adapter

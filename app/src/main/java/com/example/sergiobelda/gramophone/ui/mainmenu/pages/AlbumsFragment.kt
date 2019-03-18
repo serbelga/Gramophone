@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.example.sergiobelda.gramophone.R
-import com.example.sergiobelda.gramophone.util.Album
+import com.example.sergiobelda.gramophone.entities.Album
 import kotlinx.android.synthetic.main.fragment_songs.*
 
 /**

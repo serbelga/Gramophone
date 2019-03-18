@@ -7,12 +7,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import com.example.sergiobelda.gramophone.R
-import com.example.sergiobelda.gramophone.ui.mainmenu.MenuFragment
 import com.example.sergiobelda.gramophone.ui.preferences.SettingsActivity
-import com.example.sergiobelda.gramophone.util.Album
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,7 +26,12 @@ class MainActivity : AppCompatActivity() {
     private fun setBottomSheetBehavior() {
         playerBottomSheetBehavior = BottomSheetBehavior.from(playerBottomSheet)
         playerBottomSheetBehavior.setBottomSheetCallback(bottomSheetCallback())
-        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+    }
+
+    fun expandBottomSheet(){
+        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        playerBottomSheetBehavior.isHideable = false
     }
 
     private fun bottomSheetCallback() : BottomSheetBehavior.BottomSheetCallback {
