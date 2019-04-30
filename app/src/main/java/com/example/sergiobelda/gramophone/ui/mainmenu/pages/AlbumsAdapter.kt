@@ -28,8 +28,7 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) : RecyclerView.Adapter
 
     private fun createOnClickListener(album: Album): View.OnClickListener {
         return View.OnClickListener {
-
-            it.findNavController().navigate(R.id.action_menuFragment_to_albumDetailFragment)
+            it.findNavController().navigate(R.id.showAlbum)
         }
     }
 
@@ -51,7 +50,7 @@ val extras = FragmentNavigatorExtras(
             }*/
 
             albumCardView.setOnClickListener{
-                it.findNavController().navigate(R.id.action_menuFragment_to_albumDetailFragment)
+                it.findNavController().navigate(R.id.showAlbum)
             }
         }
     }

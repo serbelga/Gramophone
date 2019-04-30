@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 import com.example.sergiobelda.gramophone.R
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.sergiobelda.gramophone.ui.mainmenu.pages.SongsAdapter
 import com.example.sergiobelda.gramophone.entities.Song
 import kotlinx.android.synthetic.main.fragment_songs.*
@@ -45,15 +47,16 @@ class AlbumDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val song = Song("Money", "Pink Floyd")
-        val song1 = Song("Stairway to Heaven", "Led Zeppelin")
         val songs = ArrayList<Song>()
         songs.add(song)
-        songs.add(song1)
         val adapter = SongsAdapter(songs, object : SongsAdapter.OnItemClickListener{
             override fun onItemClick(song: Song) {
 
             }
         })
         recyclerView.adapter = adapter
+
+
+
     }
 }

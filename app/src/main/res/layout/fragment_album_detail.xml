@@ -71,7 +71,7 @@
                             android:layout_height="wrap_content"/>
                     <TextView
                             style="@style/CaptionText"
-                            android:text="12 canciones"
+                            android:text="1 song"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                 </androidx.appcompat.widget.LinearLayoutCompat>

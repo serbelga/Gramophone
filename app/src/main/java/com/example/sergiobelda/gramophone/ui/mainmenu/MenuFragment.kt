@@ -39,8 +39,8 @@ class MenuFragment : Fragment() {
 
     private fun setViewPager() {
         val pagerAdapter = PagerAdapter(this.fragmentManager!!)
-        viewPager.adapter = pagerAdapter
-        tabLayout.setupWithViewPager(viewPager)
+        //viewPager.adapter = pagerAdapter
+        //tabLayout.setupWithViewPager(viewPager)
     }
 
     inner class PagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm) {

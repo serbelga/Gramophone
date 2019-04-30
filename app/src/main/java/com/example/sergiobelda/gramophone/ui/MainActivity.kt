@@ -1,26 +1,67 @@
 package com.example.sergiobelda.gramophone.ui
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.sergiobelda.gramophone.R
+import com.example.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.example.sergiobelda.gramophone.ui.preferences.SettingsActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottom_sheet_player.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var playerBottomSheetBehavior : BottomSheetBehavior<View>
+    private lateinit var playerBottomSheetBehavior: BottomSheetBehavior<View>
+    private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var playerAdapter: MediaPlayerHolder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setBottomSheetBehavior()
+        mediaPlayer = MediaPlayer.create(this, R.raw.audio)
+        playerAdapter = MediaPlayerHolder(this)
+        playButton.setOnClickListener{
+            /*
+            if (mediaPlayer.isPlaying)
+                mediaPlayer.stop()
+            else mediaPlayer.start()
+            */
+        }
+
+        // Set Toolbar as ActionBar
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.ic_search_black_24dp);
-        setBottomSheetBehavior()
+
+        val navController = findNavController(R.id.navHostFragment)
+
+        // Set ActionBar
+        // AppBarConfiguration(navController.graph) -> Only considers the home fragment in the navigation graph as a top level
+        // If you have a bottomNavigationView with multiple fragments to switch -> AppBarConfiguration(setOf(R.id.artistsFragment, R.id.albumsFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.artistsFragment, R.id.albumsFragment))
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Set BottomNavigationView
+        bottomNavigationView.setupWithNavController(navController)
+
+        /*
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.albumsFragment) {
+                bottomNavigationView.visibility = View.VISIBLE
+            } else {
+                bottomNavigationView.visibility = View.GONE
+            }
+        }*/
     }
 
     private fun setBottomSheetBehavior() {
@@ -42,9 +83,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
-                    BottomSheetBehavior.STATE_EXPANDED -> Log.d("state: ", "expanded")
-                    BottomSheetBehavior.STATE_COLLAPSED -> Log.d("state: ", "collapsed")
-
+                    //BottomSheetBehavior.STATE_EXPANDED -> Log.d("state: ", "expanded")
+                    //BottomSheetBehavior.STATE_COLLAPSED -> Log.d("state: ", "collapsed")
                 }
             }
         }
@@ -53,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
+        menuInflater.inflate(R.menu.settings_menu, menu)
         return true
     }
 
