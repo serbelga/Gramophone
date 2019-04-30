@@ -2,9 +2,6 @@ package com.example.sergiobelda.gramophone.ui.preferences
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.preference.PreferenceFragmentCompat
 
 import com.example.sergiobelda.gramophone.R

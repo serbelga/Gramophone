@@ -30,9 +30,9 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                     android:orientation="vertical"
-                    android:background="@color/white"
                     android:layout_width="136dp"
                     android:layout_height="wrap_content">
+
                 <TextView
                         android:id="@+id/albumNameTextView"
                         style="@style/Body1Text"
