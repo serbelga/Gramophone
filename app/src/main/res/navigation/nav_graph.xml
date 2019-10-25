@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/mobile_navigation"
+            app:startDestination="@id/albumsFragment">
+
+    <fragment android:id="@+id/albumDetailFragment"
+              android:name="com.android.sergiobelda.gramophone.ui.album.AlbumDetailFragment"
+              android:label="fragment_album_detail" tools:layout="@layout/fragment_album_detail"/>
+    <fragment android:id="@+id/albumsFragment"
+              android:name="com.android.sergiobelda.gramophone.ui.mainmenu.pages.AlbumsFragment"
+              android:label="fragment_albums" tools:layout="@layout/fragment_albums">
+        <action android:id="@+id/showAlbum"
+                app:destination="@id/albumDetailFragment"/>
+    </fragment>
+    <fragment android:id="@+id/artistsFragment"
+              android:name="com.android.sergiobelda.gramophone.ui.mainmenu.pages.ArtistsFragment"
+              android:label="fragment_artists" tools:layout="@layout/fragment_artists"/>
+</navigation>

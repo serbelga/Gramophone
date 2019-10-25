@@ -12,4 +12,5 @@
     <string name="settings">Ajustes</string>
     <string name="ui">Interfaz de usuario</string>
     <string name="search">Buscar</string>
+    <string name="my_library">Mi librería</string>
 </resources>

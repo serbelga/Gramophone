@@ -2,6 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/ui">
         <SwitchPreference
+                android:key="theme"
                 android:title="Modo claro"
                 android:defaultValue="true">
         </SwitchPreference>
