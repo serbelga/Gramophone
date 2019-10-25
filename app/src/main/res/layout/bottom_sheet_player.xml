@@ -49,9 +49,9 @@
                         android:layout_height="wrap_content"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/playButton"
-                    android:background="@color/white"
+                    android:background="?android:selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_outline_play_arrow_24px"
                     android:layout_width="48dp"
                     android:layout_height="48dp"/>
