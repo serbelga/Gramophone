@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.android.sergiobelda.gramophone.R
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.sergiobelda.gramophone.ui.mainmenu.pages.SongsAdapter
+import com.android.sergiobelda.gramophone.ui.main.pages.SongsAdapter
 import com.android.sergiobelda.gramophone.entities.Song
 import kotlinx.android.synthetic.main.fragment_songs.*
 

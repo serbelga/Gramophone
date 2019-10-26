@@ -27,19 +27,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setBottomSheetBehavior()
+        //setBottomSheetBehavior()
         //mediaPlayer = MediaPlayer.create(this, R.raw.audio)
         playerAdapter = MediaPlayerHolder(this)
+        /*
         playButton.setOnClickListener{
             /*
             if (mediaPlayer.isPlaying)
                 mediaPlayer.stop()
             else mediaPlayer.start()
             */
-        }
+        }*/
 
         // Set Toolbar as ActionBar
+
         setSupportActionBar(toolbar)
+        supportActionBar!!.elevation = 0F
         toolbar.setNavigationIcon(R.drawable.ic_search_black_24dp);
 
         val navController = findNavController(R.id.navHostFragment)
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         // Set ActionBar
         // AppBarConfiguration(navController.graph) -> Only considers the home fragment in the navigation graph as a top level
         // If you have a bottomNavigationView with multiple fragments to switch -> AppBarConfiguration(setOf(R.id.artistsFragment, R.id.albumsFragment))
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.artistsFragment, R.id.albumsFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.artistsFragment, R.id.albumsFragment, R.id.playlistsFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Set BottomNavigationView
@@ -63,11 +66,14 @@ class MainActivity : AppCompatActivity() {
         }*/
     }
 
+    /*
     private fun setBottomSheetBehavior() {
         playerBottomSheetBehavior = BottomSheetBehavior.from(playerBottomSheet)
         playerBottomSheetBehavior.setBottomSheetCallback(bottomSheetCallback())
         playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
+
+     */
 
     fun expandBottomSheet(){
         playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED

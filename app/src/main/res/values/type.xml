@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ButtonText" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="Subtitle1Text" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="Headline1Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="Headline2Text" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="Headline3Text" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="Headline6Text" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="CaptionText" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="Body1Text" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="Body2Text" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+
+    <style name="OverlineText" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/averta</item>
+    </style>
+</resources>
+

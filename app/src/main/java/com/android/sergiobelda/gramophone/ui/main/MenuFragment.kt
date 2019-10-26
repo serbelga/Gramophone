@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.mainmenu
+package com.android.sergiobelda.gramophone.ui.main
 
 
 import android.os.Bundle
@@ -11,9 +11,10 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
-import com.android.sergiobelda.gramophone.ui.mainmenu.pages.*
+import com.android.sergiobelda.gramophone.ui.main.pages.*
 import com.android.sergiobelda.gramophone.entities.Album
 import com.android.sergiobelda.gramophone.entities.Song
+import com.android.sergiobelda.gramophone.ui.main.playlists.PlaylistsFragment
 
 
 /**
@@ -70,7 +71,7 @@ class MenuFragment : Fragment() {
                     }
                 }
                 3 -> {
-                    fragment = CategoriesFragment()
+                    fragment = ErrorFragment()
                 }
                 4 -> {
                     fragment = PlaylistsFragment()

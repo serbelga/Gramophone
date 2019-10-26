@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.google.android.material.card.MaterialCardView android:id="@+id/albumCardView"
         android:orientation="vertical"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
-
-    <com.google.android.material.card.MaterialCardView
-            android:id="@+id/albumCardView"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="8dp"
-            android:clickable="true"
-            android:layout_height="244dp"
-            android:layout_width="172dp"
-            android:focusable="true">
+        android:layout_gravity="center"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:layout_height="244dp"
+        android:layout_width="172dp"
+        android:focusable="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <ImageView
                 android:id="@+id/albumImageView"
@@ -50,6 +45,4 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>
-</androidx.appcompat.widget.LinearLayoutCompat>
-
 

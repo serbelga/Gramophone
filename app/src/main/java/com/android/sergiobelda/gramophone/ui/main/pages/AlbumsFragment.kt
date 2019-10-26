@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.mainmenu.pages
+package com.android.sergiobelda.gramophone.ui.main.pages
 
 
 import android.os.Bundle
@@ -32,9 +32,10 @@ class AlbumsFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         val album = Album("The Dark Side Of The Moon", 1973, "LP", 1)
         val album1 = Album("The Wall", 1973, "LP", 1)
-        val albums = ArrayList<Album>()
-        albums.add(album)
-        albums.add(album1)
+        val album2 = Album("The Wall", 1973, "LP", 1)
+        val album3 = Album("The Wall", 1973, "LP", 1)
+        val album4 = Album("The Wall", 1973, "LP", 1)
+        val albums = arrayListOf(album, album1, album2, album3, album4)
         val adapter = AlbumsAdapter(albums)
         recyclerView.adapter = adapter
     }

@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.mainmenu.pages
+package com.android.sergiobelda.gramophone.ui.main.pages
 
 
 import android.os.Bundle
