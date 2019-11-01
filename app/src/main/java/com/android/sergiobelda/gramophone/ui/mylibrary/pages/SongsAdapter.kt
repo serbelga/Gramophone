@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.main.pages
+package com.android.sergiobelda.gramophone.ui.mylibrary.pages
 
 import android.view.LayoutInflater
 import android.view.View

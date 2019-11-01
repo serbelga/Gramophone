@@ -7,10 +7,8 @@
             motion:constraintSetEnd="@+id/end"
             motion:constraintSetStart="@id/start"
             motion:duration="400">
-        <OnSwipe
-                motion:touchAnchorId="@id/frameLayout"
-                motion:touchRegionId="@id/frameLayout"
-                motion:dragDirection="dragUp">
+
+        <OnSwipe>
         </OnSwipe>
         <KeyFrameSet>
         </KeyFrameSet>

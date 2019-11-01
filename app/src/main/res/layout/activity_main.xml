@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motion_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,61 +10,79 @@
         android:fitsSystemWindows="true"
     tools:context=".ui.MainActivity">
 
-    <fragment
-            android:id="@+id/navHostFragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinator"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:navGraph="@navigation/nav_graph">
-    </fragment>
+            app:layout_constraintTop_toTopOf="parent">
 
-
-    <com.google.android.material.appbar.AppBarLayout
-            app:elevation="0dp"
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-        <!--    Attributes in toolbar for centering an item
-                android:contentInsetStart="0dp"
-                app:contentInsetStart="0dp"-->
-
-        <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:gravity="center"
-                android:layout_gravity="center"
+        <fragment
+                android:id="@+id/navHostFragment"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:contentInsetStart="0dp"
-                app:contentInsetStart="0dp">
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_graph">
+                <!--
+                app:layout_constraintTop_toBottomOf="@+id/appbar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                -->
+
+        </fragment>
+
+
+        <com.google.android.material.appbar.AppBarLayout
+                app:elevation="0dp"
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"-->
+
+
+            <!--    Attributes in toolbar for centering an item
+                    android:contentInsetStart="0dp"
+                    app:contentInsetStart="0dp"-->
+
+            <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"
+                    android:contentInsetStart="0dp"
+                    app:contentInsetStart="0dp">
                 <!--app:layout_scrollFlags="scroll|enterAlways|snap"-->
 
-            <!--
-            <TextView
-                    android:text="@string/app_name"
-                    style="?textAppearanceHeadline6"
-                    android:textAlignment="center"
-                    android:textColor="?colorOnSurface"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                    -->
-        </com.google.android.material.appbar.MaterialToolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+                <!--
+                <TextView
+                        android:text="@string/app_name"
+                        style="?textAppearanceHeadline6"
+                        android:textAlignment="center"
+                        android:textColor="?colorOnSurface"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                        -->
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
-                style="@style/Widget.MaterialComponents.BottomNavigationView"
+                style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -87,7 +106,7 @@
             android:elevation="8dp"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:background="?colorPrimary"
+            android:background="?colorSecondary"
             app:layout_constraintTop_toTopOf="@id/frameLayout"
             app:layout_constraintStart_toStartOf="@id/frameLayout"
             app:layout_constraintBottom_toBottomOf="@+id/frameLayout"></ImageView>

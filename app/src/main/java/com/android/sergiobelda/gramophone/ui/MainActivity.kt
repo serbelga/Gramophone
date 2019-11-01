@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         // Set ActionBar
         // AppBarConfiguration(navController.graph) -> Only considers the home fragment in the navigation graph as a top level
         // If you have a bottomNavigationView with multiple fragments to switch -> AppBarConfiguration(setOf(R.id.artistsFragment, R.id.albumsFragment))
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.artistsFragment, R.id.albumsFragment, R.id.playlistsFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.myLibraryFragment, R.id.myProfileFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Set BottomNavigationView
