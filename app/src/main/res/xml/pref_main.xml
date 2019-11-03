@@ -4,8 +4,9 @@
             android:key="ui_category"
             android:title="@string/ui">
         <SwitchPreference
-                android:key="theme"
-                android:title="Modo claro">
+                android:icon="@drawable/ic_baseline_brightness_4_24"
+                android:key="mode_night"
+                android:title="Tema oscuro">
         </SwitchPreference>
     </PreferenceCategory>
 </PreferenceScreen>

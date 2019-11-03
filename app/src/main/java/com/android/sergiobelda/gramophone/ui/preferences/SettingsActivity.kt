@@ -2,14 +2,15 @@ package com.android.sergiobelda.gramophone.ui.preferences
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.fragment.app.commit
-import androidx.preference.Preference
-import androidx.preference.PreferenceManager
 import com.android.sergiobelda.gramophone.R
 import kotlinx.android.synthetic.main.activity_settings.*
 
+/**
+ * SettingsActivity
+ * @author Sergio Belda Galbis (@serbelga)
+ */
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
