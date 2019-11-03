@@ -32,9 +32,14 @@ class AlbumsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = GridLayoutManager(context, 2)
-        val albums = arrayListOf(theDarkSide, theWall)
+
+        val albums = getData()
         val adapter = AlbumsAdapter(albums)
         recyclerView.adapter = adapter
+    }
+
+    private fun getData() : ArrayList<Album> {
+        return arrayListOf(theDarkSide, theWall)
     }
 
     interface AlbumSelectedListener {

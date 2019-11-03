@@ -6,8 +6,7 @@
         app:startDestination="@id/homeFragment">
     <fragment
             android:id="@+id/albumDetailFragment"
-            android:name="com.android.sergiobelda.gramophone.ui.mylibrary.album.AlbumDetailFragment"
-            android:label="fragment_album_detail"
+            android:name="com.android.sergiobelda.gramophone.ui.album.AlbumDetailFragment"
             tools:layout="@layout/fragment_album_detail" />
     <fragment
             android:id="@+id/homeFragment"
