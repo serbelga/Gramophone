@@ -40,6 +40,14 @@
             @style/Widget.MaterialComponents.ActionBar.Surface
         </item>
 
+        <item name="appBarLayoutStyle">
+            @style/AppBarLayout
+        </item>
+
+        <item name="materialCardViewStyle">
+            @style/MaterialCardView
+        </item>
+
         <!-- Shape System -->
         <item name="shapeAppearanceSmallComponent">@style/SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/MediumComponent</item>
@@ -84,5 +92,15 @@
         <item name="textAppearanceSubtitle1">
             @style/Subtitle1Text
         </item>
+    </style>
+
+    <style name="AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Surface">
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="MaterialCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="strokeColor">@color/colorDivider</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
     </style>
 </resources>

@@ -30,5 +30,6 @@
     <color name="colorOnError">#FFFFFF</color>
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorOnBackground">@color/colorTextHighEmphasis</color>
-    <color name="colorStatusBar">#f5f5f5</color>
+    <color name="colorStatusBar">#F5F5F5</color>
+    <color name="colorDivider">#F5F5F5</color>
 </resources>

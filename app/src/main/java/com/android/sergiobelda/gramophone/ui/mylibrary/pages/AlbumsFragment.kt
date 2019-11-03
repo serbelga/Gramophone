@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_songs.*
  *
  */
 class AlbumsFragment : Fragment() {
-    lateinit var albumSelectedListener : AlbumSelectedListener
+    lateinit var albumSelectedListener: AlbumSelectedListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

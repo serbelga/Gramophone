@@ -11,9 +11,14 @@ import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.entities.Album
 import com.google.android.material.card.MaterialCardView
 
-class AlbumsAdapter(private var albums: ArrayList<Album>) : RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumsAdapter.AlbumsViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.albums_list_item, parent, false)
+class AlbumsAdapter(private var albums: ArrayList<Album>) :
+    RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AlbumsAdapter.AlbumsViewHolder {
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.albums_list_item, parent, false)
         return AlbumsViewHolder(itemView)
     }
 
@@ -33,10 +38,10 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) : RecyclerView.Adapter
     }
 
     class AlbumsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var albumNameTextView : TextView = itemView.findViewById(R.id.albumNameTextView)
-        private var artistTextView : TextView = itemView.findViewById(R.id.artistTextView)
-        private var albumCardView : MaterialCardView = itemView.findViewById(R.id.albumCardView)
-        private var albumImageView : ImageView = itemView.findViewById(R.id.albumImageView)
+        private var albumNameTextView: TextView = itemView.findViewById(R.id.albumNameTextView)
+        private var artistTextView: TextView = itemView.findViewById(R.id.artistTextView)
+        private var albumCardView: MaterialCardView = itemView.findViewById(R.id.albumCardView)
+        private var albumImageView: ImageView = itemView.findViewById(R.id.albumImageView)
 
         fun bindAlbum(album: Album, listener: View.OnClickListener) {
             albumNameTextView.text = album.name
@@ -49,7 +54,7 @@ val extras = FragmentNavigatorExtras(
                 it.findNavController().navigate(R.id.action_menuFragment_to_albumDetailFragment)
             }*/
 
-            albumCardView.setOnClickListener{
+            albumCardView.setOnClickListener {
                 it.findNavController().navigate(R.id.showAlbum)
             }
         }

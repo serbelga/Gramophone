@@ -12,6 +12,7 @@ import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.entities.Album
 import com.android.sergiobelda.gramophone.entities.Song
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
+import com.android.sergiobelda.gramophone.ui.MainActivity
 import com.android.sergiobelda.gramophone.ui.mylibrary.pages.AlbumsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.pages.ArtistsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.pages.SongsFragment
@@ -24,8 +25,8 @@ import com.google.android.material.tabs.TabLayout
  * create an instance of this fragment.
  */
 class MyLibraryFragment : Fragment() {
-    private var viewPager : ViewPager? = null
-    private var tabLayout : TabLayout? = null
+    private var viewPager: ViewPager? = null
+    private var tabLayout: TabLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,10 +46,27 @@ class MyLibraryFragment : Fragment() {
     private fun setViewPager() {
         val pagerAdapter = PagerAdapter(this.fragmentManager!!)
         viewPager?.adapter = pagerAdapter
+        viewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+                (activity as MainActivity).expandAppBarLayout(expanded = true, animate = true)
+            }
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                (activity as MainActivity).expandAppBarLayout(expanded = true, animate = true)
+            }
+
+            override fun onPageSelected(position: Int) {
+                (activity as MainActivity).expandAppBarLayout(expanded = true, animate = true)
+            }
+        })
         tabLayout?.setupWithViewPager(viewPager)
     }
 
-    inner class PagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm) {
+    inner class PagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
             val fragment: Fragment?
@@ -65,8 +83,7 @@ class MyLibraryFragment : Fragment() {
                     }
                 }
                 2 -> {
-                    fragment =
-                        PlaylistsFragment()
+                    fragment = PlaylistsFragment()
                 }
                 else -> {
                     fragment = ErrorFragment()

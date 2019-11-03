@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.album
+package com.android.sergiobelda.gramophone.ui.mylibrary.album
 
 
 import android.content.Context
@@ -47,13 +47,12 @@ class AlbumDetailFragment : Fragment() {
         val song = Song("Money", "Pink Floyd")
         val songs = ArrayList<Song>()
         songs.add(song)
-        val adapter = SongsAdapter(songs, object : SongsAdapter.OnItemClickListener{
+        val adapter = SongsAdapter(songs, object : SongsAdapter.OnItemClickListener {
             override fun onItemClick(song: Song) {
 
             }
         })
         recyclerView.adapter = adapter
-
 
 
     }

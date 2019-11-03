@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/mobile_navigation"
-            app:startDestination="@id/homeFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@id/homeFragment">
 
-    <fragment android:id="@+id/albumDetailFragment"
-              android:name="com.android.sergiobelda.gramophone.ui.album.AlbumDetailFragment"
-              android:label="fragment_album_detail" tools:layout="@layout/fragment_album_detail"/>
-    <fragment android:id="@+id/albumsFragment"
-              android:name="com.android.sergiobelda.gramophone.ui.mylibrary.pages.AlbumsFragment"
-              android:label="fragment_albums" tools:layout="@layout/fragment_albums">
-        <action android:id="@+id/showAlbum"
-                app:destination="@id/albumDetailFragment"/>
+    <fragment
+            android:id="@+id/albumDetailFragment"
+            android:name="com.android.sergiobelda.gramophone.ui.mylibrary.album.AlbumDetailFragment"
+            android:label="fragment_album_detail"
+            tools:layout="@layout/fragment_album_detail" />
+    <fragment
+            android:id="@+id/albumsFragment"
+            android:name="com.android.sergiobelda.gramophone.ui.mylibrary.pages.AlbumsFragment"
+            tools:layout="@layout/fragment_albums">
+        <action
+                android:id="@+id/showAlbum"
+                app:destination="@id/albumDetailFragment" />
     </fragment>
-    <fragment android:id="@+id/artistsFragment"
-              android:name="com.android.sergiobelda.gramophone.ui.mylibrary.pages.ArtistsFragment"
-              android:label="fragment_artists" tools:layout="@layout/fragment_artists"/>
+    <fragment
+            android:id="@+id/artistsFragment"
+            android:name="com.android.sergiobelda.gramophone.ui.mylibrary.pages.ArtistsFragment"
+            tools:layout="@layout/fragment_artists" />
     <fragment
             android:id="@+id/homeFragment"
             android:name="com.android.sergiobelda.gramophone.ui.home.HomeFragment"
@@ -24,16 +30,13 @@
     <fragment
             android:id="@+id/playlistsFragment"
             android:name="com.android.sergiobelda.gramophone.ui.mylibrary.pages.PlaylistsFragment"
-            android:label="fragment_playlists"
             tools:layout="@layout/fragment_playlists" />
     <fragment
             android:id="@+id/myLibraryFragment"
             android:name="com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragment"
-            android:label="fragment_my_library"
             tools:layout="@layout/fragment_my_library" />
     <fragment
             android:id="@+id/myProfileFragment"
             android:name="com.android.sergiobelda.gramophone.ui.myprofile.MyProfileFragment"
-            android:label="fragment_profile"
             tools:layout="@layout/fragment_my_profile" />
 </navigation>

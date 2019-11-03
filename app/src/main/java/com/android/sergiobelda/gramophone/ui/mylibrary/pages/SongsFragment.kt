@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_songs.*
  *
  */
 class SongsFragment : Fragment() {
-    lateinit var songSelectedListener : SongSelectedListener
+    lateinit var songSelectedListener: SongSelectedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class SongsFragment : Fragment() {
         val songs = ArrayList<Song>()
         songs.add(song)
         songs.add(song1)
-        val adapter = SongsAdapter(songs, object : SongsAdapter.OnItemClickListener{
+        val adapter = SongsAdapter(songs, object : SongsAdapter.OnItemClickListener {
             override fun onItemClick(song: Song) {
                 songSelectedListener.onSongSelected(song)
                 (activity as MainActivity).expandBottomSheet()

@@ -9,11 +9,12 @@ import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.entities.Song
 
 
-
-class SongsAdapter(private var songs: ArrayList<Song>, private var listener: OnItemClickListener) : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
+class SongsAdapter(private var songs: ArrayList<Song>, private var listener: OnItemClickListener) :
+    RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongsViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.songs_list_item, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.songs_list_item, parent, false)
         return SongsViewHolder(itemView)
     }
 
@@ -27,10 +28,10 @@ class SongsAdapter(private var songs: ArrayList<Song>, private var listener: OnI
     }
 
     class SongsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var songTitleTextView : TextView = itemView.findViewById(R.id.songTitleTextView)
-        private var artistTextView : TextView = itemView.findViewById(R.id.artistTextView)
+        private var songTitleTextView: TextView = itemView.findViewById(R.id.songTitleTextView)
+        private var artistTextView: TextView = itemView.findViewById(R.id.artistTextView)
 
-        fun bindSong(song : Song, listener : OnItemClickListener){
+        fun bindSong(song: Song, listener: OnItemClickListener) {
             songTitleTextView.text = song.title
             artistTextView.text = song.artist
             itemView.setOnClickListener {
@@ -40,6 +41,6 @@ class SongsAdapter(private var songs: ArrayList<Song>, private var listener: OnI
     }
 
     interface OnItemClickListener {
-        fun onItemClick(song : Song)
+        fun onItemClick(song: Song)
     }
 }
