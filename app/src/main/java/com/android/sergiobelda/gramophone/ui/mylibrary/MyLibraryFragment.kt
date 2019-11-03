@@ -9,13 +9,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.android.sergiobelda.gramophone.R
-import com.android.sergiobelda.gramophone.entities.Album
-import com.android.sergiobelda.gramophone.entities.Song
+import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
 import com.android.sergiobelda.gramophone.ui.MainActivity
 import com.android.sergiobelda.gramophone.ui.mylibrary.pages.AlbumsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.pages.ArtistsFragment
-import com.android.sergiobelda.gramophone.ui.mylibrary.pages.SongsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.pages.PlaylistsFragment
 import com.google.android.material.tabs.TabLayout
 

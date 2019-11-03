@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.android.sergiobelda.gramophone.R
-import com.android.sergiobelda.gramophone.entities.Album
+import com.android.sergiobelda.gramophone.data.theDarkSide
+import com.android.sergiobelda.gramophone.data.theWall
+import com.android.sergiobelda.gramophone.model.Album
 import kotlinx.android.synthetic.main.fragment_songs.*
 
 /**
@@ -30,12 +32,7 @@ class AlbumsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = GridLayoutManager(context, 2)
-        val album = Album("The Dark Side Of The Moon", 1973, "LP", 1)
-        val album1 = Album("The Wall", 1973, "LP", 1)
-        val album2 = Album("The Wall", 1973, "LP", 1)
-        val album3 = Album("The Wall", 1973, "LP", 1)
-        val album4 = Album("The Wall", 1973, "LP", 1)
-        val albums = arrayListOf(album, album1, album2, album3, album4)
+        val albums = arrayListOf(theDarkSide, theWall)
         val adapter = AlbumsAdapter(albums)
         recyclerView.adapter = adapter
     }

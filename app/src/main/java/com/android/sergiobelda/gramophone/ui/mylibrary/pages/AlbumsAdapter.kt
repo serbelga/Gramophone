@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
 import com.android.sergiobelda.gramophone.R
-import com.android.sergiobelda.gramophone.entities.Album
+import com.android.sergiobelda.gramophone.model.Album
 import com.google.android.material.card.MaterialCardView
 
 class AlbumsAdapter(private var albums: ArrayList<Album>) :
@@ -16,7 +18,7 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AlbumsAdapter.AlbumsViewHolder {
+    ): AlbumsViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.albums_list_item, parent, false)
         return AlbumsViewHolder(itemView)
@@ -26,15 +28,10 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) :
         return albums.size
     }
 
-    override fun onBindViewHolder(holder: AlbumsAdapter.AlbumsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AlbumsViewHolder, position: Int) {
         val album = albums[position]
-        holder.bindAlbum(album, createOnClickListener(album))
-    }
-
-    private fun createOnClickListener(album: Album): View.OnClickListener {
-        return View.OnClickListener {
-            it.findNavController().navigate(R.id.showAlbum)
-        }
+        //holder.bindAlbum(album, createOnClickListener(album))
+        holder.bindAlbum(album)
     }
 
     class AlbumsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -43,19 +40,20 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) :
         private var albumCardView: MaterialCardView = itemView.findViewById(R.id.albumCardView)
         private var albumImageView: ImageView = itemView.findViewById(R.id.albumImageView)
 
-        fun bindAlbum(album: Album, listener: View.OnClickListener) {
-            albumNameTextView.text = album.name
+        fun bindAlbum(album: Album) {
+            albumNameTextView.text = album.title
             /*
             val extras = FragmentNavigatorExtras(
                 albumImageView to "detail_image")
 val extras = FragmentNavigatorExtras(
                 albumImageView to album.name)
-            albumCardView.setOnClickListener {
-                it.findNavController().navigate(R.id.action_menuFragment_to_albumDetailFragment)
-            }*/
 
+             */
+            albumImageView.load(
+                album.coverUri
+            )
             albumCardView.setOnClickListener {
-                it.findNavController().navigate(R.id.showAlbum)
+                it.findNavController().navigate(R.id.navToAlbumDetail)
             }
         }
     }

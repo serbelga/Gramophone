@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.android.sergiobelda.gramophone.R
-import com.android.sergiobelda.gramophone.entities.Song
+import com.android.sergiobelda.gramophone.model.Track
 import com.android.sergiobelda.gramophone.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_songs.*
 
@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.fragment_songs.*
  * A simple [Fragment] subclass.
  *
  */
-class SongsFragment : Fragment() {
-    lateinit var songSelectedListener: SongSelectedListener
+class TracksFragment : Fragment() {
+    lateinit var trackSelectedListener: TrackSelectedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,21 +35,21 @@ class SongsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val song = Song("Money", "Pink Floyd")
-        val song1 = Song("Stairway to Heaven", "Led Zeppelin")
-        val songs = ArrayList<Song>()
-        songs.add(song)
-        songs.add(song1)
-        val adapter = SongsAdapter(songs, object : SongsAdapter.OnItemClickListener {
-            override fun onItemClick(song: Song) {
-                songSelectedListener.onSongSelected(song)
+        //val song = Track("Money", "Pink Floyd")
+        //val song1 = Track("Stairway to Heaven", "Led Zeppelin")
+        val songs = ArrayList<Track>()
+        //songs.add(song)
+        //songs.add(song1)
+        val adapter = TracksAdapter(songs, object : TracksAdapter.OnItemClickListener {
+            override fun onItemClick(track: Track) {
+                trackSelectedListener.onSongSelected(track)
                 (activity as MainActivity).expandBottomSheet()
             }
         })
         recyclerView.adapter = adapter
     }
 
-    interface SongSelectedListener {
-        fun onSongSelected(song: Song)
+    interface TrackSelectedListener {
+        fun onSongSelected(track: Track)
     }
 }
