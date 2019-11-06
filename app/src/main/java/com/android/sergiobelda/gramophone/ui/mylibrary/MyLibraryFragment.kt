@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
@@ -42,7 +43,7 @@ class MyLibraryFragment : Fragment() {
     }
 
     private fun setViewPager() {
-        val pagerAdapter = PagerAdapter(this.fragmentManager!!)
+        val pagerAdapter = PagerAdapter(childFragmentManager)
         viewPager?.adapter = pagerAdapter
         viewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
@@ -64,7 +65,7 @@ class MyLibraryFragment : Fragment() {
         tabLayout?.setupWithViewPager(viewPager)
     }
 
-    inner class PagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+    inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getItem(position: Int): Fragment {
             val fragment: Fragment?

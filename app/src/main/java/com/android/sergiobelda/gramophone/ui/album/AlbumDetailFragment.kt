@@ -2,10 +2,10 @@ package com.android.sergiobelda.gramophone.ui.album
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 import com.android.sergiobelda.gramophone.R
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +13,13 @@ import kotlinx.android.synthetic.main.fragment_songs.*
 
 
 class AlbumDetailFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //setHasOptionsMenu(true)
+
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,5 +41,17 @@ class AlbumDetailFragment : Fragment() {
         recyclerView.adapter = adapter
 
          */
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> findNavController().navigateUp()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

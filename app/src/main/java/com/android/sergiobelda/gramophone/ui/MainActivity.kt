@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.android.sergiobelda.gramophone.R
@@ -39,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         }*/
 
         // Set Toolbar as ActionBar
-
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.ic_search_black_24dp);
 
@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
 
         // Set ActionBar
         // AppBarConfiguration(navController.graph) -> Only considers the home fragment in the navigation graph as a top level
-        // If you have a bottomNavigationView with multiple fragments to switch -> AppBarConfiguration(setOf(R.id.artistsFragment, R.id.albumsFragment))
+        // Declare which fragments are the top level destinations
+        // If you have a bottomNavigationView with multiple fragments to switch -> AppBarConfiguration(setOf(R.id.fragment1, R.id.fragment2, ...))
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.myProfileFragment
             )
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Set BottomNavigationView
@@ -102,7 +104,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.settings_menu, menu)

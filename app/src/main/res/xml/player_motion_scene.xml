@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+<MotionScene
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
             motion:constraintSetEnd="@+id/end"
             motion:constraintSetStart="@id/start"
             motion:duration="400">
-
-        <OnSwipe></OnSwipe>
-        <KeyFrameSet></KeyFrameSet>
+        <OnSwipe
+                motion:maxAcceleration="6"
+                motion:touchAnchorId="@id/frameLayout"
+                motion:touchRegionId="@id/frameLayout"
+                motion:touchAnchorSide="top"
+                motion:dragDirection="dragUp">
+        </OnSwipe>
+        <KeyFrameSet>
+        </KeyFrameSet>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -16,8 +23,15 @@
                 android:id="@+id/frameLayout"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
-                motion:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+                android:layout_height="48dp"
+                motion:layout_constraintBottom_toTopOf="@+id/divider"
+                motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+                android:id="@+id/divider"
+                motion:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                motion:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
                 motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 
@@ -33,9 +47,17 @@
                 android:id="@+id/frameLayout"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                motion:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+                android:layout_height="0dp"
                 motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toTopOf="parent" />
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintBottom_toTopOf="@id/divider"
+                android:layout_marginStart="0dp" />
+        <Constraint
+                android:id="@+id/divider"
+                motion:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                motion:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+                motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 </MotionScene>
