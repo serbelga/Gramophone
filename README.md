@@ -3,23 +3,27 @@
 Music Player for Android. Implementation through Android Jetpack
 
 ## Material Theming
-- [x] Color system
-- [x] Shape system
-- [ ] Typography
-- [ ] Brand logo
-- [ ] Dark Theme
+- Color system
+- Shape system
+- Typo
+- Brand logo
+- Dark Theme
 
-## Android Jetpack
+## Android Architecture Components
+- ViewModel
+- Paging
+- LiveData
 
-### Android Architecture Components
-- [ ] Navigation
-- [ ] ViewModel
-- [ ] Paging
+## KTX
+- Palette KTX
+- Fragment KTX
+- Navigation KTX
+- Preference KTX
 
-### Foundation
-- [ ] Android KTX
+## UI
+- Animation & Transitions
+- Animated Vector Drawables
+- Constraint Layout + MotionLayout
 
-### UI
-- [ ] Palette
-- [ ] Animation & Transitions
-- [ ] Constraint Layout + MotionLayout
+## Image Loading
+- Glide
