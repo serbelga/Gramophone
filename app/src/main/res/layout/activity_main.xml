@@ -9,6 +9,8 @@
         android:fitsSystemWindows="true"
         tools:context=".ui.MainActivity">
 
+
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/coordinator"
             android:layout_width="match_parent"
@@ -45,6 +47,7 @@
                         app:layout_scrollFlags="scroll|enterAlways|snap">
                 </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -63,8 +66,8 @@
             android:layout_height="@dimen/player_collapsed_height"
             android:background="?colorSurface"
             android:elevation="8dp"
-            android:clickable="false"
-            android:focusable="false"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintBottom_toTopOf="@+id/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -80,13 +83,39 @@
             app:layout_constraintBottom_toTopOf="@id/bottomNavigationView">
     </View>
 
-    <ImageView
-            android:id="@+id/imageView"
+    <View
+            android:id="@+id/draggable_area"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
             android:elevation="8dp"
-            android:layout_width="@dimen/player_collapsed_height"
-            android:layout_height="@dimen/player_collapsed_height"
-            android:background="?colorSecondary"
             app:layout_constraintTop_toTopOf="@id/frameLayout"
             app:layout_constraintStart_toStartOf="@id/frameLayout"
             app:layout_constraintBottom_toBottomOf="@+id/frameLayout" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/play_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="8dp"
+            android:background="@drawable/ripple"
+            app:srcCompat="@drawable/ic_outline_play_arrow_24px" />
+
+    <ImageView
+            android:id="@+id/cover_image"
+            android:background="?colorPrimary"
+            android:elevation="8dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp">
+    </ImageView>
+
+    <ImageView
+            android:id="@+id/collapse_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:src="@drawable/ic_round_keyboard_arrow_down_24">
+    </ImageView>
 </androidx.constraintlayout.motion.widget.MotionLayout>

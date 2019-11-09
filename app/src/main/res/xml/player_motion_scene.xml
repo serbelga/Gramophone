@@ -7,32 +7,89 @@
             motion:constraintSetEnd="@+id/end"
             motion:constraintSetStart="@id/start"
             motion:duration="400">
+
         <OnSwipe
+                motion:moveWhenScrollAtTop="false"
                 motion:maxAcceleration="6"
-                motion:touchAnchorId="@id/frameLayout"
-                motion:touchRegionId="@id/frameLayout"
-                motion:touchAnchorSide="top"
+                motion:touchAnchorId="@id/draggable_area"
+                motion:touchRegionId="@id/draggable_area"
                 motion:dragDirection="dragUp">
         </OnSwipe>
         <KeyFrameSet>
+            <KeyPosition
+                    motion:motionTarget="@+id/cover_image"
+                    motion:framePosition="25"
+                    motion:percentX="0.75" />
+            <KeyAttribute
+                    motion:motionTarget="@+id/cover_image"
+                    motion:framePosition="24"
+                    android:scaleX="1.2" />
+            <KeyAttribute
+                    motion:motionTarget="@+id/collapse_icon"
+                    motion:framePosition="25"
+                    android:alpha="0" />
+            <KeyAttribute
+                    motion:motionTarget="@+id/play_button"
+                    motion:framePosition="70"
+                    android:alpha="0" />
+            <KeyAttribute
+                    motion:motionTarget="@+id/cover_image"
+                    motion:framePosition="25"
+                    android:scaleY="1.2" />
         </KeyFrameSet>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-                android:id="@+id/frameLayout"
+                android:id="@id/frameLayout"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 motion:layout_constraintBottom_toTopOf="@+id/divider"
                 motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
-                android:id="@+id/divider"
+                android:id="@id/divider"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 motion:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
                 motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+                android:id="@id/draggable_area"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintEnd_toStartOf="@id/play_button"
+                motion:layout_constraintBottom_toBottomOf="@id/frameLayout"
+                motion:layout_constraintTop_toTopOf="@id/frameLayout" />
+        <Constraint
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:id="@id/play_button"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintTop_toTopOf="@id/frameLayout"
+                motion:layout_constraintBottom_toBottomOf="@id/frameLayout"/>
+
+        <Constraint
+                android:id="@id/cover_image"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="@id/frameLayout"
+                motion:layout_constraintBottom_toBottomOf="@id/frameLayout">
+        </Constraint>
+
+        <Constraint
+                android:id="@id/collapse_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:alpha="0"
+                android:visibility="invisible"
+                motion:layout_constraintStart_toStartOf="@id/draggable_area"
+                motion:layout_constraintEnd_toEndOf="@id/draggable_area"
+                motion:layout_constraintTop_toTopOf="@id/draggable_area">
+        </Constraint>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -53,11 +110,45 @@
                 motion:layout_constraintBottom_toTopOf="@id/divider"
                 android:layout_marginStart="0dp" />
         <Constraint
-                android:id="@+id/divider"
+                android:id="@id/divider"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 motion:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
                 motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+                android:id="@id/draggable_area"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                motion:layout_constraintTop_toTopOf="@id/frameLayout"
+                motion:layout_constraintStart_toStartOf="@id/frameLayout"
+                motion:layout_constraintEnd_toEndOf="@id/frameLayout" />
+        <Constraint
+                android:id="@id/play_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                motion:layout_constraintStart_toEndOf="parent"
+                motion:layout_constraintTop_toTopOf="@id/draggable_area"
+                motion:layout_constraintBottom_toBottomOf="@id/draggable_area"/>
+        <Constraint
+                android:id="@id/cover_image"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintTop_toBottomOf="@id/draggable_area">
+        </Constraint>
+
+        <Constraint
+                android:id="@id/collapse_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:alpha="1"
+                motion:layout_constraintStart_toStartOf="@id/draggable_area"
+                motion:layout_constraintTop_toTopOf="@id/draggable_area"
+                motion:layout_constraintBottom_toBottomOf="@id/draggable_area"
+                motion:layout_constraintEnd_toEndOf="@id/draggable_area">
+        </Constraint>
     </ConstraintSet>
 </MotionScene>

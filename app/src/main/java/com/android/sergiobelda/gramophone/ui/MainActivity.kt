@@ -7,12 +7,15 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import coil.api.load
 import com.android.sergiobelda.gramophone.R
+import com.android.sergiobelda.gramophone.data.theWall
 import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -42,7 +45,10 @@ class MainActivity : AppCompatActivity() {
         // Set Toolbar as ActionBar
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.ic_search_black_24dp);
-
+        cover_image.load(theWall.coverUri)
+        play_button.setOnClickListener {
+            Toast.makeText(this, it.id, Toast.LENGTH_SHORT).show()
+        }
         setNavigation()
     }
 
