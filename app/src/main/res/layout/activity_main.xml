@@ -9,8 +9,6 @@
         android:fitsSystemWindows="true"
         tools:context=".ui.MainActivity">
 
-
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/coordinator"
             android:layout_width="match_parent"
@@ -58,7 +56,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:labelVisibilityMode="selected"
             app:menu="@menu/main_menu" />
+
+    <View
+            android:id="@+id/content_scrim"
+            android:background="@color/blackAlpha60"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+    </View>
 
     <FrameLayout
             android:id="@+id/frameLayout"
@@ -106,7 +112,6 @@
     <ImageView
             android:id="@+id/cover_image"
             android:background="?colorPrimary"
-            android:elevation="8dp"
             android:layout_width="48dp"
             android:layout_height="48dp">
     </ImageView>
@@ -118,4 +123,39 @@
             android:elevation="8dp"
             android:src="@drawable/ic_round_keyboard_arrow_down_24">
     </ImageView>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/title"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+                style="?textAppearanceHeadline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Money" />
+
+        <TextView
+                style="?textAppearanceSubtitle1"
+                android:textColor="@color/material_on_surface_emphasis_medium"
+                android:text="Pink Floyd"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/play_fab_button"
+            android:src="@drawable/ic_outline_play_arrow_24px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:elevation="12dp"
+            android:layout_marginBottom="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.constraintlayout.motion.widget.MotionLayout>

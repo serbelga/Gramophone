@@ -8,6 +8,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.widget.ConstraintsChangedListener
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -15,13 +17,15 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import coil.api.load
 import com.android.sergiobelda.gramophone.R
+import com.android.sergiobelda.gramophone.data.theDarkSide
 import com.android.sergiobelda.gramophone.data.theWall
 import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MotionLayout.TransitionListener {
     private lateinit var playerBottomSheetBehavior: BottomSheetBehavior<View>
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var playerAdapter: MediaPlayerHolder
@@ -45,7 +49,9 @@ class MainActivity : AppCompatActivity() {
         // Set Toolbar as ActionBar
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.ic_search_black_24dp);
-        cover_image.load(theWall.coverUri)
+        motion_layout.setTransitionListener(this)
+
+
         play_button.setOnClickListener {
             Toast.makeText(this, it.id, Toast.LENGTH_SHORT).show()
         }
@@ -127,5 +133,29 @@ class MainActivity : AppCompatActivity() {
 
     fun expandAppBarLayout(expanded: Boolean, animate: Boolean){
         appbar.setExpanded(true, true)
+    }
+
+    override fun onTransitionTrigger(motionLayout: MotionLayout?, triggerId: Int, positive: Boolean, progress: Float) {
+    }
+
+    override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
+    }
+
+    override fun onTransitionChange(motionLayout: MotionLayout?, startId: Int, endId: Int, progress: Float) {
+        if (progress < 0.5F) {
+            Glide.with(this)
+                .load(theDarkSide.coverUri)
+                .override(200,200)
+                .into(cover_image)
+        } else if (progress >= 0.5F) {
+            Glide.with(this)
+                .load(theDarkSide.coverUri)
+                .override(800,800)
+                .into(cover_image)
+        }
+    }
+
+    override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+
     }
 }

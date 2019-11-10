@@ -37,7 +37,7 @@ dependencies {
     // Constraint Layout - Motion Layout
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
     // Fragment KTX
-    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+    implementation "androidx.fragment:fragment-ktx:${fragment_ktx_version}"
     // Preference KTX
     implementation "androidx.preference:preference-ktx:$preference_ktx_version"
     // Palette KTX
