@@ -26,4 +26,3 @@ before_script:
 - chmod +x gradlew
 script:
 - ./gradlew build --stacktrace
-- yes | sudo sdkmanager --licenses
