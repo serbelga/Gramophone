@@ -32,10 +32,10 @@
                 android:id="@+id/appbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <!--    Attributes in toolbar for centering an item
+
+                <!--Attributes in toolbar for centering an item
                     android:contentInsetStart="0dp"
                     app:contentInsetStart="0dp"-->
-
                 <com.google.android.material.appbar.MaterialToolbar
                         android:id="@+id/toolbar"
                         android:gravity="center"
@@ -111,6 +111,7 @@
 
     <ImageView
             android:id="@+id/cover_image"
+            android:outlineSpotShadowColor="?colorPrimary"
             android:background="?colorPrimary"
             android:layout_width="48dp"
             android:layout_height="48dp">
@@ -152,6 +153,10 @@
             android:src="@drawable/ic_outline_play_arrow_24px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:outlineSpotShadowColor="?colorPrimary"
+            app:backgroundTint="@color/white"
+            app:rippleColor="?colorControlNormal"
+            app:tint="?colorControlNormal"
             app:elevation="12dp"
             android:layout_marginBottom="120dp"
             app:layout_constraintBottom_toBottomOf="parent"

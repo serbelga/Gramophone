@@ -189,7 +189,7 @@
                 motion:layout_constraintStart_toStartOf="parent"
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintTop_toBottomOf="@id/draggable_area"
-                android:elevation="12dp" />
+                android:elevation="16dp" />
         <Constraint
                 android:id="@id/collapse_icon"
                 android:layout_width="wrap_content"
