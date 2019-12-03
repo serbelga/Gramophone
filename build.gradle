@@ -4,6 +4,7 @@ buildscript {
     ext {
         appcompat_version = '1.1.0'
         ktx_version = '1.1.0'
+        annotation_version = '1.1.0'
         fragment_ktx_version = '1.2.0-rc02'
         constraint_version = '2.0.0-beta3'
         preference_ktx_version = '1.1.0'

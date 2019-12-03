@@ -3,12 +3,12 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="128dp"
         android:id="@+id/myLibraryFragment"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".ui.mylibrary.MyLibraryFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -30,7 +30,8 @@
             android:id="@+id/view_pager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/bottom_sheet_peek_height"/>
 
     <View
             app:layout_behavior="@string/appbar_scrolling_view_behavior"

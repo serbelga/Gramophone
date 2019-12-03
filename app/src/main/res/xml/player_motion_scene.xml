@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<MotionScene></MotionScene>
+<!--
 <MotionScene
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:motion="http://schemas.android.com/apk/res-auto">
@@ -232,3 +234,4 @@
                 android:alpha="1" />
     </ConstraintSet>
 </MotionScene>
+-->

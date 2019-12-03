@@ -1,16 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="ThemeOverlay.Gramophone" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Main color -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!-- If isn't status bar color, the status bar color will be primary dark -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
         <!-- Status Bar color and windowLightStatusBar true if Status bar is Light and false if it's dark-->
-        <!--<item name="android:statusBarColor">@color/colorStatusBar</item>-->
-
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowTranslucentNavigation">true</item>
 
         <!-- Color Secondary - Color used in FAB and checkboxes, switches ... -->
@@ -92,6 +92,8 @@
         <item name="textAppearanceSubtitle1">
             @style/Subtitle1Text
         </item>
+
+        <item name="bottomSheetStyle">@style/Widget.Gramophone.BottomSheet</item>
     </style>
 
     <style name="AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Surface">
@@ -102,5 +104,18 @@
         <item name="strokeColor">@color/colorDivider</item>
         <item name="strokeWidth">1dp</item>
         <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Gramophone.BottomSheet" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
+    </style>
+
+    <style name="Widget.Gramophone.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Gramophone.BottomSheet</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceLargeComponent</item>
+        <item name="backgroundTint">?colorSurface</item>
     </style>
 </resources>

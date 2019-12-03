@@ -3,7 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mobile_navigation"
-        app:startDestination="@id/homeFragment">
+        app:startDestination="@id/myLibraryFragment">
     <fragment
             android:id="@+id/albumDetailFragment"
             android:name="com.android.sergiobelda.gramophone.ui.album.AlbumDetailFragment"

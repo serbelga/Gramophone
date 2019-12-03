@@ -39,7 +39,7 @@ class AlbumsFragment : Fragment() {
     }
 
     private fun getData() : ArrayList<Album> {
-        return arrayListOf(theDarkSide, theWall)
+        return arrayListOf(theDarkSide, theWall, theDarkSide, theDarkSide, theDarkSide)
     }
 
     interface AlbumSelectedListener {
