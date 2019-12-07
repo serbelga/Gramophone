@@ -15,4 +15,8 @@ data class Album(
     val producer: String? = null,
     val copyright: String? = null,
     val format: String? = null
-)
+) {
+    fun getArtists() : String {
+        return artists.joinToString { it.name }
+    }
+}

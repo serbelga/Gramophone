@@ -1,7 +1,5 @@
 package com.android.sergiobelda.gramophone.ui
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -10,27 +8,22 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.annotation.FloatRange
-import androidx.annotation.IntRange
-import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.widget.ConstraintsChangedListener
-import androidx.core.animation.doOnStart
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import coil.api.load
 import com.android.sergiobelda.gramophone.R
+import com.android.sergiobelda.gramophone.data.money
 import com.android.sergiobelda.gramophone.data.theDarkSide
-import com.android.sergiobelda.gramophone.data.theWall
+import com.android.sergiobelda.gramophone.databinding.MainActivityBinding
 import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var playerBottomSheetBehavior: BottomSheetBehavior<View>
@@ -40,9 +33,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var coverSmallImageView: ImageView
     private lateinit var coverLargeImageView: ImageView
 
+    lateinit var binding : MainActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
 
 
         //mediaPlayer = MediaPlayer.create(this, R.raw.audio)
@@ -70,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     private fun setViews() {
         coverSmallImageView = findViewById(R.id.cover_small_image_view)
         coverLargeImageView = findViewById(R.id.cover_large_image_view)
-
+        binding.track = money
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

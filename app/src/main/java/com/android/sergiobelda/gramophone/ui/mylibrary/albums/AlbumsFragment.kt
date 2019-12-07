@@ -41,13 +41,15 @@ class AlbumsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerView()
         getData()
+        setRecyclerView()
     }
 
     private fun setRecyclerView() {
-        recycler_view.layoutManager = GridLayoutManager(context, 2)
-        recycler_view.adapter = albumsAdapter
+        recycler_view.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = albumsAdapter
+        }
     }
 
     private fun getData() {
