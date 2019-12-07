@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
 import com.android.sergiobelda.gramophone.ui.MainActivity
-import com.android.sergiobelda.gramophone.ui.mylibrary.pages.AlbumsFragment
-import com.android.sergiobelda.gramophone.ui.mylibrary.pages.ArtistsFragment
-import com.android.sergiobelda.gramophone.ui.mylibrary.pages.PlaylistsFragment
+import com.android.sergiobelda.gramophone.ui.mylibrary.albums.AlbumsFragment
+import com.android.sergiobelda.gramophone.ui.mylibrary.artists.ArtistsFragment
+import com.android.sergiobelda.gramophone.ui.mylibrary.playlists.PlaylistsFragment
 import com.google.android.material.tabs.TabLayout
 
 /**
@@ -71,10 +70,12 @@ class MyLibraryFragment : Fragment() {
             val fragment: Fragment?
             when (position) {
                 0 -> {
-                    fragment = ArtistsFragment()
+                    fragment =
+                        ArtistsFragment()
                 }
                 1 -> {
-                    fragment = AlbumsFragment()
+                    fragment =
+                        AlbumsFragment()
                     fragment.albumSelectedListener = object : AlbumsFragment.AlbumSelectedListener {
                         override fun onAlbumSelected(album: Album) {
 
@@ -82,7 +83,8 @@ class MyLibraryFragment : Fragment() {
                     }
                 }
                 2 -> {
-                    fragment = PlaylistsFragment()
+                    fragment =
+                        PlaylistsFragment()
                 }
                 else -> {
                     fragment = ErrorFragment()

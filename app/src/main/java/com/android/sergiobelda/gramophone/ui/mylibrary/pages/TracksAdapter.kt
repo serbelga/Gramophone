@@ -13,8 +13,7 @@ class TracksAdapter(private var tracks: ArrayList<Track>, private var listener: 
     RecyclerView.Adapter<TracksAdapter.SongsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongsViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.songs_list_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_list_song, parent, false)
         return SongsViewHolder(itemView)
     }
 

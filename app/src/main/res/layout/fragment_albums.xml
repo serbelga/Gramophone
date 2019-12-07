@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/albumsFragment"
-        tools:context=".ui.mylibrary.pages.AlbumsFragment">
+        tools:context=".ui.mylibrary.albums.AlbumsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -15,5 +15,5 @@
             android:paddingBottom="4dp"
             android:clipToPadding="false"
             android:layout_gravity="center"
-            tools:listitem="@layout/albums_list_item" />
+            tools:listitem="@layout/item_list_album" />
 </FrameLayout>

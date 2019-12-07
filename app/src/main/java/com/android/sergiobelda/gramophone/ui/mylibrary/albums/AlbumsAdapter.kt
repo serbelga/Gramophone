@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.mylibrary.pages
+package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.android.sergiobelda.gramophone.R
@@ -20,8 +19,10 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) :
         viewType: Int
     ): AlbumsViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.albums_list_item, parent, false)
-        return AlbumsViewHolder(itemView)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_list_album, parent, false)
+        return AlbumsViewHolder(
+            itemView
+        )
     }
 
     override fun getItemCount(): Int {
@@ -32,6 +33,11 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) :
         val album = albums[position]
         //holder.bindAlbum(album, createOnClickListener(album))
         holder.bindAlbum(album)
+    }
+
+    fun setData(albums: ArrayList<Album>) {
+        this.albums = albums
+        notifyDataSetChanged()
     }
 
     class AlbumsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
