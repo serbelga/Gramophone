@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView android:id="@+id/albumCardView"
+<com.google.android.material.card.MaterialCardView
+        android:id="@+id/album_card_view"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:clickable="true"
@@ -17,7 +18,7 @@
             android:layout_height="match_parent">
 
         <ImageView
-                android:id="@+id/albumImageView"
+                android:id="@+id/cover_image_view"
                 android:background="@color/whiteDark"
                 android:layout_width="200dp"
                 android:layout_height="200dp" />
@@ -29,7 +30,7 @@
                 android:layout_height="wrap_content">
 
             <TextView
-                    android:id="@+id/albumNameTextView"
+                    android:id="@+id/title_text_view"
                     style="?textAppearanceBody1"
                     android:maxLines="1"
                     android:ellipsize="end"
@@ -38,7 +39,7 @@
                     android:layout_height="wrap_content" />
 
             <TextView
-                    android:id="@+id/artistTextView"
+                    android:id="@+id/artist_name_text_view"
                     style="?textAppearanceBody2"
                     android:maxLines="1"
                     android:layout_marginTop="4dp"

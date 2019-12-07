@@ -1,5 +1,6 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
 import com.google.android.material.card.MaterialCardView
 
-class AlbumsAdapter(private var albums: ArrayList<Album>) :
+class AlbumsAdapter(private var context : Context, private var albums: ArrayList<Album>) :
     RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -20,9 +21,7 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) :
     ): AlbumsViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_list_album, parent, false)
-        return AlbumsViewHolder(
-            itemView
-        )
+        return AlbumsViewHolder(itemView, context)
     }
 
     override fun getItemCount(): Int {
@@ -40,22 +39,23 @@ class AlbumsAdapter(private var albums: ArrayList<Album>) :
         notifyDataSetChanged()
     }
 
-    class AlbumsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var albumNameTextView: TextView = itemView.findViewById(R.id.albumNameTextView)
-        private var artistTextView: TextView = itemView.findViewById(R.id.artistTextView)
-        private var albumCardView: MaterialCardView = itemView.findViewById(R.id.albumCardView)
-        private var albumImageView: ImageView = itemView.findViewById(R.id.albumImageView)
+    class AlbumsViewHolder(itemView: View, var context: Context) : RecyclerView.ViewHolder(itemView) {
+        private var titleTextView: TextView = itemView.findViewById(R.id.title_text_view)
+        private var artistNameTextView: TextView = itemView.findViewById(R.id.artist_name_text_view)
+        private var albumCardView: MaterialCardView = itemView.findViewById(R.id.album_card_view)
+        private var coverImageView: ImageView = itemView.findViewById(R.id.cover_image_view)
 
         fun bindAlbum(album: Album) {
-            albumNameTextView.text = album.title
+            titleTextView.text = album.title
+            val artist = album.artists.getOrNull(0)
+            artistNameTextView.text = artist?.name ?: context.getString(R.string.unknown_artist)
             /*
             val extras = FragmentNavigatorExtras(
-                albumImageView to "detail_image")
-val extras = FragmentNavigatorExtras(
-                albumImageView to album.name)
-
+                coverImageView to "detail_image")
+            val extras = FragmentNavigatorExtras(
+                            coverImageView to album.name)
              */
-            albumImageView.load(
+            coverImageView.load(
                 album.coverUri
             )
             albumCardView.setOnClickListener {

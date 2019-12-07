@@ -3,7 +3,19 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/artistsFragment"
-        tools:context=".ui.mylibrary.artists.ArtistsFragment">
+        android:id="@+id/artists_fragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:clipToPadding="false"
+            android:layout_gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_list_artist" />
 </FrameLayout>

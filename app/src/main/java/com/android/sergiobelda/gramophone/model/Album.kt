@@ -1,7 +1,5 @@
 package com.android.sergiobelda.gramophone.model
 
-import java.util.*
-
 data class Album(
     val id: String,
     val title: String,

@@ -15,4 +15,7 @@
     <string name="my_library">Mi librería</string>
     <string name="home">Inicio</string>
     <string name="my_profile">Mi perfil</string>
+
+
+    <string name="unknown_artist">Artista desconocido</string>
 </resources>

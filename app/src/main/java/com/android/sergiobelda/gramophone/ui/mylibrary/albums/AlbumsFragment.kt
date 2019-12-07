@@ -1,6 +1,5 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
-import kotlinx.android.synthetic.main.fragment_songs.*
+import kotlinx.android.synthetic.main.fragment_albums.*
 
 /**
  * A simple [Fragment] subclass.
@@ -21,11 +20,16 @@ import kotlinx.android.synthetic.main.fragment_songs.*
 class AlbumsFragment : Fragment() {
     lateinit var albumSelectedListener: AlbumSelectedListener
 
+    private lateinit var albumsAdapter: AlbumsAdapter
+
     private val viewModel by lazy { ViewModelProvider(this).get(AlbumsViewModel::class.java) }
 
     private var albums : ArrayList<Album> = arrayListOf()
 
-    private var albumsAdapter = AlbumsAdapter(albums)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        albumsAdapter = AlbumsAdapter(context!!, albums)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +45,8 @@ class AlbumsFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        recyclerView.layoutManager = GridLayoutManager(context, 2)
-        recyclerView.adapter = albumsAdapter
+        recycler_view.layoutManager = GridLayoutManager(context, 2)
+        recycler_view.adapter = albumsAdapter
     }
 
     private fun getData() {
