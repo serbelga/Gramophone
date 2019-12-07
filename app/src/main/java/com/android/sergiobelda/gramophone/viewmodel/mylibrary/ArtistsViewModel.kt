@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.mylibrary.artists
+package com.android.sergiobelda.gramophone.viewmodel.mylibrary
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

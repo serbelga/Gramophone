@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Artist
+import com.android.sergiobelda.gramophone.viewmodel.mylibrary.ArtistsViewModel
 import kotlinx.android.synthetic.main.fragment_artists.*
 
 /**

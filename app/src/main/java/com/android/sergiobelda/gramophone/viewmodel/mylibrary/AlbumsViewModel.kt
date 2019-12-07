@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.mylibrary.albums
+package com.android.sergiobelda.gramophone.viewmodel.mylibrary
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.android.sergiobelda.gramophone.data.theDarkSide
 import com.android.sergiobelda.gramophone.data.theWall
 import com.android.sergiobelda.gramophone.model.Album
-import com.bumptech.glide.load.engine.cache.DiskCacheAdapter
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
