@@ -2,7 +2,7 @@ package com.android.sergiobelda.gramophone.mediaplayer
 
 import android.content.Context
 
-class MediaPlayerHolder(val context : Context) : PlayerAdapter {
+class MediaPlayerHolder(val context: Context) : PlayerAdapter {
 
     override fun loadMedia(resourceId: Int) {
 

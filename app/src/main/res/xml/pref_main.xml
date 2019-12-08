@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/ui">
+    <PreferenceCategory
+            android:key="ui_category"
+            android:title="@string/ui">
         <SwitchPreference
-                android:key="theme"
-                android:title="Modo claro"
-                android:defaultValue="true">
+                android:icon="@drawable/ic_baseline_brightness_4_24"
+                android:key="mode_night"
+                android:title="Tema oscuro">
         </SwitchPreference>
     </PreferenceCategory>
 </PreferenceScreen>

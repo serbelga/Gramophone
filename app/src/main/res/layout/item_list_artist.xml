@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:id="@+id/artist_layout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:gravity="top|center"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+            android:id="@+id/artist_image_view"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            tools:src="@drawable/ic_people_alt_24dp">
+    </ImageView>
+
+    <TextView
+            android:id="@+id/name_text_view"
+            style="?textAppearanceBody1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            tools:text="Artist name">
+    </TextView>
+</LinearLayout>

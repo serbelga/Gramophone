@@ -1,31 +1,36 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="ThemeOverlay.Gramophone" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Main color -->
-        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <!-- If isn't status bar color, the status bar color will be primary dark -->
-        <item name="colorPrimaryDark">@color/blueDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
         <!-- Status Bar color and windowLightStatusBar true if Status bar is Light and false if it's dark-->
-        <item name="android:statusBarColor">@color/whiteDark</item>
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
 
         <!-- Color Secondary - Color used in FAB and checkboxes, switches ... -->
-        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
 
         <!-- Color On Primary - Color of text and icons in colored components as Buttons and BottomNavigationView -->
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <!-- Color On Seconday - Color of text and icons in colored Secondary components as FAB... -->
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
 
         <!--Color Surface - Color used in CardView Background, Toolbar ... -->
-        <!-- <item name="colorSurface">@color/white</item> -->
+        <item name="colorSurface">@color/colorSurface</item>
         <!--Color On Surface - Color used in Elements inside Surface as Toolbar title ... -->
-        <item name="colorOnSurface">@color/black</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
 
         <item name="colorError">@color/redDark</item>
-        <item name="colorOnError">@color/white</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
 
         <item name="toolbarStyle">
             @style/Widget.MaterialComponents.Toolbar.Surface
@@ -33,6 +38,14 @@
 
         <item name="actionBarStyle">
             @style/Widget.MaterialComponents.ActionBar.Surface
+        </item>
+
+        <item name="appBarLayoutStyle">
+            @style/AppBarLayout
+        </item>
+
+        <item name="materialCardViewStyle">
+            @style/MaterialCardView
         </item>
 
         <!-- Shape System -->
@@ -79,115 +92,30 @@
         <item name="textAppearanceSubtitle1">
             @style/Subtitle1Text
         </item>
+
+        <item name="bottomSheetStyle">@style/Widget.Gramophone.BottomSheet</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
-
-        <item name="android:statusBarColor">?attr/colorSurface</item>
-
-        <item name="toolbarStyle">
-            @style/Widget.MaterialComponents.Toolbar.Surface
-        </item>
-
-        <item name="actionBarStyle">
-            @style/Widget.MaterialComponents.ActionBar.Surface
-        </item>
-
-        <item name="textAppearanceSubtitle1">
-            @style/Subtitle1Text
-        </item>
-
-        <item name="textAppearanceHeadline1">
-            @style/Headline1Text
-        </item>
-
-        <item name="textAppearanceHeadline2">
-            @style/Headline2Text
-        </item>
-
-        <item name="textAppearanceHeadline3">
-            @style/Headline3Text
-        </item>
-
-        <item name="textAppearanceHeadline6">
-            @style/Headline6Text
-        </item>
-
-        <item name="textAppearanceButton">
-            @style/ButtonText
-        </item>
-
-        <item name="textAppearanceCaption">
-            @style/CaptionText
-        </item>
-
-        <item name="textAppearanceBody1">
-            @style/Body1Text
-        </item>
-
-        <item name="textAppearanceBody2">
-            @style/Body2Text
-        </item>
-
-        <item name="textAppearanceOverline">
-            @style/OverlineText
-        </item>
+    <style name="AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Surface">
+        <item name="elevation">0dp</item>
     </style>
 
-
-    <style name="SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">4dp</item>
+    <style name="MaterialCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="strokeColor">@color/colorDivider</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
     </style>
 
-    <style name="MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">4dp</item>
+    <style name="ShapeAppearanceOverlay.Gramophone.BottomSheet" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
     </style>
 
-    <style name="LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">4dp</item>
-    </style>
-
-
-    <style name="ButtonText" parent="TextAppearance.MaterialComponents.Button">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="Subtitle1Text" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="Headline1Text" parent="TextAppearance.MaterialComponents.Headline1">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="Headline2Text" parent="TextAppearance.MaterialComponents.Headline2">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="Headline3Text" parent="TextAppearance.MaterialComponents.Headline3">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="Headline6Text" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="CaptionText" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="Body1Text" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="Body2Text" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/montserrat</item>
-    </style>
-
-    <style name="OverlineText" parent="TextAppearance.MaterialComponents.Overline">
-        <item name="fontFamily">@font/montserrat</item>
+    <style name="Widget.Gramophone.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Gramophone.BottomSheet</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceLargeComponent</item>
+        <item name="backgroundTint">?colorSurface</item>
     </style>
 </resources>
