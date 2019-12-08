@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
+import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 
 class AlbumsAdapter(private var context : Context, private var albums: ArrayList<Album>) :
@@ -39,7 +38,7 @@ class AlbumsAdapter(private var context : Context, private var albums: ArrayList
         notifyDataSetChanged()
     }
 
-    class AlbumsViewHolder(itemView: View, var context: Context) : RecyclerView.ViewHolder(itemView) {
+    inner class AlbumsViewHolder(itemView: View, var context: Context) : RecyclerView.ViewHolder(itemView) {
         private var titleTextView: TextView = itemView.findViewById(R.id.title_text_view)
         private var artistNameTextView: TextView = itemView.findViewById(R.id.artist_name_text_view)
         private var albumCardView: MaterialCardView = itemView.findViewById(R.id.album_card_view)
@@ -49,18 +48,22 @@ class AlbumsAdapter(private var context : Context, private var albums: ArrayList
             titleTextView.text = album.title
             val artist = album.artists.getOrNull(0)
             artistNameTextView.text = artist?.name ?: context.getString(R.string.unknown_artist)
-            /*
-            val extras = FragmentNavigatorExtras(
-                coverImageView to "detail_image")
-            val extras = FragmentNavigatorExtras(
-                            coverImageView to album.name)
-             */
-            coverImageView.load(
-                album.coverUri
-            )
+            Glide.with(context)
+                .load(album.coverUri)
+                .centerInside()
+                .into(coverImageView)
+
+
             albumCardView.setOnClickListener {
-                it.findNavController().navigate(R.id.navToAlbumDetail)
+                //it.findNavController().navigate(R.id.navToAlbumDetail)
+                albumSelectedListener.onAlbumSelected(album)
             }
         }
+    }
+
+    lateinit var albumSelectedListener: AlbumSelectedListener
+
+    interface AlbumSelectedListener {
+        fun onAlbumSelected(album: Album)
     }
 }

@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.ui.album
+package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 
 
 import android.os.Bundle

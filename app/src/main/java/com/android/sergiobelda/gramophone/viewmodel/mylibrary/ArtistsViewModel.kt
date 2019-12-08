@@ -3,9 +3,7 @@ package com.android.sergiobelda.gramophone.viewmodel.mylibrary
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.android.sergiobelda.gramophone.data.bobMarley
-import com.android.sergiobelda.gramophone.data.ledZeppelin
-import com.android.sergiobelda.gramophone.data.pinkFloyd
+import com.android.sergiobelda.gramophone.data.*
 import com.android.sergiobelda.gramophone.model.Artist
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -25,7 +23,7 @@ class ArtistsViewModel : ViewModel(), CoroutineScope {
     private fun loadArtists() {
         launch(Dispatchers.Main) {
             val artists = withContext(Dispatchers.IO) {
-                arrayListOf(pinkFloyd, ledZeppelin, bobMarley)
+                arrayListOf(bobMarley, davidGilmour, ledZeppelin, makaya, milesDavis, pinkFloyd)
             }
             artistsLiveData.value = artists
         }

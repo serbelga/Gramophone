@@ -20,8 +20,9 @@
         <ImageView
                 android:id="@+id/cover_image_view"
                 android:background="@color/whiteDark"
+                android:scaleType="fitStart"
                 android:layout_width="200dp"
-                android:layout_height="200dp" />
+                android:layout_height="wrap_content" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_margin="8dp"

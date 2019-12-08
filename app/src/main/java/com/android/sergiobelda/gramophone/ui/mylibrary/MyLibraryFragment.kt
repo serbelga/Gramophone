@@ -76,11 +76,6 @@ class MyLibraryFragment : Fragment() {
                 1 -> {
                     fragment =
                         AlbumsFragment()
-                    fragment.albumSelectedListener = object : AlbumsFragment.AlbumSelectedListener {
-                        override fun onAlbumSelected(album: Album) {
-
-                        }
-                    }
                 }
                 2 -> {
                     fragment =

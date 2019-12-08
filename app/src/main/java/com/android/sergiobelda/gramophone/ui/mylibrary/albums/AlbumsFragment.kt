@@ -1,6 +1,7 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +20,6 @@ import kotlinx.android.synthetic.main.fragment_albums.*
  *
  */
 class AlbumsFragment : Fragment() {
-    lateinit var albumSelectedListener: AlbumSelectedListener
-
     private lateinit var albumsAdapter: AlbumsAdapter
 
     private val viewModel by lazy { ViewModelProvider(this).get(AlbumsViewModel::class.java) }
@@ -30,6 +29,11 @@ class AlbumsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         albumsAdapter = AlbumsAdapter(context!!, albums)
+        albumsAdapter.albumSelectedListener = object : AlbumsAdapter.AlbumSelectedListener {
+            override fun onAlbumSelected(album: Album) {
+                Log.d(TAG, album.title)
+            }
+        }
     }
 
     override fun onCreateView(
@@ -58,7 +62,7 @@ class AlbumsFragment : Fragment() {
         })
     }
 
-    interface AlbumSelectedListener {
-        fun onAlbumSelected(album: Album)
+    companion object {
+        const val TAG = "AlbumsFragment"
     }
 }

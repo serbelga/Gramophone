@@ -6,7 +6,7 @@
         app:startDestination="@id/myLibraryFragment">
     <fragment
             android:id="@+id/albumDetailFragment"
-            android:name="com.android.sergiobelda.gramophone.ui.album.AlbumDetailFragment"
+            android:name="com.android.sergiobelda.gramophone.ui.mylibrary.albums.AlbumDetailFragment"
             tools:layout="@layout/fragment_album_detail" />
     <fragment
             android:id="@+id/homeFragment"
@@ -20,9 +20,27 @@
         <action
                 android:id="@+id/navToAlbumDetail"
                 app:destination="@id/albumDetailFragment" />
+        <action
+                android:id="@+id/navToArtistDetail"
+                app:destination="@id/artistDetailFragment" />
     </fragment>
     <fragment
             android:id="@+id/myProfileFragment"
             android:name="com.android.sergiobelda.gramophone.ui.myprofile.MyProfileFragment"
             tools:layout="@layout/fragment_my_profile" />
+    <fragment
+            android:id="@+id/artistDetailFragment"
+            android:name="com.android.sergiobelda.gramophone.ui.mylibrary.artists.ArtistDetailFragment"
+            tools:layout="@layout/artist_detail_fragment" >
+        <argument
+                android:name="uri"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="null" />
+        <argument
+                android:name="name"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="null" />
+    </fragment>
 </navigation>

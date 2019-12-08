@@ -39,21 +39,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
 
-
-        //mediaPlayer = MediaPlayer.create(this, R.raw.audio)
         playerAdapter = MediaPlayerHolder(this)
-        /*
-        playButton.setOnClickListener{
-            /*
-            if (mediaPlayer.isPlaying)
-                mediaPlayer.stop()
-            else mediaPlayer.start()
-            */
-        }*/
 
         // Set Toolbar as ActionBar
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationIcon(R.drawable.ic_search_black_24dp);
+        setSupportActionBar(main_toolbar)
+
+
         //motion_layout.setTransitionListener(this)
 
         setViews()
@@ -120,13 +111,15 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            /*
-            if (destination.id == R.id.albumsFragment) {
-                bottomNavigationView.visibility = View.VISIBLE
+            if (destination.id == R.id.artistDetailFragment) {
+                //expandAppBarLayout(expanded = false, animate = false)
+                main_toolbar.visibility = View.GONE
             } else {
-                bottomNavigationView.visibility = View.GONE
-            }*/
-            expandAppBarLayout(expanded = true, animate = true)
+                //expandAppBarLayout(expanded = true, animate = false)
+                main_toolbar.visibility = View.VISIBLE
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp)
+            }
         }
     }
 

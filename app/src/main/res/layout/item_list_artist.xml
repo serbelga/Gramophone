@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+        android:id="@+id/artist_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:gravity="center"
+        android:gravity="top|center"
         android:layout_gravity="center"
         android:layout_margin="16dp"
         android:orientation="vertical"

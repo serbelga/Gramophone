@@ -25,7 +25,7 @@
                 android:contentInsetStart="0dp"
                 app:contentInsetStart="0dp"-->
             <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/main_toolbar"
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:layout_width="match_parent"

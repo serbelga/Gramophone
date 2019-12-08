@@ -8,7 +8,6 @@
         tools:context=".ui.mylibrary.MyLibraryFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -22,8 +21,7 @@
                 app:tabMode="fixed"
                 app:tabSelectedTextColor="?colorOnPrimary"
                 app:tabRippleColor="?colorOnPrimary"
-                app:tabTextAppearance="?textAppearanceSubtitle1">
-        </com.google.android.material.tabs.TabLayout>
+                app:tabTextAppearance="?textAppearanceSubtitle1" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -37,6 +35,5 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:background="@color/colorDivider"
             android:layout_width="match_parent"
-            android:layout_height="1dp">
-    </View>
+            android:layout_height="1dp" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

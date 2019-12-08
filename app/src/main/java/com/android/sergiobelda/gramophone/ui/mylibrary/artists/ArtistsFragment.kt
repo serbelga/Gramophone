@@ -2,22 +2,28 @@ package com.android.sergiobelda.gramophone.ui.mylibrary.artists
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Artist
+import com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragmentDirections
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.ArtistsViewModel
 import kotlinx.android.synthetic.main.fragment_artists.*
 
 /**
- * A simple [Fragment] subclass.
- *
+ * ArtistsFragment
+ * @author Sergio Belda Galbis (@serbelga)
  */
 class ArtistsFragment : Fragment() {
     lateinit var artistsAdapter: ArtistsAdapter
@@ -29,6 +35,16 @@ class ArtistsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         artistsAdapter = ArtistsAdapter(context!!, artists)
+        artistsAdapter.artistSelectedListener = object : ArtistsAdapter.ArtistSelectedListener {
+            override fun onArtistSelected(artist: Artist, imageView: ImageView) {
+                Log.d(TAG, artist.name)
+                val extras = FragmentNavigatorExtras(
+                    imageView to artist.imageUri
+                )
+                val action = MyLibraryFragmentDirections.navToArtistDetail(uri = artist.imageUri, name = artist.name)
+                findNavController().navigate(action, extras)
+            }
+        }
     }
 
     override fun onCreateView(
@@ -55,5 +71,9 @@ class ArtistsFragment : Fragment() {
         viewModel.getArtists().observe(viewLifecycleOwner, Observer {
             artistsAdapter.setData(it)
         })
+    }
+
+    companion object {
+        const val TAG = "ArtistFragment"
     }
 }
