@@ -7,6 +7,9 @@
         <variable
                 name="name"
                 type="String" />
+        <variable
+                name="imageUri"
+                type="String" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -19,20 +22,24 @@
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    app:contentScrim="?colorSurface"
-                    app:expandedTitleGravity="top"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+                    android:layout_height="240dp"
+                    app:contentScrim="?attr/colorSurface"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                    app:titleEnabled="false">
 
                 <ImageView
                         app:layout_collapseMode="parallax"
-                        app:layout_collapseParallaxMultiplier="0.5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="?colorSurface" />
+                        app:imageFromUrl="@{imageUri}" />
+
+                <ImageView
+                        app:layout_collapseMode="parallax"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/blackAlpha45" />
 
                 <LinearLayout
-                        app:layout_collapseMode="parallax"
                         android:orientation="vertical"
                         android:layout_gravity="center"
                         android:gravity="center"
@@ -44,10 +51,12 @@
                             android:id="@+id/artist_image_view"
                             android:layout_width="96dp"
                             android:layout_height="96dp"
+                            app:circularImageFromUrl="@{imageUri}"
                             tools:src="@drawable/ic_people_alt_24dp" />
 
                     <TextView
-                            style="?textAppearanceBody1"
+                            style="?textAppearanceHeadline6"
+                            android:textColor="?colorOnPrimary"
                             android:text="@{name}"
                             tools:text="Artist Name"
                             android:id="@+id/name_text_view"
@@ -56,13 +65,51 @@
                 </LinearLayout>
 
                 <androidx.appcompat.widget.Toolbar
-                        android:id="@+id/AppBar"
+                        android:layout_marginBottom="36dp"
+                        android:id="@+id/toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         android:background="@android:color/transparent"
                         app:menu="@menu/artist_menu"
                         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
                         app:layout_collapseMode="pin"/>
+
+                <com.google.android.material.tabs.TabLayout
+                        android:layout_gravity="bottom"
+                        android:id="@+id/tab_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:background="@android:color/transparent"
+                        app:tabIndicatorGravity="stretch"
+                        app:tabIndicator="@drawable/tabs_pill_indicator"
+                        app:tabGravity="center"
+                        android:clipToPadding="false"
+                        android:paddingStart="24dp"
+                        app:tabMode="scrollable"
+                        app:tabSelectedTextColor="?colorOnPrimary"
+                        app:tabRippleColor="?colorOnPrimary"
+                        app:tabTextAppearance="?textAppearanceSubtitle1">
+
+                    <com.google.android.material.tabs.TabItem
+                            android:text="General"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    <com.google.android.material.tabs.TabItem
+                            android:text="Related"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    <com.google.android.material.tabs.TabItem
+                            android:text="Information"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    <com.google.android.material.tabs.TabItem
+                            android:text="Concerts"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                </com.google.android.material.tabs.TabLayout>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -71,5 +118,10 @@
                 android:background="@color/colorDivider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
+
+        <androidx.viewpager.widget.ViewPager
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

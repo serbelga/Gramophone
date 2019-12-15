@@ -20,10 +20,7 @@ import kotlinx.android.synthetic.main.artist_detail_fragment.*
  * @author Sergio Belda Galbis (@serbelga)
  */
 class ArtistDetailFragment : Fragment() {
-
-    private var artistImageUri: String? = null
-
-    val args: ArtistDetailFragmentArgs by navArgs()
+    private val args: ArtistDetailFragmentArgs by navArgs()
 
     lateinit var binding : ArtistDetailFragmentBinding
 
@@ -43,18 +40,8 @@ class ArtistDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setArtistImage()
         binding.name = args.name
-    }
-
-    private fun setArtistImage() {
-        artistImageUri = args.uri
-        artist_image_view.also {
-            it.transitionName = artistImageUri
-            Glide.with(this)
-                .load(artistImageUri)
-                .apply(com.bumptech.glide.request.RequestOptions.circleCropTransform())
-                .into(it)
-        }
+        binding.imageUri = args.uri
+        artist_image_view.transitionName = args.uri
     }
 }

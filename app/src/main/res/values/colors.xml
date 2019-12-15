@@ -33,5 +33,6 @@
     <color name="colorStatusBar">#F5F5F5</color>
     <color name="colorDivider">#F5F5F5</color>
 
+    <color name="blackAlpha45">#73000000</color>
     <color name="blackAlpha60">#99000000</color>
 </resources>

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
-import com.android.sergiobelda.gramophone.viewmodel.mylibrary.AlbumsViewModel
+import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumsViewModel
 import kotlinx.android.synthetic.main.fragment_albums.*
 
 /**

@@ -112,11 +112,9 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.artistDetailFragment) {
-                //expandAppBarLayout(expanded = false, animate = false)
-                main_toolbar.visibility = View.GONE
+                expandAppBarLayout(expanded = false, animate = false)
             } else {
-                //expandAppBarLayout(expanded = true, animate = false)
-                main_toolbar.visibility = View.VISIBLE
+                expandAppBarLayout(expanded = true, animate = false)
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp)
             }
@@ -139,15 +137,12 @@ class MainActivity : AppCompatActivity() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_EXPANDED -> {
-
                     }
                     //BottomSheetBehavior.STATE_COLLAPSED -> Log.d("state: ", "collapsed")
-
                 }
             }
         }
     }
-
 
     private fun animateBottomNavigationView(@FloatRange(from = 0.0, to = 1.0) translationY: Float) {
         bottomNavigationView.translationY = translationY * bottomNavigationView.height
