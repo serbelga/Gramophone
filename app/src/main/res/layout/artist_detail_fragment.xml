@@ -22,7 +22,7 @@
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="220dp"
                     app:contentScrim="?attr/colorSurface"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                     app:titleEnabled="false">
@@ -71,7 +71,6 @@
                         android:layout_height="?attr/actionBarSize"
                         android:background="@android:color/transparent"
                         app:menu="@menu/artist_menu"
-                        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
                         app:layout_collapseMode="pin"/>
 
                 <com.google.android.material.tabs.TabLayout
@@ -88,28 +87,7 @@
                         app:tabMode="scrollable"
                         app:tabSelectedTextColor="?colorOnPrimary"
                         app:tabRippleColor="?colorOnPrimary"
-                        app:tabTextAppearance="?textAppearanceSubtitle1">
-
-                    <com.google.android.material.tabs.TabItem
-                            android:text="General"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    <com.google.android.material.tabs.TabItem
-                            android:text="Related"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    <com.google.android.material.tabs.TabItem
-                            android:text="Information"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    <com.google.android.material.tabs.TabItem
-                            android:text="Concerts"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                </com.google.android.material.tabs.TabLayout>
+                        app:tabTextAppearance="?textAppearanceSubtitle1" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -120,6 +98,7 @@
                 android:layout_height="1dp" />
 
         <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

@@ -19,4 +19,8 @@
 
     <string name="unknown_artist">Artista desconocido</string>
     <string name="follow">Seguir</string>
+    <string name="general">General</string>
+    <string name="related">Relacionado</string>
+    <string name="information">Información</string>
+    <string name="concerts">Conciertos</string>
 </resources>

@@ -5,11 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.android.sergiobelda.gramophone.R
-import com.android.sergiobelda.gramophone.model.Album
+import com.android.sergiobelda.gramophone.databinding.MyLibraryFragmentBinding
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
 import com.android.sergiobelda.gramophone.ui.MainActivity
 import com.android.sergiobelda.gramophone.ui.mylibrary.albums.AlbumsFragment
@@ -23,28 +24,26 @@ import com.google.android.material.tabs.TabLayout
  * create an instance of this fragment.
  */
 class MyLibraryFragment : Fragment() {
-    private var viewPager: ViewPager? = null
-    private var tabLayout: TabLayout? = null
+    lateinit var binding : MyLibraryFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_library, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.my_library_fragment, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewPager = view.findViewById(R.id.view_pager)
-        tabLayout = view.findViewById(R.id.tab_layout)
         setViewPager()
     }
 
     private fun setViewPager() {
         val pagerAdapter = PagerAdapter(childFragmentManager)
-        viewPager?.adapter = pagerAdapter
-        viewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        binding.viewPager.adapter = pagerAdapter
+        binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
                 (activity as MainActivity).expandAppBarLayout(expanded = true, animate = true)
             }
@@ -61,31 +60,19 @@ class MyLibraryFragment : Fragment() {
                 (activity as MainActivity).expandAppBarLayout(expanded = true, animate = true)
             }
         })
-        tabLayout?.setupWithViewPager(viewPager)
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
     inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getItem(position: Int): Fragment {
             val fragment: Fragment?
-            when (position) {
-                0 -> {
-                    fragment =
-                        ArtistsFragment()
-                }
-                1 -> {
-                    fragment =
-                        AlbumsFragment()
-                }
-                2 -> {
-                    fragment =
-                        PlaylistsFragment()
-                }
-                else -> {
-                    fragment = ErrorFragment()
-                }
+            return when (position) {
+                0 -> ArtistsFragment()
+                1 -> AlbumsFragment()
+                2 -> PlaylistsFragment()
+                else -> ErrorFragment()
             }
-            return fragment
         }
 
         override fun getCount(): Int = 3

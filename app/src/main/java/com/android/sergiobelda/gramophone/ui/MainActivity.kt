@@ -30,9 +30,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var playerAdapter: MediaPlayerHolder
 
-    private lateinit var coverSmallImageView: ImageView
-    private lateinit var coverLargeImageView: ImageView
-
     lateinit var binding : MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         // Set Toolbar as ActionBar
         setSupportActionBar(main_toolbar)
 
-
         //motion_layout.setTransitionListener(this)
 
         setViews()
@@ -53,8 +49,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setViews() {
-        coverSmallImageView = findViewById(R.id.cover_small_image_view)
-        coverLargeImageView = findViewById(R.id.cover_large_image_view)
         binding.track = money
     }
 

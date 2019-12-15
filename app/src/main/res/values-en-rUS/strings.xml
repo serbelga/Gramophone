@@ -14,4 +14,8 @@
     <string name="my_profile">My profile</string>
     <string name="unknown_artist">Unknown Artist</string>
     <string name="follow">Follow</string>
+    <string name="general">General</string>
+    <string name="related">Related</string>
+    <string name="information">Information</string>
+    <string name="concerts">Concerts</string>
 </resources>

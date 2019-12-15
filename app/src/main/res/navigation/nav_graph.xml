@@ -16,7 +16,7 @@
     <fragment
             android:id="@+id/myLibraryFragment"
             android:name="com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragment"
-            tools:layout="@layout/fragment_my_library" >
+            tools:layout="@layout/my_library_fragment" >
         <action
                 android:id="@+id/navToAlbumDetail"
                 app:destination="@id/albumDetailFragment" />
