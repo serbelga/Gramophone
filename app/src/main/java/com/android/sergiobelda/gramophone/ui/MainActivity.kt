@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         setViews()
         setBottomSheetBehavior()
-        setBottomSheetData()
         setNavigation()
     }
 
@@ -71,20 +70,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    /**
-     *
-     */
-    private fun setBottomSheetData() {
-        Glide.with(this)
-            .load(theDarkSide.coverUri)
-            .transform(RoundedCorners(16))
-            .into(coverLargeImageView)
-        Glide.with(this)
-            .load(theDarkSide.coverUri)
-            .transform(RoundedCorners(16))
-            .into(coverSmallImageView)
     }
 
     /**

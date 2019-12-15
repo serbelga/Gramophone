@@ -78,6 +78,7 @@
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="4dp"
                         android:elevation="4dp"
+                        app:roundedImageFromUrl="@{track.coverUri}"
                         tools:src="?colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -121,23 +122,50 @@
                     android:id="@+id/collapse_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_round_keyboard_arrow_down_24"
+                    android:src="@drawable/ic_round_drag_handle_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                    android:id="@+id/player_top_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/toolbarSize"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginEnd="64dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_baseline_cast_24" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginEnd="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_more_vert_24dp" />
+            </FrameLayout>
+
 
             <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/cover_large_image_view"
                     android:layout_width="260dp"
                     android:layout_height="260dp"
-                    tools:src="?colorPrimary"
+                    android:layout_marginTop="56dp"
                     android:elevation="4dp"
-                    app:elevation="4dp"
                     android:outlineSpotShadowColor="?colorPrimary"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:elevation="4dp"
+                    app:roundedImageFromUrl="@{track.coverUri}"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="56dp" />
+                    tools:src="?colorPrimary" />
 
             <LinearLayout
                     android:orientation="vertical"

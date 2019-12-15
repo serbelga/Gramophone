@@ -11,7 +11,8 @@ val money = Track(
     genres = arrayListOf(Genre.PROGRESSIVE_ROCK),
     albumId = "1l19LQ476o",
     discNumber = 1,
-    duration_ms = 20000
+    duration_ms = 20000,
+    coverUri = "https://lh3.googleusercontent.com/MnVhY1-anquCtTZ4viM4zwxHV6igUfsvZZRBL11y7IRuErsolqgV1GKjbPO-1YVx0ogM3ujNZg=w800-h800-r"
 )
 
 val anotherBrick = Track(
@@ -22,5 +23,6 @@ val anotherBrick = Track(
     genres = arrayListOf(Genre.PROGRESSIVE_ROCK),
     albumId = "bYLmqd0w6B",
     discNumber = 1,
-    duration_ms = 20000
+    duration_ms = 20000,
+    coverUri = "https://lh3.googleusercontent.com/I4-SHIS8Vj9zKhYXmbin83fVR6Eps8sLIChJCU6ad0PT722vm21yRA0GGGeT6Hhg3pw1dORV=w800-h800-r"
 )

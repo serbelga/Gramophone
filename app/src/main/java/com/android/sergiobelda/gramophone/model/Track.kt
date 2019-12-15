@@ -9,7 +9,8 @@ data class Track(
     val duration_ms: Int,
     val composer: List<String> = emptyList(),
     val discNumber: Int,
-    val genres: List<Genre>
+    val genres: List<Genre>,
+    val coverUri: String?
 ) {
     fun getArtists() : String {
         return artists.joinToString { it.name }

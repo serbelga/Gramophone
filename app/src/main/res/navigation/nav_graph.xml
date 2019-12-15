@@ -7,7 +7,7 @@
     <fragment
             android:id="@+id/albumDetailFragment"
             android:name="com.android.sergiobelda.gramophone.ui.mylibrary.albums.AlbumDetailFragment"
-            tools:layout="@layout/fragment_album_detail" />
+            tools:layout="@layout/album_detail_fragment" />
     <fragment
             android:id="@+id/homeFragment"
             android:name="com.android.sergiobelda.gramophone.ui.home.HomeFragment"

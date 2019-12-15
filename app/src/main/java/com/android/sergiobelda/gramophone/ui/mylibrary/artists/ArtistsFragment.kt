@@ -36,7 +36,6 @@ class ArtistsFragment : Fragment() {
         artistsAdapter = ArtistsAdapter(context!!, artists)
         artistsAdapter.artistSelectedListener = object : ArtistsAdapter.ArtistSelectedListener {
             override fun onArtistSelected(artist: Artist, imageView: ImageView) {
-                Log.d(TAG, artist.name)
                 val extras = FragmentNavigatorExtras(
                     imageView to artist.imageUri
                 )

@@ -8,6 +8,10 @@ val pinkFloyd = Artist(
     imageUri = "https://is4-ssl.mzstatic.com/image/thumb/Features128/v4/f1/26/f3/f126f32c-d30c-a468-3bbf-ec053ae9c888/mza_8663860667383180418.png/570x570cc.jpg"
 )
 
+val pinkFloydAlbums = arrayListOf(theDarkSide, theWall)
+
+val pinkFloydInfo = "Pink Floyd were an English rock band formed in London in 1965. Gaining a following as a psychedelic band, they were distinguished for their extended compositions, sonic experimentation, philosophical lyrics and elaborate live shows, and became a leading band of the progressive rock genre. They are one of the most commercially successful and influential groups in popular music history."
+
 val ledZeppelin = Artist(
     id = "qpiXzWVxYs",
     name = "Led Zeppelin",

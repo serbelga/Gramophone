@@ -17,6 +17,10 @@
                    motion:framePosition="25"
                    android:alpha="0" />
            <KeyAttribute
+                   motion:motionTarget="@+id/player_top_bar"
+                   motion:framePosition="25"
+                   android:alpha="0" />
+           <KeyAttribute
                    motion:motionTarget="@id/play_fab_button"
                    motion:framePosition="75"
                    android:alpha="0" />
@@ -50,14 +54,23 @@
                 motion:layout_constraintStart_toStartOf="parent"
                 android:alpha="0" />
         <Constraint
+                android:id="@+id/player_top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:alpha="0"
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
                 android:id="@+id/cover_large_image_view"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="260dp"
                 android:layout_height="260dp"
                 motion:layout_constraintTop_toTopOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="96dp"
-                android:alpha="0" />
+                android:layout_marginTop="120dp"
+                android:alpha="0"
+                motion:layout_constraintHorizontal_bias="0.503" />
         <Constraint
                 android:id="@+id/title"
                 android:elevation="8dp"
@@ -107,12 +120,20 @@
                 motion:layout_constraintStart_toStartOf="parent"
                 android:alpha="1" />
         <Constraint
+                android:id="@+id/player_top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:alpha="1"
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
                 android:id="@+id/cover_large_image_view"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="260dp"
                 android:layout_height="260dp"
                 motion:layout_constraintTop_toTopOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="56dp" />
+                android:layout_marginTop="72dp" />
     </ConstraintSet>
 </MotionScene>
