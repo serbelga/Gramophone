@@ -11,7 +11,6 @@ WIP Music Player for Android. Implementation through Android Jetpack
 
 ## Android Architecture Components
 - ViewModel
-- Paging
 - LiveData
 
 ## KTX
