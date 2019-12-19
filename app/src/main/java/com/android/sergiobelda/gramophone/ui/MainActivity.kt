@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import androidx.annotation.FloatRange
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -16,12 +15,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.data.money
-import com.android.sergiobelda.gramophone.data.theDarkSide
 import com.android.sergiobelda.gramophone.databinding.MainActivityBinding
 import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -30,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var playerAdapter: MediaPlayerHolder
 
-    lateinit var binding : MainActivityBinding
+    lateinit var binding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set Toolbar as ActionBar
         setSupportActionBar(main_toolbar)
-
-        //motion_layout.setTransitionListener(this)
-
+        // motion_layout.setTransitionListener(this)
         setViews()
         setBottomSheetBehavior()
         setNavigation()
@@ -117,7 +111,7 @@ class MainActivity : AppCompatActivity() {
                 when (newState) {
                     BottomSheetBehavior.STATE_EXPANDED -> {
                     }
-                    //BottomSheetBehavior.STATE_COLLAPSED -> Log.d("state: ", "collapsed")
+                    // BottomSheetBehavior.STATE_COLLAPSED -> Log.d("state: ", "collapsed")
                 }
             }
         }
@@ -138,7 +132,7 @@ class MainActivity : AppCompatActivity() {
     /**
      *
      */
-    fun expandAppBarLayout(expanded: Boolean, animate: Boolean){
+    fun expandAppBarLayout(expanded: Boolean, animate: Boolean) {
         appbar.setExpanded(expanded, animate)
     }
 }

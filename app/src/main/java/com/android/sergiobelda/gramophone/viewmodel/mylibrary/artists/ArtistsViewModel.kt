@@ -15,7 +15,7 @@ class ArtistsViewModel : ViewModel() {
         }
     }
 
-    fun getArtists() : LiveData<ArrayList<Artist>> {
+    fun getArtists(): LiveData<ArrayList<Artist>> {
         return artistsLiveData
     }
 

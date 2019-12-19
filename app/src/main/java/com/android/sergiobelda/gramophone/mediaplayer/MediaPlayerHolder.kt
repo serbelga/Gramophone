@@ -5,7 +5,6 @@ import android.content.Context
 class MediaPlayerHolder(val context: Context) : PlayerAdapter {
 
     override fun loadMedia(resourceId: Int) {
-
     }
 
     override fun release() {
@@ -35,5 +34,4 @@ class MediaPlayerHolder(val context: Context) : PlayerAdapter {
     override fun seekTo(position: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
 }

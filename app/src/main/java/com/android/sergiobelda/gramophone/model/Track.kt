@@ -12,7 +12,7 @@ data class Track(
     val genres: List<Genre>,
     val coverUri: String?
 ) {
-    fun getArtists() : String {
+    fun getArtists(): String {
         return artists.joinToString { it.name }
     }
 }

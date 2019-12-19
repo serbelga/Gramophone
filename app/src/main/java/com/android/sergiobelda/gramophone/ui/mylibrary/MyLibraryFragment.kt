@@ -16,18 +16,18 @@ import com.android.sergiobelda.gramophone.ui.MainActivity
 import com.android.sergiobelda.gramophone.ui.mylibrary.albums.AlbumsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.artists.ArtistsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.playlists.PlaylistsFragment
-import com.google.android.material.tabs.TabLayout
 
 /**
  * A simple [Fragment] subclass.
  * Use the [MyLibraryFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MyLibraryFragment : Fragment() {
-    lateinit var binding : MyLibraryFragmentBinding
+class MyLibraryFragment: Fragment() {
+    lateinit var binding: MyLibraryFragmentBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment

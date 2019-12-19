@@ -24,7 +24,7 @@ class AlbumsFragment : Fragment() {
 
     private val viewModel by lazy { ViewModelProvider(this).get(AlbumsViewModel::class.java) }
 
-    private var albums : ArrayList<Album> = arrayListOf()
+    private var albums: ArrayList<Album> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,8 @@ class AlbumsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_albums, container, false)

@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions
  * ArtistsAdapter
  * @author Sergio Belda Galbis (@serbelga)
  */
-class ArtistsAdapter(private var context : Context, private var artists : ArrayList<Artist>) :
+class ArtistsAdapter(private var context: Context, private var artists: ArrayList<Artist>) :
         RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
@@ -34,7 +34,7 @@ class ArtistsAdapter(private var context : Context, private var artists : ArrayL
         holder.bindArtist(artist)
     }
 
-    fun setData(artists : ArrayList<Artist>) {
+    fun setData(artists: ArrayList<Artist>) {
         this.artists = artists
         notifyDataSetChanged()
     }
@@ -44,7 +44,7 @@ class ArtistsAdapter(private var context : Context, private var artists : ArrayL
         private val nameTextView: TextView = itemView.findViewById(R.id.name_text_view)
         private val artistLayout: LinearLayout = itemView.findViewById(R.id.artist_layout)
 
-        fun bindArtist(artist : Artist) {
+        fun bindArtist(artist: Artist) {
             nameTextView.text = artist.name
             artistImageView.also {
                 it.transitionName = artist.imageUri

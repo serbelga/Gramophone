@@ -1,6 +1,5 @@
 package com.android.sergiobelda.gramophone.ui.preferences
 
-
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate.*

@@ -22,7 +22,7 @@ class AlbumsViewModel : ViewModel() {
 
     private fun loadUsers() {
         viewModelScope.launch {
-            val albums: ArrayList<Album> = withContext(Dispatchers.IO) { //async coroutine with .await()
+            val albums: ArrayList<Album> = withContext(Dispatchers.IO) { // async coroutine with .await()
                 arrayListOf(theDarkSide, theWall)
             }
             albumsLiveData.value = albums

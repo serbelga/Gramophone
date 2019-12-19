@@ -1,8 +1,6 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.artists
 
-
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_artists.*
 class ArtistsFragment : Fragment() {
     lateinit var artistsAdapter: ArtistsAdapter
 
-    private var artists : ArrayList<Artist> = arrayListOf()
+    private var artists: ArrayList<Artist> = arrayListOf()
 
     private val viewModel by lazy { ViewModelProvider(this).get(ArtistsViewModel::class.java) }
 
@@ -46,7 +44,8 @@ class ArtistsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_artists, container, false)

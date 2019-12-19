@@ -61,7 +61,7 @@
                 app:behavior_hideable="false"
                 app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
                 app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-                app:layoutDescription="@xml/activity_main_xml_player_bottom_sheet_scene">
+                app:layoutDescription="@xml/player_bottom_sheet_scene">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/player_bottom_sheet_collapsed"

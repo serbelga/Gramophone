@@ -1,9 +1,7 @@
 package com.android.sergiobelda.gramophone.data
 
 import com.android.sergiobelda.gramophone.model.Album
-import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.model.Genre
-import com.android.sergiobelda.gramophone.model.Track
 
 val theDarkSide = Album(
     id = "1l19LQ476o",

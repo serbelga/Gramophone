@@ -12,7 +12,7 @@ import com.android.sergiobelda.gramophone.model.Album
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 
-class AlbumsAdapter(private var context : Context, private var albums: ArrayList<Album>) :
+class AlbumsAdapter(private var context: Context, private var albums: ArrayList<Album>) :
     RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,7 +29,7 @@ class AlbumsAdapter(private var context : Context, private var albums: ArrayList
 
     override fun onBindViewHolder(holder: AlbumsViewHolder, position: Int) {
         val album = albums[position]
-        //holder.bindAlbum(album, createOnClickListener(album))
+        // holder.bindAlbum(album, createOnClickListener(album))
         holder.bindAlbum(album)
     }
 
@@ -53,9 +53,8 @@ class AlbumsAdapter(private var context : Context, private var albums: ArrayList
                 .centerInside()
                 .into(coverImageView)
 
-
             albumCardView.setOnClickListener {
-                //it.findNavController().navigate(R.id.navToAlbumDetail)
+                // it.findNavController().navigate(R.id.navToAlbumDetail)
                 albumSelectedListener.onAlbumSelected(album)
             }
         }

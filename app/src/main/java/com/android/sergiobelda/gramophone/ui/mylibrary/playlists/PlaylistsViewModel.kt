@@ -9,8 +9,6 @@ import kotlin.coroutines.CoroutineContext
 class PlaylistsViewModel : ViewModel(), CoroutineScope {
     private val job = Job()
 
-
-
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 }
