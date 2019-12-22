@@ -18,7 +18,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:liftOnScroll="true">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
@@ -51,8 +52,8 @@
                             android:id="@+id/artist_image_view"
                             android:layout_width="96dp"
                             android:layout_height="96dp"
-                            app:circularImageFromUrl="@{imageUri}"
-                            tools:src="@drawable/ic_people_alt_24dp" />
+                            app:artistImageFromUrl="@{imageUri}"
+                            tools:src="@drawable/ic_outline_person_outline_24" />
 
                     <TextView
                             style="?textAppearanceHeadline6"

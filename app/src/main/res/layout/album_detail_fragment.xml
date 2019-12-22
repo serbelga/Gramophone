@@ -36,9 +36,7 @@
                         android:scaleType="centerCrop"
                         android:src="@color/blueDark"
                         app:layout_collapseMode="parallax" />
-
             </com.google.android.material.appbar.CollapsingToolbarLayout>
-
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,20 +77,17 @@
                             android:maxLines="1"
                             android:ellipsize="end"
                             style="@style/Body2Text"
-                            android:text="Artist name"
+                            tools:text="Artist name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
                     <TextView
                             style="@style/CaptionText"
-                            android:text="1 song"
+                            tools:text="1 song"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
-
             </androidx.appcompat.widget.LinearLayoutCompat>
-
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
@@ -103,8 +98,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_height="0dp"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
-                    android:layout_marginTop="8dp"></androidx.recyclerview.widget.RecyclerView>
-
+                    android:layout_marginTop="8dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

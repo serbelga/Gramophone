@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         tools:context=".ui.mylibrary.artists.ArtistInformationFragment">
 
     <TextView
+            style="?textAppearanceBody1"
+            android:paddingTop="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="120dp"
+            tools:text="@tools:sample/lorem/random"
+            android:id="@+id/bio"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
-</FrameLayout>
+            android:layout_height="match_parent" />
+</androidx.core.widget.NestedScrollView>

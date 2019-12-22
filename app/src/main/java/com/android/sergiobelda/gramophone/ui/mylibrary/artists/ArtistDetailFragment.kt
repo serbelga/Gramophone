@@ -5,14 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
+import androidx.viewpager.widget.ViewPager
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.ArtistDetailFragmentBinding
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
+import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel
+import com.google.android.material.tabs.TabLayout
 
 /**
  * ArtistDetailFragment
@@ -21,11 +27,19 @@ import com.android.sergiobelda.gramophone.ui.ErrorFragment
 class ArtistDetailFragment : Fragment() {
     private val args: ArtistDetailFragmentArgs by navArgs()
 
-    lateinit var binding: ArtistDetailFragmentBinding
+    private lateinit var binding: ArtistDetailFragmentBinding
+
+    private lateinit var viewPager: ViewPager
+    private lateinit var tabLayout: TabLayout
+
+    private lateinit var artistDetailViewModel: ArtistDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        artistDetailViewModel = activity?.run {
+            ViewModelProvider(this).get(ArtistDetailViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
     }
 
     override fun onCreateView(
@@ -33,7 +47,6 @@ class ArtistDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.artist_detail_fragment, container, false)
         return binding.root
     }
@@ -44,18 +57,35 @@ class ArtistDetailFragment : Fragment() {
         binding.imageUri = args.uri
         binding.artistImageView.transitionName = args.uri
 
+        initViews()
+
+        setViewPager()
+
+        artistDetailViewModel.getArtistInfo(args.name!!)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    private fun initViews() {
+        viewPager = binding.viewPager
+        tabLayout = binding.tabLayout
+    }
+
+    private fun setViewPager() {
         val pagerAdapter = PagerAdapter(childFragmentManager)
-        binding.viewPager.adapter = pagerAdapter
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        viewPager.adapter = pagerAdapter
+        tabLayout.setupWithViewPager(viewPager)
     }
 
     inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getItem(position: Int): Fragment {
             return when (position) {
-                0 -> ArtistInformationFragment()
-                1 -> ArtistInformationFragment()
+                0 -> ErrorFragment()
+                1 -> ErrorFragment()
                 2 -> ArtistInformationFragment()
-                3 -> ArtistInformationFragment()
+                3 -> ErrorFragment()
                 else -> ErrorFragment()
             }
         }

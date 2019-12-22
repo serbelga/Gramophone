@@ -37,12 +37,17 @@ class MainActivity : AppCompatActivity() {
         // Set Toolbar as ActionBar
         setSupportActionBar(main_toolbar)
         // motion_layout.setTransitionListener(this)
-        setViews()
+        bindTrack()
         setBottomSheetBehavior()
         setNavigation()
     }
 
-    private fun setViews() {
+    override fun onResume() {
+        super.onResume()
+        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+
+    private fun bindTrack() {
         binding.track = money
     }
 

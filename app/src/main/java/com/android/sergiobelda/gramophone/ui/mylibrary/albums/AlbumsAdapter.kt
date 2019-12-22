@@ -29,7 +29,6 @@ class AlbumsAdapter(private var context: Context, private var albums: ArrayList<
 
     override fun onBindViewHolder(holder: AlbumsViewHolder, position: Int) {
         val album = albums[position]
-        // holder.bindAlbum(album, createOnClickListener(album))
         holder.bindAlbum(album)
     }
 
@@ -54,7 +53,6 @@ class AlbumsAdapter(private var context: Context, private var albums: ArrayList<
                 .into(coverImageView)
 
             albumCardView.setOnClickListener {
-                // it.findNavController().navigate(R.id.navToAlbumDetail)
                 albumSelectedListener.onAlbumSelected(album)
             }
         }
