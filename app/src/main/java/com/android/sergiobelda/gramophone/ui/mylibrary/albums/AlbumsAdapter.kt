@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.card.MaterialCardView
 
 class AlbumsAdapter(private var context: Context, private var albums: ArrayList<Album>) :
@@ -49,7 +50,10 @@ class AlbumsAdapter(private var context: Context, private var albums: ArrayList<
             artistNameTextView.text = artist?.name ?: context.getString(R.string.unknown_artist)
             Glide.with(context)
                 .load(album.coverUri)
-                .centerInside()
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.ic_album_200dp)
+                )
                 .into(coverImageView)
 
             albumCardView.setOnClickListener {

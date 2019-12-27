@@ -1,6 +1,7 @@
-package com.android.sergiobelda.gramophone.repository
+package com.android.sergiobelda.gramophone.repository.lastfm
 
 import com.android.sergiobelda.gramophone.BuildConfig
+import com.android.sergiobelda.gramophone.repository.lastfm.LastFmArtistResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

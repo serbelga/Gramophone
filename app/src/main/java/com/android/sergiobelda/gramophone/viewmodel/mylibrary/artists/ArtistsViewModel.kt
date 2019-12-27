@@ -1,14 +1,13 @@
 package com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.android.sergiobelda.gramophone.data.*
+import android.app.Application
+import android.provider.MediaStore
+import android.util.Log
+import androidx.lifecycle.*
 import com.android.sergiobelda.gramophone.model.Artist
 import kotlinx.coroutines.*
 
-class ArtistsViewModel : ViewModel() {
+class ArtistsViewModel(application: Application) : AndroidViewModel(application) {
     private val artistsLiveData: MutableLiveData<ArrayList<Artist>> by lazy {
         MutableLiveData<ArrayList<Artist>>().also {
             loadArtists()
@@ -22,7 +21,28 @@ class ArtistsViewModel : ViewModel() {
     private fun loadArtists() {
         viewModelScope.launch {
             val artists = withContext(Dispatchers.IO) {
-                arrayListOf(bobMarley, davidGilmour, ledZeppelin, makaya, milesDavis, pinkFloyd)
+                val artistsList = arrayListOf<Artist>()
+                val contentResolver = getApplication<Application>().contentResolver
+                val uri = MediaStore.Audio.Artists.EXTERNAL_CONTENT_URI
+                val projection = arrayOf(
+                    MediaStore.Audio.Artists.ARTIST_KEY,
+                    MediaStore.Audio.Artists.ARTIST,
+                    MediaStore.Audio.Artists.NUMBER_OF_ALBUMS
+                )
+                try {
+                    val cursor = contentResolver.query(uri, null, null, null, null)
+                    if (cursor != null && cursor.count > 0) {
+                        while (cursor.moveToNext()) {
+                            val artistId = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Artists._ID))
+                            val artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Artists.ARTIST))
+                            artistsList.add(Artist(artistId, artist, null, null))
+                        }
+                    }
+                    cursor?.close()
+                } catch (e : Exception) {
+                    Log.e("MusicViewModel", e.message.toString())
+                }
+                artistsList
             }
             artistsLiveData.value = artists
         }

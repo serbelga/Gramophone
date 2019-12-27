@@ -1,6 +1,7 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.artists
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,22 +24,26 @@ import kotlinx.android.synthetic.main.fragment_artists.*
  * @author Sergio Belda Galbis (@serbelga)
  */
 class ArtistsFragment : Fragment() {
-    lateinit var artistsAdapter: ArtistsAdapter
+    private lateinit var artistsAdapter: ArtistsAdapter
 
     private var artists: ArrayList<Artist> = arrayListOf()
 
-    private val viewModel by lazy { ViewModelProvider(this).get(ArtistsViewModel::class.java) }
+    private val artistsViewModel by lazy { ViewModelProvider(this).get(ArtistsViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         artistsAdapter = ArtistsAdapter(context!!, artists)
         artistsAdapter.artistSelectedListener = object : ArtistsAdapter.ArtistSelectedListener {
             override fun onArtistSelected(artist: Artist, imageView: ImageView) {
-                val extras = FragmentNavigatorExtras(
-                    imageView to artist.imageUri
-                )
                 val action = MyLibraryFragmentDirections.navToArtistDetail(uri = artist.imageUri, name = artist.name)
-                findNavController().navigate(action, extras)
+                if (artist.imageUri != null) {
+                    val extras = FragmentNavigatorExtras(
+                        imageView to artist.imageUri
+                    )
+                    findNavController().navigate(action, extras)
+                } else {
+                    findNavController().navigate(action)
+                }
             }
         }
     }
@@ -65,8 +70,9 @@ class ArtistsFragment : Fragment() {
     }
 
     private fun getData() {
-        viewModel.getArtists().observe(viewLifecycleOwner, Observer {
+        artistsViewModel.getArtists().observe(viewLifecycleOwner, Observer {
             artistsAdapter.setData(it)
+            Log.d(TAG, it.toString())
         })
     }
 

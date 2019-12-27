@@ -52,7 +52,7 @@ dependencies {
     // Constraint Layout - Motion Layout
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
     // Fragment KTX
-    implementation "androidx.fragment:fragment-ktx:${fragment_ktx_version}"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
     // Preference KTX
     implementation "androidx.preference:preference-ktx:$preference_ktx_version"
     // Palette KTX
@@ -82,11 +82,13 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
+    // Retrofit
     implementation 'com.google.code.gson:gson:2.8.5'
-
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
+    implementation "androidx.media2:media2:$media2_version"
+    implementation "androidx.media2:media2-common:$media2_common_version"
 
     implementation("io.coil-kt:coil:0.8.0")
 }

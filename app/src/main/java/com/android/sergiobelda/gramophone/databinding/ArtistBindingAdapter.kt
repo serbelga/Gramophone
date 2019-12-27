@@ -11,8 +11,11 @@ fun bindArtistImageFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(view.context)
             .load(imageUrl)
-            .placeholder(R.drawable.ic_outline_person_outline_24)
-            .apply(RequestOptions.circleCropTransform())
+            .apply(RequestOptions()
+                .placeholder(R.drawable.ic_outline_person_outline_24)
+                .error(R.drawable.ic_outline_person_outline_24)
+                .circleCrop()
+            )
             .into(view)
     }
 }

@@ -9,10 +9,6 @@ val pinkFloyd = Artist(
     bio = null
 )
 
-val pinkFloydAlbums = arrayListOf(theDarkSide, theWall)
-
-val pinkFloydInfo = "Pink Floyd were an English rock band formed in London in 1965. Gaining a following as a psychedelic band, they were distinguished for their extended compositions, sonic experimentation, philosophical lyrics and elaborate live shows, and became a leading band of the progressive rock genre. They are one of the most commercially successful and influential groups in popular music history."
-
 val ledZeppelin = Artist(
     id = "qpiXzWVxYs",
     name = "Led Zeppelin",

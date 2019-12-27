@@ -1,6 +1,8 @@
 package com.android.sergiobelda.gramophone.ui
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +10,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.FloatRange
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,6 +26,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        const val TAG = "MainActivity"
+        const val PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 90
+    }
+
     private lateinit var playerBottomSheetBehavior: BottomSheetBehavior<View>
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var playerAdapter: MediaPlayerHolder
@@ -40,11 +49,54 @@ class MainActivity : AppCompatActivity() {
         bindTrack()
         setBottomSheetBehavior()
         setNavigation()
+
+        checkPermissions()
+    }
+
+    private fun checkPermissions() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
+            }
+        } else {
+            // Permission has already been granted
+            return
+        }
     }
 
     override fun onResume() {
         super.onResume()
         playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // permission was granted
+                } else {
+                    // permission denied.
+                }
+                return
+            }
+            else -> {}
+        }
+
     }
 
     private fun bindTrack() {

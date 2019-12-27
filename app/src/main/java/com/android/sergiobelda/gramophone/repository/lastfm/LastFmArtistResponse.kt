@@ -1,4 +1,4 @@
-package com.android.sergiobelda.gramophone.repository
+package com.android.sergiobelda.gramophone.repository.lastfm
 
 import com.android.sergiobelda.gramophone.model.Artist
 

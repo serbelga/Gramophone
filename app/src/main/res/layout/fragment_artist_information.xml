@@ -5,14 +5,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="120dp"
         tools:context=".ui.mylibrary.artists.ArtistInformationFragment">
 
     <TextView
             style="?textAppearanceBody1"
-            android:paddingTop="8dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="120dp"
             tools:text="@tools:sample/lorem/random"
             android:id="@+id/bio"
             android:layout_width="match_parent"
