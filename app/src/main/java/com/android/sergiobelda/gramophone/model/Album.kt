@@ -7,6 +7,7 @@ data class Album(
     val label: String?,
     val genres: List<Genre>?,
     val numDiscs: Int?,
+    val numTracks: Int?,
     val coverUri: String?,
     val releaseYear: Int,
     val releaseMonth: Int? = 1,

@@ -1,7 +1,6 @@
 package com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums
 
 import android.app.Application
-import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
 import androidx.lifecycle.*
@@ -12,7 +11,7 @@ import kotlinx.coroutines.*
 class AlbumsViewModel(application: Application) : AndroidViewModel(application) {
     private val albumsLiveData: MutableLiveData<ArrayList<Album>> by lazy {
         MutableLiveData<ArrayList<Album>>().also {
-            loadUsers()
+            loadAlbums()
         }
     }
 
@@ -20,7 +19,7 @@ class AlbumsViewModel(application: Application) : AndroidViewModel(application) 
         return albumsLiveData
     }
 
-    private fun loadUsers() {
+    private fun loadAlbums() {
         viewModelScope.launch {
             val albums: ArrayList<Album> = withContext(Dispatchers.IO) { // async coroutine with .await()
                 val albumsList = arrayListOf<Album>()
@@ -37,17 +36,21 @@ class AlbumsViewModel(application: Application) : AndroidViewModel(application) 
                             val artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST))
                             val albumReleaseYear = cursor.getShort(cursor.getColumnIndex(MediaStore.Audio.Albums.FIRST_YEAR))
 
-                            albumsList.add(Album(albumId, album, arrayListOf(Artist(artistId, artist, null, null)), null, null, null, albumCoverUri,
+                            albumsList.add(Album(albumId, album, arrayListOf(Artist(artistId, artist, null, null)), null, null, null, 0, albumCoverUri,
                                 albumReleaseYear.toInt(),null, null, null))
                         }
                     }
                     cursor?.close()
                 } catch (e : Exception) {
-                    Log.e("MusicViewModel", e.message.toString())
+                    Log.e(TAG, e.message.toString())
                 }
                 albumsList
             }
             albumsLiveData.value = albums
         }
+    }
+
+    companion object {
+        const val TAG = "AlbumsViewModel"
     }
 }

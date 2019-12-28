@@ -141,12 +141,14 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.artistDetailFragment) {
-                expandAppBarLayout(expanded = false, animate = false)
-            } else {
-                expandAppBarLayout(expanded = true, animate = false)
-                supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp)
+            when (destination.id) {
+                R.id.artistDetailFragment -> expandAppBarLayout(expanded = false, animate = false)
+                R.id.albumDetailFragment -> expandAppBarLayout(expanded = false, animate = false)
+                else -> {
+                    expandAppBarLayout(expanded = true, animate = false)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp)
+                }
             }
         }
     }

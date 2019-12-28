@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
+import com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragmentDirections
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumsViewModel
 import kotlinx.android.synthetic.main.fragment_albums.*
 
@@ -22,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_albums.*
 class AlbumsFragment : Fragment() {
     private lateinit var albumsAdapter: AlbumsAdapter
 
-    private val viewModel by lazy { ViewModelProvider(this).get(AlbumsViewModel::class.java) }
+    private val albumsViewModel by lazy { ViewModelProvider(this).get(AlbumsViewModel::class.java) }
 
     private var albums: ArrayList<Album> = arrayListOf()
 
@@ -31,7 +33,10 @@ class AlbumsFragment : Fragment() {
         albumsAdapter = AlbumsAdapter(context!!, albums)
         albumsAdapter.albumSelectedListener = object : AlbumsAdapter.AlbumSelectedListener {
             override fun onAlbumSelected(album: Album) {
+                Log.d(TAG, album.id)
                 Log.d(TAG, album.title)
+                val action = MyLibraryFragmentDirections.navToAlbumDetail(id = album.id)
+                findNavController().navigate(action)
             }
         }
     }
@@ -58,7 +63,7 @@ class AlbumsFragment : Fragment() {
     }
 
     private fun getData() {
-        viewModel.getAlbums().observe(viewLifecycleOwner, Observer {
+        albumsViewModel.getAlbums().observe(viewLifecycleOwner, Observer {
             albumsAdapter.setData(it)
         })
     }
