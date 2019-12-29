@@ -40,7 +40,7 @@
                             android:id="@+id/album_image_view"
                             android:layout_width="120dp"
                             android:layout_height="120dp"
-                            app:roundedImageFromUrl="@{viewmodel.album.coverUri}"
+                            app:albumImageFromUrl="@{viewmodel.album.coverUri}"
                             tools:src="@drawable/ic_album_24dp"
                             android:contentDescription="@string/albums" />
 

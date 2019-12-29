@@ -78,7 +78,7 @@
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="4dp"
                         android:elevation="4dp"
-                        app:roundedImageFromUrl="@{track.coverUri}"
+                        app:albumImageFromUrl="@{track.coverUri}"
                         tools:src="?colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -161,7 +161,7 @@
                     android:elevation="4dp"
                     android:outlineSpotShadowColor="?colorPrimary"
                     app:elevation="4dp"
-                    app:roundedImageFromUrl="@{track.coverUri}"
+                    app:albumImageFromUrl="@{track.coverUri}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

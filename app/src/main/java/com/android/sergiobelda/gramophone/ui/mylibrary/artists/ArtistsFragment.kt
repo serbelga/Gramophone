@@ -70,7 +70,7 @@ class ArtistsFragment : Fragment() {
     }
 
     private fun getData() {
-        artistsViewModel.getArtists().observe(viewLifecycleOwner, Observer {
+        artistsViewModel.artists.observe(viewLifecycleOwner, Observer {
             artistsAdapter.setData(it)
             Log.d(TAG, it.toString())
         })

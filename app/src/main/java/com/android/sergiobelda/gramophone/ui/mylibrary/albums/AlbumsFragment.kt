@@ -63,7 +63,7 @@ class AlbumsFragment : Fragment() {
     }
 
     private fun getData() {
-        albumsViewModel.getAlbums().observe(viewLifecycleOwner, Observer {
+        albumsViewModel.albums.observe(viewLifecycleOwner, Observer {
             albumsAdapter.setData(it)
         })
     }

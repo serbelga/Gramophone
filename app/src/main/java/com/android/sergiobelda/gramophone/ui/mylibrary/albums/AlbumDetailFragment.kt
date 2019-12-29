@@ -1,9 +1,11 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -42,7 +44,12 @@ class AlbumDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val albumId = args.id
-        albumId?.let { albumDetailViewModel.getAlbum(it) }
+        albumId?.let {
+            albumDetailViewModel.getAlbum(it)
+            albumDetailViewModel.getTracksByAlbumId(it).observe(viewLifecycleOwner, Observer {
+                Log.d(TAG, it.toString())
+            })
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -54,5 +61,9 @@ class AlbumDetailFragment : Fragment() {
             android.R.id.home -> findNavController().navigateUp()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        const val TAG = "AlbumDetailFragment"
     }
 }
