@@ -15,15 +15,13 @@ import com.android.sergiobelda.gramophone.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.android.sergiobelda.gramophone.databinding.AlbumDetailFragmentBinding
-import com.android.sergiobelda.gramophone.ui.mylibrary.artists.ArtistDetailFragmentArgs
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumDetailViewModel
 import kotlinx.android.synthetic.main.album_detail_fragment.*
-import kotlinx.android.synthetic.main.fragment_songs.*
 
 class AlbumDetailFragment : Fragment() {
     private val args: AlbumDetailFragmentArgs by navArgs()
 
-    private lateinit var binding : AlbumDetailFragmentBinding
+    private lateinit var binding: AlbumDetailFragmentBinding
 
     private val albumDetailViewModel by lazy { ViewModelProvider(this).get(AlbumDetailViewModel::class.java) }
 

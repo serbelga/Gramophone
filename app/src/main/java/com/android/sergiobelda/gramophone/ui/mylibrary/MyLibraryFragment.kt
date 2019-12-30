@@ -17,12 +17,7 @@ import com.android.sergiobelda.gramophone.ui.mylibrary.albums.AlbumsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.artists.ArtistsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.playlists.PlaylistsFragment
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyLibraryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyLibraryFragment: Fragment() {
+class MyLibraryFragment : Fragment() {
     lateinit var binding: MyLibraryFragmentBinding
 
     override fun onCreateView(
@@ -66,7 +61,6 @@ class MyLibraryFragment: Fragment() {
     inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getItem(position: Int): Fragment {
-            val fragment: Fragment?
             return when (position) {
                 0 -> ArtistsFragment()
                 1 -> AlbumsFragment()

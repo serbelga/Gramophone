@@ -17,7 +17,6 @@ import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragmentDirections
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumsViewModel
-import com.google.android.material.imageview.ShapeableImageView
 import kotlinx.android.synthetic.main.fragment_albums.*
 
 /**

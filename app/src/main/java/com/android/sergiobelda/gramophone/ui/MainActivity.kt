@@ -16,7 +16,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.data.money
 import com.android.sergiobelda.gramophone.databinding.MainActivityBinding
@@ -96,7 +95,6 @@ class MainActivity : AppCompatActivity() {
             }
             else -> {}
         }
-
     }
 
     private fun bindTrack() {
@@ -114,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 
     /**
@@ -165,7 +163,7 @@ class MainActivity : AppCompatActivity() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 player_bottom_sheet.setInterpolatedProgress(slideOffset)
                 animateContentScrim(slideOffset)
-                //animateBottomNavigationView(slideOffset)
+                // animateBottomNavigationView(slideOffset)
             }
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -173,6 +171,7 @@ class MainActivity : AppCompatActivity() {
                     BottomSheetBehavior.STATE_EXPANDED -> {
                     }
                     // BottomSheetBehavior.STATE_COLLAPSED -> Log.d("state: ", "collapsed")
+                    else -> {}
                 }
             }
         }

@@ -3,7 +3,6 @@ package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextClock
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.sergiobelda.gramophone.R
