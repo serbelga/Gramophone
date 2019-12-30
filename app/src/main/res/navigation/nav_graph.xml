@@ -8,7 +8,11 @@
             android:id="@+id/albumDetailFragment"
             android:name="com.android.sergiobelda.gramophone.ui.mylibrary.albums.AlbumDetailFragment"
             tools:layout="@layout/album_detail_fragment" >
-
+        <argument
+                android:name="uri"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="null" />
         <argument
                 android:name="id"
                 app:argType="string"

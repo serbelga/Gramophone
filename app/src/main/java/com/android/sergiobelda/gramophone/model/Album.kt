@@ -7,7 +7,7 @@ data class Album(
     val label: String?,
     val genres: List<Genre>?,
     val numDiscs: Int?,
-    val numTracks: Int?,
+    val numTracks: Int,
     val coverUri: String?,
     val releaseYear: Int,
     val releaseMonth: Int? = 1,
@@ -19,5 +19,13 @@ data class Album(
 ) {
     fun getArtists(): String {
         return artists.joinToString { it.name }
+    }
+
+    fun getNumTracks(): String {
+        return if (numTracks > 1) {
+            "$numTracks tracks"
+        } else {
+            "$numTracks track"
+        }
     }
 }

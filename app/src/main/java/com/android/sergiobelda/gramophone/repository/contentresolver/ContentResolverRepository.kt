@@ -74,6 +74,7 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                             cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))
                         val track =
                             cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TRACK))
+                        val trackDuration = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION))
                         var trackNumber = Integer.parseInt(track)
                         var cdNumber = 0
                         if (track.length == 4) {
@@ -87,7 +88,7 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                                 trackNumber,
                                 emptyList(),
                                 null,
-                                null,
+                                trackDuration,
                                 emptyList(),
                                 cdNumber,
                                 null,

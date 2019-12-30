@@ -8,9 +8,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
         <!-- Status Bar color and windowLightStatusBar true if Status bar is Light and false if it's dark-->
-        <item name="android:statusBarColor">@color/colorStatusBar</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowTranslucentStatus">false</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
 
         <!-- Color Secondary - Color used in FAB and checkboxes, switches ... -->
@@ -102,7 +101,7 @@
 
     <style name="MaterialCardView" parent="Widget.MaterialComponents.CardView">
         <item name="strokeColor">@color/colorDivider</item>
-        <item name="strokeWidth">1dp</item>
+        <item name="strokeWidth">1px</item>
         <item name="cardElevation">0dp</item>
     </style>
 

@@ -41,6 +41,6 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:background="@color/colorDivider"
                 android:layout_width="match_parent"
-                android:layout_height="1dp" />
+                android:layout_height="1px" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

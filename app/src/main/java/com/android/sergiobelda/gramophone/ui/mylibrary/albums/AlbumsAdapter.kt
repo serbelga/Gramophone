@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
@@ -24,9 +25,7 @@ class AlbumsAdapter(private var context: Context, private var albums: ArrayList<
         return AlbumsViewHolder(itemView, context)
     }
 
-    override fun getItemCount(): Int {
-        return albums.size
-    }
+    override fun getItemCount() = albums.size
 
     override fun onBindViewHolder(holder: AlbumsViewHolder, position: Int) {
         val album = albums[position]
@@ -48,16 +47,20 @@ class AlbumsAdapter(private var context: Context, private var albums: ArrayList<
             titleTextView.text = album.title
             val artist = album.artists.getOrNull(0)
             artistNameTextView.text = artist?.name ?: context.getString(R.string.unknown_artist)
-            Glide.with(context)
-                .load(album.coverUri)
-                .apply(
-                    RequestOptions()
-                        .placeholder(R.drawable.ic_album_200dp)
-                )
-                .into(coverImageView)
-
+            coverImageView.apply {
+                this.transitionName = album.coverUri
+                Glide.with(context)
+                    .load(album.coverUri)
+                    .apply(
+                        RequestOptions()
+                            .placeholder(R.drawable.ic_album_200dp)
+                    )
+                    .into(this)
+            }
+            //palette
+            //albumCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.blue100))
             albumCardView.setOnClickListener {
-                albumSelectedListener.onAlbumSelected(album)
+                albumSelectedListener.onAlbumSelected(album, coverImageView)
             }
         }
     }
@@ -65,6 +68,6 @@ class AlbumsAdapter(private var context: Context, private var albums: ArrayList<
     lateinit var albumSelectedListener: AlbumSelectedListener
 
     interface AlbumSelectedListener {
-        fun onAlbumSelected(album: Album)
+        fun onAlbumSelected(album: Album, imageView: ImageView)
     }
 }

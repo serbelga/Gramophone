@@ -48,8 +48,8 @@ class ArtistsAdapter(private var context: Context, private var artists: ArrayLis
 
         fun bindArtist(artist: Artist) {
             nameTextView.text = artist.name
-            artistImageView.also {
-                it.transitionName = artist.imageUri
+            artistImageView.apply {
+                this.transitionName = artist.imageUri
                 Glide.with(context)
                     .load(artist.imageUri)
                     .apply(RequestOptions()
@@ -57,7 +57,7 @@ class ArtistsAdapter(private var context: Context, private var artists: ArrayLis
                         .error(R.drawable.ic_outline_person_outline_24)
                         .circleCrop()
                     )
-                    .into(it)
+                    .into(this)
             }
             artistLayout.setOnClickListener {
                 artistSelectedListener.onArtistSelected(artist, artistImageView)

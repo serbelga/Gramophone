@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Material Gramophone -->
-    <color name="colorPrimary">#87CEFF</color>
+    <color name="colorPrimary">#4EBAFF</color>
     <color name="colorPrimaryDark">#009CFF</color>
     <color name="colorSecondary">#7986CB</color>
     <color name="colorOnPrimary">@color/colorTextHighEmphasis</color>
     <color name="colorOnSecondary">#FFFFFF</color>
-    <color name="colorSurface">#111823</color>
+    <color name="colorSurface">#121212</color>
+    <color name="colorSurfaceDark">#5F5F5F</color>
     <color name="colorOnSurface">#FFFFFF</color>
     <color name="colorTextHighEmphasis">#DE000000</color>
     <color name="colorTextMediumEmphasis">#99000000</color>
     <color name="colorTextDisabled">#61000000</color>
     <color name="colorError">#CF6679</color>
     <color name="colorOnError">@color/colorTextHighEmphasis</color>
-    <color name="colorBackground">#111823</color>
+    <color name="colorBackground">#121212</color>
     <color name="colorOnBackground">#FFFFFF</color>
-    <color name="colorStatusBar">#000000</color>
+    <color name="colorStatusBar">#121212</color>
     <color name="colorDivider">#4F5664</color>
 </resources>

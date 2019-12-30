@@ -5,9 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 
@@ -15,6 +17,7 @@ import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragmentDirections
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumsViewModel
+import com.google.android.material.imageview.ShapeableImageView
 import kotlinx.android.synthetic.main.fragment_albums.*
 
 /**
@@ -32,11 +35,18 @@ class AlbumsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         albumsAdapter = AlbumsAdapter(context!!, albums)
         albumsAdapter.albumSelectedListener = object : AlbumsAdapter.AlbumSelectedListener {
-            override fun onAlbumSelected(album: Album) {
+            override fun onAlbumSelected(album: Album, imageView: ImageView) {
                 Log.d(TAG, album.id)
                 Log.d(TAG, album.title)
-                val action = MyLibraryFragmentDirections.navToAlbumDetail(id = album.id)
-                findNavController().navigate(action)
+                val action = MyLibraryFragmentDirections.navToAlbumDetail(id = album.id, uri = album.coverUri)
+                if (album.coverUri != null) {
+                    val extras = FragmentNavigatorExtras(
+                        imageView to album.coverUri
+                    )
+                    findNavController().navigate(action, extras)
+                } else {
+                    findNavController().navigate(action)
+                }
             }
         }
     }

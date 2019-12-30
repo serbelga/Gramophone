@@ -212,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:outlineSpotShadowColor="?colorPrimary"
-                    app:backgroundTint="@color/white"
+                    app:backgroundTint="?colorSurface"
                     app:rippleColor="?colorControlNormal"
                     app:tint="?colorControlNormal"
                     app:layout_constraintStart_toStartOf="@id/player_slider"
@@ -242,6 +242,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/play_fab_button" />
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
+        <!--
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:visibility="visible"
                 android:id="@+id/bottomNavigationView"
@@ -252,5 +253,6 @@
                 app:elevation="16dp"
                 app:menu="@menu/main_menu"
                 style="@style/Widget.MaterialComponents.BottomNavigationView" />
+                -->
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

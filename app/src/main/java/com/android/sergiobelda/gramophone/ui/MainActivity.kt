@@ -138,16 +138,18 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Set BottomNavigationView
-        bottomNavigationView.setupWithNavController(navController)
+        // bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.artistDetailFragment -> expandAppBarLayout(expanded = false, animate = false)
                 R.id.albumDetailFragment -> expandAppBarLayout(expanded = false, animate = false)
                 else -> {
-                    expandAppBarLayout(expanded = true, animate = false)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                    supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp)
+                    expandAppBarLayout(expanded = true, animate = true)
+                    supportActionBar?.let {
+                        it.setDisplayHomeAsUpEnabled(true)
+                        it.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp)
+                    }
                 }
             }
         }
@@ -163,7 +165,7 @@ class MainActivity : AppCompatActivity() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 player_bottom_sheet.setInterpolatedProgress(slideOffset)
                 animateContentScrim(slideOffset)
-                animateBottomNavigationView(slideOffset)
+                //animateBottomNavigationView(slideOffset)
             }
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -176,9 +178,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*
     private fun animateBottomNavigationView(@FloatRange(from = 0.0, to = 1.0) translationY: Float) {
         bottomNavigationView.translationY = translationY * bottomNavigationView.height
     }
+    */
 
     private fun animateContentScrim(@FloatRange(from = 0.0, to = 1.0) alpha: Float) {
         content_scrim.alpha = alpha

@@ -57,7 +57,7 @@
 
                     <TextView
                             style="?textAppearanceHeadline6"
-                            android:textColor="?colorOnPrimary"
+                            android:textColor="@color/white"
                             android:text="@{name}"
                             tools:text="Artist Name"
                             android:id="@+id/name_text_view"
@@ -96,7 +96,7 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:background="@color/colorDivider"
                 android:layout_width="match_parent"
-                android:layout_height="1dp" />
+                android:layout_height="1px" />
 
         <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager"

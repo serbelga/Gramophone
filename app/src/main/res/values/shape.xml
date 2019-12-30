@@ -8,7 +8,7 @@
 
     <style name="MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
+        <item name="cornerSize">8dp</item>
     </style>
 
     <style name="LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">

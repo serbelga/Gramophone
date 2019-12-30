@@ -19,7 +19,7 @@
 
         <ImageView
                 android:id="@+id/cover_image_view"
-                android:background="@color/whiteDark"
+                android:background="@color/colorSurfaceDark"
                 android:scaleType="fitCenter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

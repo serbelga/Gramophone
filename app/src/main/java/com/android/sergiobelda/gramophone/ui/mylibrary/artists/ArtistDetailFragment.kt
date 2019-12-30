@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import androidx.viewpager.widget.ViewPager
@@ -60,9 +63,12 @@ class ArtistDetailFragment : Fragment() {
         initViews()
 
         setViewPager()
+        setToolbar()
 
         artistDetailViewModel.getArtistInfo(args.name!!)
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -77,6 +83,15 @@ class ArtistDetailFragment : Fragment() {
         val pagerAdapter = PagerAdapter(childFragmentManager)
         viewPager.adapter = pagerAdapter
         tabLayout.setupWithViewPager(viewPager)
+    }
+
+    private fun setToolbar() {
+        binding.toolbar.apply {
+            navigationIcon = ContextCompat.getDrawable(context!!, R.drawable.ic_baseline_arrow_back_24)
+            setNavigationOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
     }
 
     inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
