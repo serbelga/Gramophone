@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Gramophone 2019.
+ */
+
 package com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists
 
 import android.app.Application

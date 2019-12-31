@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Gramophone 2019.
+ */
+
 package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 
 import android.os.Bundle
@@ -20,8 +24,8 @@ import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumsViewM
 import kotlinx.android.synthetic.main.fragment_albums.*
 
 /**
- * A simple [Fragment] subclass.
- *
+ * AlbumsFragment
+ * @author Sergio Belda Galbis (@serbelga)
  */
 class AlbumsFragment : Fragment() {
     private lateinit var albumsAdapter: AlbumsAdapter

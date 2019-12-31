@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Gramophone 2019.
+ */
+
 package com.android.sergiobelda.gramophone.data
 
 import com.android.sergiobelda.gramophone.model.Genre

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Gramophone 2019.
+ */
+
 package com.android.sergiobelda.gramophone.ui.home
 
 import android.os.Bundle
@@ -8,9 +12,6 @@ import android.view.ViewGroup
 
 import com.android.sergiobelda.gramophone.R
 
-/**
- * A simple [Fragment] subclass.
- */
 class HomeFragment : Fragment() {
 
     override fun onCreateView(
