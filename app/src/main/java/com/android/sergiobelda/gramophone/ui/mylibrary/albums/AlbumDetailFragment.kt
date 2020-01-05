@@ -5,7 +5,6 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.albums
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -19,8 +18,9 @@ import com.android.sergiobelda.gramophone.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.android.sergiobelda.gramophone.databinding.AlbumDetailFragmentBinding
+import com.android.sergiobelda.gramophone.model.Track
+import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumDetailViewModel
-import kotlinx.android.synthetic.main.album_detail_fragment.*
 
 class AlbumDetailFragment : Fragment() {
     private val args: AlbumDetailFragmentArgs by navArgs()
@@ -29,8 +29,15 @@ class AlbumDetailFragment : Fragment() {
 
     private val albumDetailViewModel by lazy { ViewModelProvider(this).get(AlbumDetailViewModel::class.java) }
 
+    private lateinit var mainViewModel: MainViewModel
+
+    private lateinit var tracksAdapter: TracksAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainViewModel = activity?.run {
+            ViewModelProvider(this).get(MainViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
         sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
 
@@ -47,9 +54,11 @@ class AlbumDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.albumImageView.transitionName = args.uri
         setToolbar()
-        setData()
+        binding.albumImageView.transitionName = args.uri
+        args.id?.let {
+            setAlbumData(it)
+        }
     }
 
     private fun setToolbar() {
@@ -61,16 +70,18 @@ class AlbumDetailFragment : Fragment() {
         }
     }
 
-    private fun setData() {
-        val albumId = args.id
-        albumId?.let {
-            albumDetailViewModel.getAlbum(it)
-            albumDetailViewModel.getTracksByAlbumId(it).observe(viewLifecycleOwner, Observer {
-                tracks_recycler_view.layoutManager = LinearLayoutManager(context)
-                tracks_recycler_view.adapter = TracksAdapter(it)
-                Log.d(TAG, it.toString())
-            })
-        }
+    private fun setAlbumData(albumId: String) {
+        albumDetailViewModel.getAlbum(albumId)
+        albumDetailViewModel.getTracksByAlbumId(albumId).observe(viewLifecycleOwner, Observer {
+            binding.tracksRecyclerView.layoutManager = LinearLayoutManager(context)
+            tracksAdapter = TracksAdapter(it)
+            tracksAdapter.trackSelectedListener = object : TracksAdapter.TrackSelectedListener {
+                override fun onTrackSelected(track: Track) {
+                    mainViewModel.select(track)
+                }
+            }
+            binding.tracksRecyclerView.adapter = tracksAdapter
+        })
     }
 
     companion object {

@@ -9,13 +9,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.android.sergiobelda.gramophone.R
+import com.android.sergiobelda.gramophone.databinding.ArtistInformationFragmentBinding
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel
-import kotlinx.android.synthetic.main.fragment_artist_information.*
 
+/**
+ * ArtistInformationFragment
+ * @author Sergio Belda Galbis (@serbelga)
+ */
 class ArtistInformationFragment : Fragment() {
+    private lateinit var binding: ArtistInformationFragmentBinding
+
     private lateinit var artistDetailViewModel: ArtistDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,14 +36,10 @@ class ArtistInformationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_artist_information, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        artistDetailViewModel.bio.observe(viewLifecycleOwner, Observer {
-            bio.text = it.content
-        })
+        binding = DataBindingUtil.inflate(inflater, R.layout.artist_information_fragment, container, false)
+        binding.lifecycleOwner = this
+        binding.viewmodel = artistDetailViewModel
+        return binding.root
     }
 
     companion object {

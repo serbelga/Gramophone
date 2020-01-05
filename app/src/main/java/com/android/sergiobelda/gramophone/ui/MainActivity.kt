@@ -10,6 +10,7 @@ import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,6 +18,8 @@ import androidx.annotation.FloatRange
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -25,35 +28,53 @@ import com.android.sergiobelda.gramophone.data.money
 import com.android.sergiobelda.gramophone.databinding.MainActivityBinding
 import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
+import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.main_activity.*
 
+/**
+ * MainActivity
+ * @author Sergio Belda Galbis - (@serbelga)
+ */
 class MainActivity : AppCompatActivity() {
-    companion object {
-        const val TAG = "MainActivity"
-        const val PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 90
-    }
-
     private lateinit var playerBottomSheetBehavior: BottomSheetBehavior<View>
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var playerAdapter: MediaPlayerHolder
+
+    private val mainViewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
     lateinit var binding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
-
-        playerAdapter = MediaPlayerHolder(this)
-
+        binding.lifecycleOwner = this
+        binding.viewmodel = mainViewModel
+        checkPermissions()
         // Set Toolbar as ActionBar
         setSupportActionBar(main_toolbar)
-        // motion_layout.setTransitionListener(this)
-        bindTrack()
         setBottomSheetBehavior()
         setNavigation()
 
-        checkPermissions()
+        playerAdapter = MediaPlayerHolder(this)
+
+        bindTrack()
+        mainViewModel.track.observe(this, Observer {
+            Log.d(TAG, "Selected $it")
+        })
+    }
+
+    override fun onBackPressed() {
+        if (playerBottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+            collapseBottomSheet()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        collapseBottomSheet()
     }
 
     private fun checkPermissions() {
@@ -78,11 +99,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-    }
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -102,7 +118,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindTrack() {
-        binding.track = money
+        mainViewModel.select(money)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -119,9 +135,6 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    /**
-     *
-     */
     private fun setNavigation() {
         val navController = findNavController(R.id.navHostFragment)
 
@@ -131,9 +144,9 @@ class MainActivity : AppCompatActivity() {
         // If you have a bottomNavigationView with multiple fragments to switch -> AppBarConfiguration(setOf(R.id.fragment1, R.id.fragment2, ...))
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment,
-                R.id.myLibraryFragment,
-                R.id.myProfileFragment
+                // R.id.homeFragment,
+                R.id.myLibraryFragment
+                // R.id.myProfileFragment
             )
         )
 
@@ -172,9 +185,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
-                    BottomSheetBehavior.STATE_EXPANDED -> {
-                    }
-                    // BottomSheetBehavior.STATE_COLLAPSED -> Log.d("state: ", "collapsed")
+                    BottomSheetBehavior.STATE_EXPANDED -> { }
                     else -> {}
                 }
             }
@@ -191,14 +202,20 @@ class MainActivity : AppCompatActivity() {
         content_scrim.alpha = alpha
     }
 
-    fun expandBottomSheet() {
+    private fun collapseBottomSheet() {
+        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+
+    private fun expandBottomSheet() {
         playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
-    /**
-     *
-     */
     fun expandAppBarLayout(expanded: Boolean, animate: Boolean) {
         appbar.setExpanded(expanded, animate)
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
+        private const val PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 90
     }
 }

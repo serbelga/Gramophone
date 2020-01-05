@@ -78,6 +78,10 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                             cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))
                         val track =
                             cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TRACK))
+                        val artistId =
+                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID))
+                        val artist =
+                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST))
                         val trackDuration = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION))
                         var trackNumber = Integer.parseInt(track)
                         var cdNumber = 0
@@ -90,7 +94,7 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                                 id,
                                 title,
                                 trackNumber,
-                                emptyList(),
+                                arrayListOf(Artist(artistId, artist, null, null)),
                                 null,
                                 trackDuration,
                                 emptyList(),

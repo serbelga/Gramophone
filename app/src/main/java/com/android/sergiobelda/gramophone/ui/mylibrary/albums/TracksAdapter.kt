@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Track
@@ -32,10 +33,21 @@ class TracksAdapter(private var tracks: ArrayList<Track>) :
         private val trackNumberTextView: TextView = itemView.findViewById(R.id.track_number_text_view)
         private val trackTitleTextView: TextView = itemView.findViewById(R.id.track_title_text_view)
         private val trackDurationTextView: TextView = itemView.findViewById(R.id.track_duration_text_view)
+        private val trackItem: LinearLayoutCompat = itemView.findViewById(R.id.track_item)
+
         fun bindTrack(track: Track) {
             trackNumberTextView.text = track.number.toString()
             trackTitleTextView.text = track.title
             trackDurationTextView.text = track.duration_ms.toString()
+            trackItem.setOnClickListener {
+                trackSelectedListener.onTrackSelected(track)
+            }
         }
+    }
+
+    lateinit var trackSelectedListener: TrackSelectedListener
+
+    interface TrackSelectedListener {
+        fun onTrackSelected(track: Track)
     }
 }

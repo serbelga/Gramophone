@@ -33,9 +33,6 @@ class ArtistDetailFragment : Fragment() {
 
     private lateinit var binding: ArtistDetailFragmentBinding
 
-    private lateinit var viewPager: ViewPager
-    private lateinit var tabLayout: TabLayout
-
     private lateinit var artistDetailViewModel: ArtistDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,36 +49,28 @@ class ArtistDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.artist_detail_fragment, container, false)
+        binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.name = args.name
-        binding.imageUri = args.uri
-        binding.artistImageView.transitionName = args.uri
+        bindViews()
 
-        initViews()
-
-        setViewPager()
         setToolbar()
+        setViewPager()
 
+        setArtistInfo()
+    }
+
+    private fun setArtistInfo() {
         artistDetailViewModel.getArtistInfo(args.name!!)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    private fun initViews() {
-        viewPager = binding.viewPager
-        tabLayout = binding.tabLayout
-    }
-
-    private fun setViewPager() {
-        val pagerAdapter = PagerAdapter(childFragmentManager)
-        viewPager.adapter = pagerAdapter
-        tabLayout.setupWithViewPager(viewPager)
+    private fun bindViews() {
+        binding.name = args.name
+        binding.imageUri = args.uri
+        binding.artistImageView.transitionName = args.uri
     }
 
     private fun setToolbar() {
@@ -93,13 +82,19 @@ class ArtistDetailFragment : Fragment() {
         }
     }
 
+    private fun setViewPager() {
+        val pagerAdapter = PagerAdapter(childFragmentManager)
+        binding.viewPager.adapter = pagerAdapter
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
+    }
+
     inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getItem(position: Int): Fragment {
             return when (position) {
                 0 -> ErrorFragment()
-                1 -> ErrorFragment()
-                2 -> ArtistInformationFragment()
-                3 -> ErrorFragment()
+                1 -> ArtistInformationFragment()
+                // 2 -> ErrorFragment()
+                // 3 -> ErrorFragment()
                 else -> ErrorFragment()
             }
         }
@@ -109,9 +104,9 @@ class ArtistDetailFragment : Fragment() {
         override fun getPageTitle(position: Int): CharSequence? {
             return when (position) {
                 0 -> getString(R.string.general)
-                1 -> getString(R.string.related)
-                2 -> getString(R.string.information)
-                3 -> getString(R.string.concerts)
+                1 -> getString(R.string.information)
+                // 2 -> getString(R.string.related)
+                // 3 -> getString(R.string.concerts)
                 else -> null
             }
         }

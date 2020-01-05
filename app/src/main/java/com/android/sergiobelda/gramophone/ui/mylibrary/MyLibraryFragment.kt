@@ -22,7 +22,7 @@ import com.android.sergiobelda.gramophone.ui.mylibrary.artists.ArtistsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.playlists.PlaylistsFragment
 
 class MyLibraryFragment : Fragment() {
-    lateinit var binding: MyLibraryFragmentBinding
+    private lateinit var binding: MyLibraryFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +30,7 @@ class MyLibraryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.my_library_fragment, container, false)
+        binding.lifecycleOwner = this
         return binding.root
     }
 

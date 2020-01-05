@@ -5,6 +5,10 @@
 
     <data>
         <variable
+                name="viewmodel"
+                type="com.android.sergiobelda.gramophone.viewmodel.MainViewModel" />
+
+        <variable
                 name="track"
                 type="com.android.sergiobelda.gramophone.model.Track" />
     </data>
@@ -78,7 +82,7 @@
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="4dp"
                         android:elevation="4dp"
-                        app:albumImageFromUrl="@{track.coverUri}"
+                        app:albumImageFromUrl="@{viewmodel.track.coverUri}"
                         tools:src="?colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -91,7 +95,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         tools:text="Title"
-                        android:text="@{track.title}"
+                        android:text="@{viewmodel.track.title}"
                         app:layout_constraintStart_toEndOf="@id/cover_small_image_view"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         tools:text="Artist"
-                        android:text="@{track.artists.length() > 0 ? track.getArtists() : @string/unknown_artist}"
+                        android:text="@{viewmodel.track.artists.length() > 0 ? viewmodel.track.getArtists() : @string/unknown_artist}"
                         android:textColor="@color/material_on_surface_emphasis_medium"
                         app:layout_constraintStart_toStartOf="@id/title_text_view"
                         app:layout_constraintTop_toTopOf="@id/title_text_view" />
@@ -161,7 +165,7 @@
                     android:elevation="4dp"
                     android:outlineSpotShadowColor="?colorPrimary"
                     app:elevation="4dp"
-                    app:albumImageFromUrl="@{track.coverUri}"
+                    app:albumImageFromUrl="@{viewmodel.track.coverUri}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -184,13 +188,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="Title"
-                        android:text="@{track.title}" />
+                        android:text="@{viewmodel.track.title}" />
 
                 <TextView
                         style="?textAppearanceSubtitle1"
                         android:textColor="@color/material_on_surface_emphasis_medium"
                         tools:text="Artist"
-                        android:text="@{track.artists.length() > 0 ? track.getArtists() : @string/unknown_artist}"
+                        android:text="@{viewmodel.track.artists.length() > 0 ? viewmodel.track.getArtists() : @string/unknown_artist}"
                         android:layout_marginTop="4dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
