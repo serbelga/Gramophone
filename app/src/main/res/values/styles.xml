@@ -10,7 +10,6 @@
         <!-- Status Bar color and windowLightStatusBar true if Status bar is Light and false if it's dark-->
 
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
 
         <!-- Color Secondary - Color used in FAB and checkboxes, switches ... -->
         <item name="colorSecondary">@color/colorSecondary</item>

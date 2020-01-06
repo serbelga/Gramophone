@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <!--
     <item
             app:showAsAction="ifRoom"
             android:id="@id/homeFragment"
@@ -19,4 +19,5 @@
             android:id="@id/myProfileFragment"
             android:icon="@drawable/ic_outline_person_outline_24"
             android:title="@string/my_profile" />
+            -->
 </menu>
