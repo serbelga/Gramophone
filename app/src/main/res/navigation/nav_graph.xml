@@ -18,6 +18,9 @@
                 app:argType="string"
                 app:nullable="true"
                 android:defaultValue="null" />
+        <action
+                android:id="@+id/goToArtistDetail"
+                app:destination="@id/artistDetailFragment" />
     </fragment>
     <fragment
             android:id="@+id/myLibraryFragment"

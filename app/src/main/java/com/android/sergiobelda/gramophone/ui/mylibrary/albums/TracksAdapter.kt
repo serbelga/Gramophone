@@ -12,6 +12,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Track
+import com.android.sergiobelda.gramophone.util.getMinuteSeconds
 
 class TracksAdapter(private var tracks: ArrayList<Track>) :
         RecyclerView.Adapter<TracksAdapter.TracksViewHolder>() {
@@ -38,7 +39,9 @@ class TracksAdapter(private var tracks: ArrayList<Track>) :
         fun bindTrack(track: Track) {
             trackNumberTextView.text = track.number.toString()
             trackTitleTextView.text = track.title
-            trackDurationTextView.text = track.duration_ms.toString()
+            track.duration_ms?.let {
+                trackDurationTextView.text = getMinuteSeconds(it)
+            }
             trackItem.setOnClickListener {
                 trackSelectedListener.onTrackSelected(track)
             }

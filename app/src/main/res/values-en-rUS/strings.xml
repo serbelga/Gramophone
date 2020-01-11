@@ -18,4 +18,5 @@
     <string name="related">Related</string>
     <string name="information">Information</string>
     <string name="concerts">Concerts</string>
+    <string name="go_to_artist">Go to artist</string>
 </resources>

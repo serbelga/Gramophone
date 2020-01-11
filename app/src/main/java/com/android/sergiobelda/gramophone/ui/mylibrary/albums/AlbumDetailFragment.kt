@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.onNavDestinationSelected
 
 import com.android.sergiobelda.gramophone.R
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,6 +60,15 @@ class AlbumDetailFragment : Fragment() {
         args.id?.let {
             setAlbumData(it)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.album_menu, menu)
+    }
+
+    // TODO must go on Activity
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(findNavController()) || super.onOptionsItemSelected(item)
     }
 
     private fun setToolbar() {

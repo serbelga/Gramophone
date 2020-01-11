@@ -6,7 +6,6 @@
     <string name="categories">Géneros</string>
     <string name="playlists">Playlists</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <string name="settings">Ajustes</string>
@@ -23,4 +22,5 @@
     <string name="related">Relacionado</string>
     <string name="information">Información</string>
     <string name="concerts">Conciertos</string>
+    <string name="go_to_artist">Ir al artista</string>
 </resources>
