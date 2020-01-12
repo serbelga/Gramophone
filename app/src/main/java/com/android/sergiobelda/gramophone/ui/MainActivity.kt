@@ -7,6 +7,7 @@ package com.android.sergiobelda.gramophone.ui
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.Animatable
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.FloatRange
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -21,9 +23,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.data.money
@@ -58,12 +58,32 @@ class MainActivity : AppCompatActivity() {
         setBottomSheetBehavior()
         setNavigation()
 
+        setPlayerClickListeners()
+
         playerAdapter = MediaPlayerHolder(this)
 
         bindTrack()
         mainViewModel.track.observe(this, Observer {
             Log.d(TAG, "Selected $it")
         })
+    }
+
+    private var playing = false
+    private var liked = false
+
+    private fun setPlayerClickListeners() {
+        play_fab_button.setOnClickListener {
+            if (playing) play_fab_button.setImageDrawable(getDrawable(R.drawable.avd_pause_to_play)) else play_fab_button.setImageDrawable(getDrawable(R.drawable.avd_play_to_pause))
+            val animatable = play_fab_button.drawable as Animatable
+            animatable.start()
+            playing = !playing
+        }
+        like_button.setOnClickListener {
+            if (liked) like_button.setImageDrawable(getDrawable(R.drawable.avd_heart_break)) else like_button.setImageDrawable(getDrawable(R.drawable.avd_heart_fill))
+            val animatable = like_button.drawable as Animatable
+            animatable.start()
+            liked = !liked
+        }
     }
 
     override fun onBackPressed() {
