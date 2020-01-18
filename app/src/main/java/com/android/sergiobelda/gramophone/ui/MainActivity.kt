@@ -15,7 +15,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.FloatRange
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -26,7 +25,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.android.sergiobelda.gramophone.R
-import com.android.sergiobelda.gramophone.data.money
 import com.android.sergiobelda.gramophone.databinding.MainActivityBinding
 import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
@@ -50,7 +48,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
-        binding.lifecycleOwner = this
         binding.viewmodel = mainViewModel
         checkPermissions()
         // Set Toolbar as ActionBar
@@ -62,9 +59,9 @@ class MainActivity : AppCompatActivity() {
 
         playerAdapter = MediaPlayerHolder(this)
 
-        bindTrack()
         mainViewModel.track.observe(this, Observer {
             Log.d(TAG, "Selected $it")
+            collapseBottomSheet()
         })
     }
 
@@ -96,7 +93,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        collapseBottomSheet()
     }
 
     private fun checkPermissions() {
@@ -137,10 +133,6 @@ class MainActivity : AppCompatActivity() {
             }
             else -> {}
         }
-    }
-
-    private fun bindTrack() {
-        mainViewModel.select(money)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -195,6 +187,8 @@ class MainActivity : AppCompatActivity() {
     private fun setBottomSheetBehavior() {
         playerBottomSheetBehavior = BottomSheetBehavior.from(player_bottom_sheet)
         playerBottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback())
+        playerBottomSheetBehavior.isHideable = true
+        playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     private fun bottomSheetCallback(): BottomSheetBehavior.BottomSheetCallback {
@@ -207,7 +201,11 @@ class MainActivity : AppCompatActivity() {
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
-                    BottomSheetBehavior.STATE_EXPANDED -> { }
+                    BottomSheetBehavior.STATE_EXPANDED -> {
+                        previous_button.visibility = View.GONE
+
+
+                    }
                     else -> {}
                 }
             }
@@ -225,6 +223,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun collapseBottomSheet() {
+        playerBottomSheetBehavior.isHideable = false
         playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
