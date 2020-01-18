@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
+        binding.lifecycleOwner = this
         binding.viewmodel = mainViewModel
         checkPermissions()
         // Set Toolbar as ActionBar

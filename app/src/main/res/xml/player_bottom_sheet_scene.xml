@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:motion="http://schemas.android.com/apk/res-auto">
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:motion="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <Transition
         motion:constraintSetEnd="@+id/end"
@@ -176,6 +176,7 @@
                 android:elevation="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                tools:text="1234567890"
                 motion:layout_constraintEnd_toEndOf="@id/title"
                 motion:layout_constraintTop_toBottomOf="@id/title"
                 motion:layout_constraintStart_toStartOf="@id/title"

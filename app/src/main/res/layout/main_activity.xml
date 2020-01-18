@@ -155,7 +155,6 @@
                         android:src="@drawable/ic_more_vert_24dp" />
             </FrameLayout>
 
-
             <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/cover_large_image_view"
                     android:layout_width="260dp"
@@ -199,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:textAlignment="center"
-                    tools:text="Title dsfasfdasfsdafdasfasdfdasfsa"
+                    tools:text="Title 12345678901234567890123456789012345"
                     app:layout_constraintStart_toStartOf="@id/cover_large_image_view"
                     app:layout_constraintEnd_toEndOf="@id/cover_large_image_view"
                     app:layout_constraintTop_toBottomOf="@id/cover_large_image_view"
@@ -208,13 +207,17 @@
 
             <TextView
                     android:id="@+id/artist"
-                    style="?textAppearanceBody1"
+                    style="?textAppearanceSubtitle1"
                     android:textColor="@color/material_on_surface_emphasis_medium"
-                    tools:text="Artist"
                     android:text="@{viewmodel.track.artists.length() > 0 ? viewmodel.track.getArtists() : @string/unknown_artist}"
                     app:layout_constraintStart_toStartOf="@id/title"
                     app:layout_constraintEnd_toEndOf="@id/title"
                     app:layout_constraintTop_toBottomOf="@id/title"
+                    android:ellipsize="end"
+                    android:maxWidth="200dp"
+                    android:textAlignment="center"
+                    tools:text="Artist 12345678901234567890123456789012345"
+                    android:maxLines="2"
                     android:layout_marginTop="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
