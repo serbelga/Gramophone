@@ -19,7 +19,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "LASTFM_API_KEY", LASTFM_KEY)
+        buildConfigField("String", "LASTFM_API_KEY", apiKey())
     }
     buildTypes {
         release {
@@ -87,4 +87,14 @@ dependencies {
     implementation "androidx.media2:media2-common:$media2_common_version"
 
     implementation("io.coil-kt:coil:0.8.0")
+}
+
+def apiKey() {
+    if (project.hasProperty("LASTFM_KEY")) {
+        return project.properties["LASTFM_KEY"]
+    } else if (System.getenv("LASTFM_KEY") != null) {
+        return System.getenv("LASTFM_KEY")
+    } else {
+        throw Exceptions("Set API Key")
+    }
 }
