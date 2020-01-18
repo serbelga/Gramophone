@@ -5,6 +5,12 @@
 package com.android.sergiobelda.gramophone.data
 
 import com.android.sergiobelda.gramophone.model.Artist
+import com.android.sergiobelda.gramophone.model.ArtistBio
+
+val emptyArtistBio = ArtistBio(
+    summary = "",
+    content = ""
+)
 
 val pinkFloyd = Artist(
     id = "hYAqJSyGeQ",

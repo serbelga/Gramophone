@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class LastFmRetrofitClient {
     val lastFmWebservice: LastFmWebservice by lazy {
         Retrofit.Builder()
-            .baseUrl("http://ws.audioscrobbler.com/2.0/")
+            .baseUrl("https://ws.audioscrobbler.com/2.0/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build().create(LastFmWebservice::class.java)
     }

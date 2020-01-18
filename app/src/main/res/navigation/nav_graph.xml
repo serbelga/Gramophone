@@ -43,9 +43,17 @@
                 app:nullable="true"
                 android:defaultValue="null" />
         <argument
+                android:name="id"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="null" />
+        <argument
                 android:name="name"
                 app:argType="string"
                 app:nullable="true"
                 android:defaultValue="null" />
+        <action
+                android:id="@+id/navToArtistAlbumDetail"
+                app:destination="@id/albumDetailFragment" />
     </fragment>
 </navigation>

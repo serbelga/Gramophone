@@ -13,6 +13,8 @@ interface IContentResolverRepository {
 
     suspend fun getTracksByAlbumId(albumId: String): ArrayList<Track>
 
+    suspend fun getAlbums(artistId: String): ArrayList<Album>
+
     suspend fun loadAlbums(): ArrayList<Album>
 
     suspend fun loadArtists(): ArrayList<Artist>

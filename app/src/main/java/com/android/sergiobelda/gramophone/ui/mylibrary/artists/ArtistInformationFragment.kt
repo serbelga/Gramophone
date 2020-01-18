@@ -43,6 +43,6 @@ class ArtistInformationFragment : Fragment() {
     }
 
     companion object {
-        const val TAG = "ArtistInformation"
+        private const val TAG = "ArtistInformation"
     }
 }

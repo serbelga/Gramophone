@@ -22,7 +22,6 @@ import com.android.sergiobelda.gramophone.databinding.ArtistsFragmentBinding
 import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragmentDirections
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistsViewModel
-import kotlinx.android.synthetic.main.artists_fragment.*
 
 /**
  * ArtistsFragment
@@ -48,7 +47,7 @@ class ArtistsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setAdapter()
-        getArtists()
+        setData()
         setRecyclerView()
     }
 
@@ -56,7 +55,7 @@ class ArtistsFragment : Fragment() {
         artistsAdapter = ArtistsAdapter(context!!, arrayListOf())
         artistsAdapter.artistSelectedListener = object : ArtistsAdapter.ArtistSelectedListener {
             override fun onArtistSelected(artist: Artist, imageView: ImageView) {
-                val action = MyLibraryFragmentDirections.navToArtistDetail(uri = artist.imageUri, name = artist.name)
+                val action = MyLibraryFragmentDirections.navToArtistDetail(id = artist.id, uri = artist.imageUri, name = artist.name)
                 if (artist.imageUri != null) {
                     val extras = FragmentNavigatorExtras(
                         imageView to artist.imageUri
@@ -76,7 +75,7 @@ class ArtistsFragment : Fragment() {
         }
     }
 
-    private fun getArtists() {
+    private fun setData() {
         artistsViewModel.artists.observe(viewLifecycleOwner, Observer {
             artistsAdapter.setData(it)
         })

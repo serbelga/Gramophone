@@ -23,12 +23,15 @@ import com.android.sergiobelda.gramophone.databinding.ArtistDetailFragmentBindin
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.main_activity.*
 
 /**
  * ArtistDetailFragment
  * @author Sergio Belda Galbis (@serbelga)
  */
 class ArtistDetailFragment : Fragment() {
+    private lateinit var artistId : String
+
     private val args: ArtistDetailFragmentArgs by navArgs()
 
     private lateinit var binding: ArtistDetailFragmentBinding
@@ -64,6 +67,10 @@ class ArtistDetailFragment : Fragment() {
     }
 
     private fun setArtistInfo() {
+        args.id?.let {
+            artistId = it
+            artistDetailViewModel.getAlbums(artistId)
+        }
         artistDetailViewModel.getArtistInfo(args.name!!)
     }
 
@@ -91,7 +98,7 @@ class ArtistDetailFragment : Fragment() {
     inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getItem(position: Int): Fragment {
             return when (position) {
-                0 -> ErrorFragment()
+                0 -> ArtistGeneralFragment()
                 1 -> ArtistInformationFragment()
                 // 2 -> ErrorFragment()
                 // 3 -> ErrorFragment()

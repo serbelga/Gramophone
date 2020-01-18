@@ -37,6 +37,7 @@ class TracksAdapter(private var tracks: ArrayList<Track>) :
         private val trackItem: LinearLayoutCompat = itemView.findViewById(R.id.track_item)
 
         fun bindTrack(track: Track) {
+            // TODO Album URI send to sheet
             trackNumberTextView.text = track.number.toString()
             trackTitleTextView.text = track.title
             track.duration_ms?.let {
