@@ -15,9 +15,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.FloatRange
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -64,6 +66,12 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "Selected $it")
             collapseBottomSheet()
         })
+
+        ViewCompat.setOnApplyWindowInsetsListener(coordinator) { v, insets ->
+            val params = v.layoutParams as ViewGroup.MarginLayoutParams
+            params.topMargin = insets.systemWindowInsetTop
+            insets
+        }
     }
 
     private var playing = false
