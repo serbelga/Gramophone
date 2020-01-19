@@ -5,10 +5,12 @@
 package com.android.sergiobelda.gramophone.repository.contentresolver
 
 import android.content.ContentResolver
+import android.content.ContentUris
 import android.content.Context
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
+import android.util.Size
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.model.Track
@@ -24,13 +26,18 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
             query?.let { cursor ->
                 return if (cursor.count > 0) {
                     cursor.moveToFirst()
-                    val id = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums._ID))
+                    val id = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Albums._ID))
                     val album =
                         cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM))
                     val artistId =
                         cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST_ID))
-                    val albumCoverUri =
-                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART))
+                    val albumCoverUri = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART))
+                    /*
+                    val albumUri = ContentUris.appendId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI.buildUpon(), id).build()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        val albumCoverBitmap = contentResolver.loadThumbnail(albumUri, Size(640, 640), null)
+                    }
+                    */
                     val artist =
                         cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST))
                     val albumReleaseYear =
@@ -39,7 +46,7 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                         cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Albums.NUMBER_OF_SONGS))
                     cursor.close()
                     Album(
-                        id,
+                        id.toString(),
                         album,
                         arrayListOf(Artist(artistId, artist, null, null)),
                         null,
@@ -86,7 +93,7 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                         val trackDuration = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION))
                         var trackNumber = 0
                         var cdNumber = 0
-                        if (Build.VERSION.SDK_INT < 29) {
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                             trackNumber = Integer.parseInt(track)
                             if (track.length == 4) {
                                 trackNumber = Integer.parseInt(track.substring(1))
