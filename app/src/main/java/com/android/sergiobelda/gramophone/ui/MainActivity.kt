@@ -211,9 +211,7 @@ class MainActivity : AppCompatActivity() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_EXPANDED -> {
-                        previous_button.visibility = View.GONE
-
-
+                        binding.title.isSelected = true
                     }
                     else -> {}
                 }
