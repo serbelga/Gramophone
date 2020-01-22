@@ -13,4 +13,27 @@
     <color name="teal">#00bfa5</color>
     <color name="tealDark">#008e76</color>
     <color name="blue">#3d5afe</color>
+    <color name="blue100">#E1F5FE</color>
+
+    <!-- Material Gramophone -->
+    <color name="colorPrimary">#1164f2</color>
+    <color name="colorPrimaryDark">#2340D3</color>
+    <color name="colorSecondary">#3949AB</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorSurfaceDark">#F5F5F5</color>
+    <color name="colorOnSurface">@color/colorTextHighEmphasis</color>
+    <color name="colorTextHighEmphasis">#DE000000</color>
+    <color name="colorTextMediumEmphasis">#99000000</color>
+    <color name="colorTextDisabled">#61000000</color>
+    <color name="colorError">#B00020</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="colorBackground">@color/design_default_color_background</color>
+    <color name="colorOnBackground">@color/colorTextHighEmphasis</color>
+    <color name="colorStatusBar">#F5F5F5</color>
+    <color name="colorDivider">#F5F5F5</color>
+
+    <color name="blackAlpha45">#73000000</color>
+    <color name="blackAlpha60">#99000000</color>
 </resources>

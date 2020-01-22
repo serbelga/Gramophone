@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gramophone</string>
+    <string name="albums">Albums</string>
+    <string name="artists">Artistes</string>
+    <string name="songs">Cançons</string>
+    <string name="categories">Gèneres</string>
+    <string name="playlists">Playlists</string>
+    <string name="settings">Preferències</string>
+    <string name="ui">Interfície d\'usuari</string>
+    <string name="search">Cercar</string>
+    <string name="my_library">La meua llibreria</string>
+    <string name="home">Inici</string>
+    <string name="my_profile">El meu perfil</string>
+    <string name="unknown_artist">Artista desconegut</string>
+    <string name="follow">Seguir</string>
+    <string name="general">General</string>
+    <string name="related">Relacionat</string>
+    <string name="information">Informació</string>
+    <string name="concerts">Concerts</string>
+    <string name="go_to_artist">Veure artista</string>
+</resources>

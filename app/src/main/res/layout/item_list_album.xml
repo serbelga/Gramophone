@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        android:layout_gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/album_card_view"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_margin="8dp"
+            android:focusable="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/cover_image_view"
+                    android:background="@color/colorSurfaceDark"
+                    android:scaleType="fitCenter"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/title_text_view"
+                        style="?textAppearanceBody1"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        tools:text="Album title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                <TextView
+                        android:id="@+id/artist_name_text_view"
+                        style="?textAppearanceBody2"
+                        android:maxLines="1"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/material_on_surface_emphasis_medium"
+                        tools:text="Artist name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>

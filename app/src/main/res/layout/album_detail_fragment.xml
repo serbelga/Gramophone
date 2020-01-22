@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewmodel"
+                type="com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumDetailViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.mylibrary.albums.AlbumDetailFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:liftOnScroll="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    app:contentScrim="?attr/colorSurface"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                    app:titleEnabled="false">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/album_image_view"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_margin="8dp"
+                            android:contentDescription="@string/albums"
+                            app:albumImageFromUrl="@{viewmodel.album.coverUri}"
+                            tools:src="@drawable/ic_album_24dp" />
+
+                    <TextView
+                            android:id="@+id/title_text_view"
+                            style="?textAppearanceBody1"
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:maxLines="2"
+                            android:text="@{viewmodel.album.title}"
+                            android:textAlignment="center"
+                            android:textColor="?colorOnSurface"
+                            tools:text="Album Title" />
+
+                    <TextView
+                            style="?textAppearanceCaption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{viewmodel.album.getNumTracks() + ` · ` + viewmodel.album.releaseYear}"
+                            android:textColor="@color/material_on_surface_emphasis_medium"
+                            tools:text="9 tracks - 1973" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="@android:color/transparent"
+                        app:layout_collapseMode="pin" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tracks_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="@dimen/bottom_sheet_peek_height"
+                    tools:itemCount="30"
+                    tools:listitem="@layout/item_list_track" />
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:outlineSpotShadowColor="?colorPrimary"
+                app:backgroundTint="?colorSurface"
+                app:layout_anchor="@id/appbar"
+                app:layout_anchorGravity="bottom|right|end"
+                app:rippleColor="?colorControlNormal"
+                app:srcCompat="@drawable/ic_baseline_shuffle_24"
+                app:tint="?colorControlNormal" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

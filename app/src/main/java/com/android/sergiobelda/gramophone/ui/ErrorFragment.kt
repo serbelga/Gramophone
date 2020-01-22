@@ -1,5 +1,8 @@
-package com.android.sergiobelda.gramophone.ui
+/*
+ * Copyright (c) Gramophone 2019.
+ */
 
+package com.android.sergiobelda.gramophone.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,12 +19,11 @@ import com.android.sergiobelda.gramophone.R
 class ErrorFragment : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_error, container, false)
     }
-
-
 }

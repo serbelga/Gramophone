@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Gramophone 2019.
+ */
+
 package com.android.sergiobelda.gramophone.mediaplayer
 
 interface PlayerAdapter {
@@ -5,7 +9,7 @@ interface PlayerAdapter {
 
     fun release()
 
-    fun isPlaying() : Boolean
+    fun isPlaying(): Boolean
 
     fun play()
 
