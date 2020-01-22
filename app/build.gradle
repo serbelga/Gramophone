@@ -86,6 +86,9 @@ dependencies {
     implementation "androidx.media2:media2:$media2_version"
     implementation "androidx.media2:media2-common:$media2_common_version"
 
+    // Exoplayer
+    implementation "com.google.android.exoplayer:exoplayer:$exoplayer_version"
+
     implementation("io.coil-kt:coil:0.8.0")
 }
 
