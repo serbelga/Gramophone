@@ -17,13 +17,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
-import androidx.viewpager.widget.ViewPager
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.ArtistDetailFragmentBinding
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel
-import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.main_activity.*
 
 /**
  * ArtistDetailFragment

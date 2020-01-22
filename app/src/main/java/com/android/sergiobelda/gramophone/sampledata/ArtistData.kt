@@ -2,7 +2,7 @@
  * Copyright (c) Gramophone 2019.
  */
 
-package com.android.sergiobelda.gramophone.data
+package com.android.sergiobelda.gramophone.sampledata
 
 import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.model.ArtistBio
