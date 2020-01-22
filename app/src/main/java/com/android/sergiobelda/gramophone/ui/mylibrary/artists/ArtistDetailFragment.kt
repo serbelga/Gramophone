@@ -27,7 +27,8 @@ import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDeta
  * @author Sergio Belda Galbis (@serbelga)
  */
 class ArtistDetailFragment : Fragment() {
-    private lateinit var artistId : String
+
+    private lateinit var artistId: String
 
     private val args: ArtistDetailFragmentArgs by navArgs()
 

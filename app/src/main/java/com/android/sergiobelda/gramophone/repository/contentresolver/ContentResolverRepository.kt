@@ -10,7 +10,6 @@ import android.content.Context
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
-import android.util.Size
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.model.Track

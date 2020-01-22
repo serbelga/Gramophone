@@ -9,7 +9,6 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.Animatable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import androidx.annotation.FloatRange
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -43,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: MainActivityBinding
 
-    private lateinit var appBarConfiguration : AppBarConfiguration
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     private var playing = false
     private var liked = false
@@ -55,35 +53,38 @@ class MainActivity : AppCompatActivity() {
         binding.viewmodel = mainViewModel
         binding.apply {
             setSupportActionBar(mainToolbar)
+            // Set animation to play and like button
+            // TODO replace playing var by the current state of player
             playFabButton.setOnClickListener {
                 if (playing) playFabButton.setImageDrawable(getDrawable(R.drawable.avd_pause_to_play)) else playFabButton.setImageDrawable(getDrawable(R.drawable.avd_play_to_pause))
                 val animatable = playFabButton.drawable as Animatable
                 animatable.start()
                 playing = !playing
             }
+            // TODO replace liked var depending on the state of current track
             likeButton.setOnClickListener {
                 if (liked) likeButton.setImageDrawable(getDrawable(R.drawable.avd_heart_break)) else likeButton.setImageDrawable(getDrawable(R.drawable.avd_heart_fill))
                 val animatable = likeButton.drawable as Animatable
                 animatable.start()
                 liked = !liked
             }
+            // Set margin top to CoordinatorLayout
+            coordinator.setOnApplyWindowInsetsListener { v, insets ->
+                val params = v.layoutParams as ViewGroup.MarginLayoutParams
+                params.topMargin = insets.systemWindowInsetTop
+                insets
+            }
         }
         playerBottomSheet = binding.playerBottomSheet
         checkPermissions()
+
         // Set Toolbar as ActionBar
         setBottomSheetBehavior()
         setNavigation()
 
         mainViewModel.track.observe(this, Observer {
-            Log.d(TAG, "Selected $it")
             collapseBottomSheet()
         })
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.coordinator) { v, insets ->
-            val params = v.layoutParams as ViewGroup.MarginLayoutParams
-            params.topMargin = insets.systemWindowInsetTop
-            insets
-        }
     }
 
     override fun onBackPressed() {

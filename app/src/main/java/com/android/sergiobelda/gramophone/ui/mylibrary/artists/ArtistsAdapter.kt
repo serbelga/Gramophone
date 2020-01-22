@@ -16,7 +16,6 @@ import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Artist
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.imageview.ShapeableImageView
 
 /**
  * ArtistsAdapter
