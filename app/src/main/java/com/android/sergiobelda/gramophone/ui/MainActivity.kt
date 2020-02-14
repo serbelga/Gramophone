@@ -28,7 +28,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.MainActivityBinding
-import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
 import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -40,8 +39,6 @@ import kotlinx.android.synthetic.main.main_activity.*
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var playerBottomSheetBehavior: BottomSheetBehavior<View>
-    private lateinit var mediaPlayer: MediaPlayer
-    private lateinit var playerAdapter: MediaPlayerHolder
 
     private val mainViewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
@@ -59,8 +56,6 @@ class MainActivity : AppCompatActivity() {
         setNavigation()
 
         setPlayerClickListeners()
-
-        playerAdapter = MediaPlayerHolder(this)
 
         mainViewModel.track.observe(this, Observer {
             Log.d(TAG, "Selected $it")
