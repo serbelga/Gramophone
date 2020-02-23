@@ -23,4 +23,14 @@
     <string name="information">Información</string>
     <string name="concerts">Conciertos</string>
     <string name="go_to_artist">Ir al artista</string>
+
+    <!-- Notification actions -->
+    <string name="notification_skip_to_previous">Canción anterior</string>
+    <string name="notification_skip_to_next">Canción siguiente</string>
+    <string name="notification_play">Reproducir</string>
+    <string name="notification_pause">Pausar</string>
+
+    <!-- Notification channel -->
+    <string name="notification_channel">Reproduciendo</string>
+    <string name="notification_channel_description">Muestra qué se está reproduciendo</string>
 </resources>

@@ -18,4 +18,8 @@ class MainViewModel : ViewModel() {
     fun select(track: Track) {
         this.track.value = track
     }
+
+    class Factory(
+
+    )
 }

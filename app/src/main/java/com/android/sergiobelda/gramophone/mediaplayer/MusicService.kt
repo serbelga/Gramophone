@@ -4,13 +4,13 @@
 
 package com.android.sergiobelda.gramophone.mediaplayer
 
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.session.MediaControllerCompat
 import android.support.v4.media.session.MediaSessionCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.media.MediaBrowserServiceCompat
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
@@ -22,8 +22,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
 open class MusicService : MediaBrowserServiceCompat() {
-    private lateinit var notificationManager: NotificationManager
-    // private lateinit var notificationBuilder: NotificationBuilder
+    private lateinit var notificationManager: NotificationManagerCompat
+    private lateinit var notificationBuilder: NotificationBuilder
     // private lateinit var mediaSource: MediaSource
 
     private val serviceJob = SupervisorJob()
@@ -63,11 +63,13 @@ open class MusicService : MediaBrowserServiceCompat() {
 
         sessionToken = mediaSession.sessionToken
 
-        /*
+
         mediaController = MediaControllerCompat(this, mediaSession).also {
             it.registerCallback(MediaControllerCallback())
         }
-        */
+
+        notificationBuilder = NotificationBuilder(this)
+        notificationManager = NotificationManagerCompat.from(this)
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
@@ -100,4 +102,15 @@ open class MusicService : MediaBrowserServiceCompat() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun onSearch(
+        query: String,
+        extras: Bundle?,
+        result: Result<MutableList<MediaBrowserCompat.MediaItem>>
+    ) {
+        super.onSearch(query, extras, result)
+    }
+
+    private fun removeNowPlayingNotification() {
+        stopForeground(true)
+    }
 }
