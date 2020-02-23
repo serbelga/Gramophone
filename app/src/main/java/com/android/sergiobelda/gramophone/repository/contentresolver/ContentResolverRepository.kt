@@ -10,7 +10,6 @@ import android.content.Context
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
-import android.util.Size
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.model.Track
@@ -81,7 +80,8 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
             query?.let { cursor ->
                 if (cursor.count > 0) {
                     while (cursor.moveToNext()) {
-                        val id = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media._ID))
+
+                        val id = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media._ID))
                         val title =
                             cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))
                         val track =
@@ -105,9 +105,10 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                                 trackNumber = values[0].toInt()
                             }
                         }
+                        val trackUri = ContentUris.appendId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI.buildUpon(), id).build()
                         tracksList.add(
                             Track(
-                                id,
+                                id.toString(),
                                 title,
                                 trackNumber,
                                 arrayListOf(Artist(artistId, artist, null, null)),
@@ -116,7 +117,8 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                                 emptyList(),
                                 cdNumber,
                                 null,
-                                null
+                                null,
+                                trackUri
                             )
                         )
                     }

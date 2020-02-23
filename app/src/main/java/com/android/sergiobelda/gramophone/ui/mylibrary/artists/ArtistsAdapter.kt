@@ -16,7 +16,6 @@ import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.model.Artist
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.imageview.ShapeableImageView
 
 /**
  * ArtistsAdapter
@@ -45,14 +44,14 @@ class ArtistsAdapter(private var context: Context, private var artists: ArrayLis
     }
 
     inner class ArtistViewHolder(itemView: View, private var context: Context) : RecyclerView.ViewHolder(itemView) {
-        private val artistImageView: ShapeableImageView = itemView.findViewById(R.id.artist_image_view)
+        private val artistImageView: ImageView = itemView.findViewById(R.id.artist_image_view)
         private val nameTextView: TextView = itemView.findViewById(R.id.name_text_view)
         private val artistLayout: LinearLayout = itemView.findViewById(R.id.artist_layout)
 
         fun bindArtist(artist: Artist) {
             nameTextView.text = artist.name
             artistImageView.apply {
-                this.transitionName = artist.imageUri
+                transitionName = artist.imageUri
                 Glide.with(context)
                     .load(artist.imageUri)
                     .apply(RequestOptions()

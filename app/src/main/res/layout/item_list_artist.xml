@@ -10,13 +10,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
             android:id="@+id/artist_image_view"
             android:layout_width="96dp"
             android:layout_height="96dp"
             app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
             tools:src="@drawable/ic_baseline_person_24">
-    </com.google.android.material.imageview.ShapeableImageView>
+    </ImageView>
 
     <TextView
             android:id="@+id/name_text_view"

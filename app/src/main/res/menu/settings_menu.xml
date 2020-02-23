@@ -10,7 +10,7 @@
             app:showAsAction="always">
         <menu>
             <item
-                    android:id="@+id/settings"
+                    android:id="@id/settingsFragment"
                     android:icon="@drawable/ic_settings_24dp"
                     app:showAsAction="ifRoom"
                     android:title="@string/settings" />

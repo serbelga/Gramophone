@@ -5,10 +5,8 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -29,6 +27,7 @@ class MyLibraryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         binding = DataBindingUtil.inflate(inflater, R.layout.my_library_fragment, container, false)
         binding.lifecycleOwner = this
         return binding.root
@@ -83,5 +82,9 @@ class MyLibraryFragment : Fragment() {
                 else -> null
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.settings_menu, menu)
     }
 }
