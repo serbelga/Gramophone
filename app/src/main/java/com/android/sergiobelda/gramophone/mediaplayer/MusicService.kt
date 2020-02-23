@@ -65,7 +65,7 @@ open class MusicService : MediaBrowserServiceCompat() {
 
 
         mediaController = MediaControllerCompat(this, mediaSession).also {
-            it.registerCallback(MediaControllerCallback())
+            // it.registerCallback(MediaControllerCallback())
         }
 
         notificationBuilder = NotificationBuilder(this)

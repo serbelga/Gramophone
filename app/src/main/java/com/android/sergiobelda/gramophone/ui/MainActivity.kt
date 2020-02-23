@@ -26,9 +26,9 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.MainActivityBinding
-import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
 import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.main_activity.*
 
 /**
  * MainActivity
@@ -83,11 +83,24 @@ class MainActivity : AppCompatActivity() {
         setBottomSheetBehavior()
         setNavigation()
 
-        setPlayerClickListeners()
-
         mainViewModel.track.observe(this, Observer {
             collapseBottomSheet()
         })
+    }
+
+    private fun setPlayerClickListeners() {
+        play_fab_button.setOnClickListener {
+            if (playing) play_fab_button.setImageDrawable(getDrawable(R.drawable.avd_pause_to_play)) else play_fab_button.setImageDrawable(getDrawable(R.drawable.avd_play_to_pause))
+            val animatable = play_fab_button.drawable as Animatable
+            animatable.start()
+            playing = !playing
+        }
+        like_button.setOnClickListener {
+            if (liked) like_button.setImageDrawable(getDrawable(R.drawable.avd_heart_break)) else like_button.setImageDrawable(getDrawable(R.drawable.avd_heart_fill))
+            val animatable = like_button.drawable as Animatable
+            animatable.start()
+            liked = !liked
+        }
     }
 
     override fun onBackPressed() {

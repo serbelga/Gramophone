@@ -80,7 +80,6 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
             query?.let { cursor ->
                 if (cursor.count > 0) {
                     while (cursor.moveToNext()) {
-
                         val id = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media._ID))
                         val title =
                             cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))
