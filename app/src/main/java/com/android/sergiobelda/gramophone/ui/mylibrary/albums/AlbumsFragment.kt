@@ -28,7 +28,7 @@ import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumsViewM
  * @author Sergio Belda Galbis (@serbelga)
  */
 class AlbumsFragment : Fragment() {
-    private lateinit var binding : AlbumsFragmentBinding
+    private lateinit var binding: AlbumsFragmentBinding
 
     private val albumsViewModel by lazy { ViewModelProvider(this).get(AlbumsViewModel::class.java) }
 

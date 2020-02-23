@@ -13,9 +13,6 @@
             android:supportsRtl="true"
             android:theme="@style/ThemeOverlay.Gramophone"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity
-                android:name="com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity">
-        </activity>
         <activity android:name="com.android.sergiobelda.gramophone.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

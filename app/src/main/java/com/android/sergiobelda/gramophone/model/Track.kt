@@ -4,6 +4,8 @@
 
 package com.android.sergiobelda.gramophone.model
 
+import android.net.Uri
+
 data class Track(
     val id: String,
     val title: String,
@@ -14,7 +16,8 @@ data class Track(
     val composer: List<String> = emptyList(),
     val discNumber: Int?,
     val genres: List<Genre>?,
-    val coverUri: String?
+    val coverUri: String?,
+    val uri: Uri?
 ) {
     fun getArtists(): String {
         return artists.joinToString { it.name }
