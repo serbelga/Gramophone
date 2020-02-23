@@ -19,4 +19,14 @@
     <string name="information">Informació</string>
     <string name="concerts">Concerts</string>
     <string name="go_to_artist">Veure artista</string>
+
+    <!-- Notification actions -->
+    <string name="notification_skip_to_previous">Cançó anterior</string>
+    <string name="notification_skip_to_next">Cançó següent</string>
+    <string name="notification_play">Reproduir</string>
+    <string name="notification_pause">Pausar</string>
+
+    <!-- Notification channel -->
+    <string name="notification_channel">Reproduint</string>
+    <string name="notification_channel_description">Shows what music is currently playing in UAMP</string>
 </resources>
