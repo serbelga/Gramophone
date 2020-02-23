@@ -13,3 +13,5 @@
 .externalNativeBuild
 /.idea/
 apikey.properties
+
+gradle.properties
