@@ -9,20 +9,18 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.Animatable
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.annotation.FloatRange
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -32,7 +30,6 @@ import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
 import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.main_activity.*
 
 /**
  * MainActivity
@@ -43,18 +40,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var playerAdapter: MediaPlayerHolder
 
-    private val mainViewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
+    private val mainViewModel: MainViewModel by viewModels()
 
-    lateinit var binding: MainActivityBinding
+    private lateinit var binding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
-        binding.lifecycleOwner = this
-        binding.viewmodel = mainViewModel
+        binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         checkPermissions()
         // Set Toolbar as ActionBar
-        setSupportActionBar(main_toolbar)
+        setSupportActionBar(binding.mainToolbar)
         setBottomSheetBehavior()
         setNavigation()
 
@@ -62,12 +59,12 @@ class MainActivity : AppCompatActivity() {
 
         playerAdapter = MediaPlayerHolder(this)
 
-        mainViewModel.track.observe(this, Observer {
+        mainViewModel.track.observe(this) {
             Log.d(TAG, "Selected $it")
             collapseBottomSheet()
-        })
+        }
 
-        ViewCompat.setOnApplyWindowInsetsListener(coordinator) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.coordinator) { v, insets ->
             val params = v.layoutParams as ViewGroup.MarginLayoutParams
             params.topMargin = insets.systemWindowInsetTop
             insets
@@ -78,15 +75,15 @@ class MainActivity : AppCompatActivity() {
     private var liked = false
 
     private fun setPlayerClickListeners() {
-        play_fab_button.setOnClickListener {
-            if (playing) play_fab_button.setImageDrawable(getDrawable(R.drawable.avd_pause_to_play)) else play_fab_button.setImageDrawable(getDrawable(R.drawable.avd_play_to_pause))
-            val animatable = play_fab_button.drawable as Animatable
+         binding.playFabButton.setOnClickListener {
+            if (playing) binding.playFabButton.setImageDrawable(getDrawable(R.drawable.avd_pause_to_play)) else binding.playFabButton.setImageDrawable(getDrawable(R.drawable.avd_play_to_pause))
+            val animatable = binding.playFabButton.drawable as Animatable
             animatable.start()
             playing = !playing
         }
-        like_button.setOnClickListener {
-            if (liked) like_button.setImageDrawable(getDrawable(R.drawable.avd_heart_break)) else like_button.setImageDrawable(getDrawable(R.drawable.avd_heart_fill))
-            val animatable = like_button.drawable as Animatable
+        binding.likeButton.setOnClickListener {
+            if (liked) binding.likeButton.setImageDrawable(getDrawable(R.drawable.avd_heart_break)) else binding.likeButton.setImageDrawable(getDrawable(R.drawable.avd_heart_fill))
+            val animatable = binding.likeButton.drawable as Animatable
             animatable.start()
             liked = !liked
         }
@@ -131,6 +128,7 @@ class MainActivity : AppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
@@ -149,8 +147,8 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val id = item?.itemId
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
         if (id == R.id.settings) {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
@@ -194,7 +192,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setBottomSheetBehavior() {
-        playerBottomSheetBehavior = BottomSheetBehavior.from(player_bottom_sheet)
+        playerBottomSheetBehavior = BottomSheetBehavior.from(binding.playerBottomSheet)
         playerBottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback())
         playerBottomSheetBehavior.isHideable = true
         playerBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -203,7 +201,7 @@ class MainActivity : AppCompatActivity() {
     private fun bottomSheetCallback(): BottomSheetBehavior.BottomSheetCallback {
         return object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                player_bottom_sheet.setInterpolatedProgress(slideOffset)
+                binding.playerBottomSheet.setInterpolatedProgress(slideOffset)
                 animateContentScrim(slideOffset)
                 // animateBottomNavigationView(slideOffset)
             }
@@ -226,7 +224,7 @@ class MainActivity : AppCompatActivity() {
     */
 
     private fun animateContentScrim(@FloatRange(from = 0.0, to = 1.0) alpha: Float) {
-        content_scrim.alpha = alpha
+        binding.contentScrim.alpha = alpha
     }
 
     private fun collapseBottomSheet() {
@@ -239,7 +237,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun expandAppBarLayout(expanded: Boolean, animate: Boolean) {
-        appbar.setExpanded(expanded, animate)
+        binding.appbar.setExpanded(expanded, animate)
     }
 
     companion object {

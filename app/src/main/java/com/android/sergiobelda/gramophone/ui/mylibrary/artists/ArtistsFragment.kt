@@ -9,15 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-
-import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.ArtistsFragmentBinding
 import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragmentDirections
@@ -28,9 +24,10 @@ import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistsVie
  * @author Sergio Belda Galbis (@serbelga)
  */
 class ArtistsFragment : Fragment() {
-    private lateinit var binding: ArtistsFragmentBinding
+    private var _binding: ArtistsFragmentBinding? = null
+    private val binding: ArtistsFragmentBinding get() = _binding!!
 
-    private val artistsViewModel by lazy { ViewModelProvider(this).get(ArtistsViewModel::class.java) }
+    private val artistsViewModel: ArtistsViewModel by viewModels()
 
     private lateinit var artistsAdapter: ArtistsAdapter
 
@@ -38,9 +35,8 @@ class ArtistsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.artists_fragment, container, false)
-        binding.lifecycleOwner = this
+    ): View {
+        _binding = ArtistsFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,7 +48,7 @@ class ArtistsFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        artistsAdapter = ArtistsAdapter(context!!, arrayListOf())
+        artistsAdapter = ArtistsAdapter(requireContext(), arrayListOf())
         artistsAdapter.artistSelectedListener = object : ArtistsAdapter.ArtistSelectedListener {
             override fun onArtistSelected(artist: Artist, imageView: ImageView) {
                 val action = MyLibraryFragmentDirections.navToArtistDetail(id = artist.id, uri = artist.imageUri, name = artist.name)
@@ -76,9 +72,9 @@ class ArtistsFragment : Fragment() {
     }
 
     private fun setData() {
-        artistsViewModel.artists.observe(viewLifecycleOwner, Observer {
+        artistsViewModel.artists.observe(viewLifecycleOwner) {
             artistsAdapter.setData(it)
-        })
+        }
     }
 
     companion object {

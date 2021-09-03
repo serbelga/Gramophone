@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/albumsFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mylibrary.albums.AlbumsFragment">
 
-    <data>
-
-    </data>
-
-    <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/albumsFragment"
-            tools:context=".ui.mylibrary.albums.AlbumsFragment">
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="4dp"
-                android:paddingBottom="@dimen/bottom_sheet_peek_height"
-                android:clipToPadding="false"
-                android:layout_gravity="center"
-                tools:itemCount="2"
-                tools:listitem="@layout/item_list_album" />
-    </FrameLayout>
-</layout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="4dp"
+        android:paddingBottom="@dimen/bottom_sheet_peek_height"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_list_album" />
+</FrameLayout>

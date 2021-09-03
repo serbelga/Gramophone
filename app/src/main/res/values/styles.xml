@@ -114,6 +114,6 @@
     <style name="Widget.Gramophone.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Gramophone.BottomSheet</item>
         <item name="shapeAppearance">?attr/shapeAppearanceLargeComponent</item>
-        <item name="backgroundTint">?colorSurface</item>
+        <item name="backgroundTint">?attr/colorSurface</item>
     </style>
 </resources>

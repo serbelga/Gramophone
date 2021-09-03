@@ -9,6 +9,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface LastFmWebservice {
-    @GET("?method=artist.getinfo&format=json&api_key=" + BuildConfig.LASTFM_API_KEY)
+    @GET("?method=artist.getinfo&format=json&api_key=") //+ BuildConfig.LASTFM_API_KEY)
     suspend fun getArtistInfo(@Query(value = "artist") name: String, @Query(value = "lang") lang: String): LastFmArtistResponse
 }

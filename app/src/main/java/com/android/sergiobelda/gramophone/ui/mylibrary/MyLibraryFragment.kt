@@ -5,11 +5,10 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -22,15 +21,15 @@ import com.android.sergiobelda.gramophone.ui.mylibrary.artists.ArtistsFragment
 import com.android.sergiobelda.gramophone.ui.mylibrary.playlists.PlaylistsFragment
 
 class MyLibraryFragment : Fragment() {
-    private lateinit var binding: MyLibraryFragmentBinding
+    private var _binding: MyLibraryFragmentBinding? = null
+    private val binding: MyLibraryFragmentBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.my_library_fragment, container, false)
-        binding.lifecycleOwner = this
+    ): View {
+        _binding = MyLibraryFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/artists_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
-
-    </data>
-
-    <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/artists_fragment">
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:clipToPadding="false"
-                android:layout_gravity="center"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp"
-                tools:itemCount="2"
-                tools:listitem="@layout/item_list_artist" />
-    </FrameLayout>
-</layout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="4dp"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_list_artist" />
+</FrameLayout>
