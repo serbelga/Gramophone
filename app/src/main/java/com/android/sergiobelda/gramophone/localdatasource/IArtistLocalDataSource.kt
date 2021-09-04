@@ -1,0 +1,3 @@
+package com.android.sergiobelda.gramophone.localdatasource
+
+interface IArtistLocalDataSource

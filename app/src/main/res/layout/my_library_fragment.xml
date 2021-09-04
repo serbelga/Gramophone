@@ -1,45 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/myLibraryFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    </data>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/myLibraryFragment"
-            tools:context=".ui.mylibrary.MyLibraryFragment">
+            android:layout_height="36dp"
+            app:tabGravity="center"
+            app:tabIndicator="@drawable/tabs_pill_indicator"
+            app:tabIndicatorGravity="stretch"
+            app:tabMode="fixed"
+            app:tabRippleColor="?attr/colorOnPrimary"
+            app:tabSelectedTextColor="?attr/colorOnPrimary"
+            app:tabTextAppearance="?textAppearanceSubtitle1" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-            <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    app:tabIndicatorGravity="stretch"
-                    app:tabIndicator="@drawable/tabs_pill_indicator"
-                    app:tabGravity="center"
-                    app:tabMode="fixed"
-                    app:tabSelectedTextColor="?colorOnPrimary"
-                    app:tabRippleColor="?colorOnPrimary"
-                    app:tabTextAppearance="?textAppearanceSubtitle1" />
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        <View
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:background="@color/colorDivider"
-                android:layout_width="match_parent"
-                android:layout_height="1dp" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</layout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -6,15 +6,18 @@ package com.android.sergiobelda.gramophone.ui.preferences
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate.*
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
 import androidx.preference.PreferenceFragmentCompat
-
 import com.android.sergiobelda.gramophone.R
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * SettingsFragment
  * @author Sergio Belda Galbis (@serbelga)
  */
+@AndroidEntryPoint
 class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.pref_main, rootKey)

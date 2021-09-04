@@ -5,54 +5,53 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.artists
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
-import androidx.viewpager.widget.ViewPager
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.ArtistDetailFragmentBinding
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
+import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel
-import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.main_activity.*
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * ArtistDetailFragment
  * @author Sergio Belda Galbis (@serbelga)
  */
+@AndroidEntryPoint
 class ArtistDetailFragment : Fragment() {
-    private lateinit var artistId : String
+    private lateinit var artistId: String
 
     private val args: ArtistDetailFragmentArgs by navArgs()
 
-    private lateinit var binding: ArtistDetailFragmentBinding
+    private var _binding: ArtistDetailFragmentBinding? = null
+    private val binding: ArtistDetailFragmentBinding get() = _binding!!
 
-    private lateinit var artistDetailViewModel: ArtistDetailViewModel
+    private val artistDetailViewModel: ArtistDetailViewModel by viewModels()
+
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-        artistDetailViewModel = activity?.run {
-            ViewModelProvider(this).get(ArtistDetailViewModel::class.java)
-        } ?: throw Exception("Invalid Activity")
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.artist_detail_fragment, container, false)
-        binding.lifecycleOwner = this
+    ): View {
+        _binding = ArtistDetailFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -71,18 +70,18 @@ class ArtistDetailFragment : Fragment() {
             artistId = it
             artistDetailViewModel.getAlbums(artistId)
         }
-        artistDetailViewModel.getArtistInfo(args.name!!)
+        mainViewModel.getArtistInfo(args.name!!)
     }
 
     private fun bindViews() {
-        binding.name = args.name
-        binding.imageUri = args.uri
+        // binding.name = args.name
+        // binding.imageUri = args.uri
         binding.artistImageView.transitionName = args.uri
     }
 
     private fun setToolbar() {
         binding.toolbar.apply {
-            navigationIcon = ContextCompat.getDrawable(context!!, R.drawable.ic_baseline_arrow_back_24)
+            navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_arrow_back_24)
             setNavigationOnClickListener {
                 findNavController().navigateUp()
             }

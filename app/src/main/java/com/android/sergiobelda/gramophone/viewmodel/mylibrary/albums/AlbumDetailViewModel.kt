@@ -11,10 +11,13 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.repository.contentresolver.ContentResolverRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AlbumDetailViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class AlbumDetailViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
     private val contentResolverRepository = ContentResolverRepository(getApplication())
 
     val album = MutableLiveData<Album>()

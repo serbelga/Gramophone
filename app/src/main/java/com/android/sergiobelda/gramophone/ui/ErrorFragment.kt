@@ -9,13 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-
 import com.android.sergiobelda.gramophone.R
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass.
  *
  */
+@AndroidEntryPoint
 class ErrorFragment : Fragment() {
 
     override fun onCreateView(

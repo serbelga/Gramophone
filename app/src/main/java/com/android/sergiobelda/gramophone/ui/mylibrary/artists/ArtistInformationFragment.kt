@@ -5,41 +5,40 @@
 package com.android.sergiobelda.gramophone.ui.mylibrary.artists
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
-import com.android.sergiobelda.gramophone.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.android.sergiobelda.gramophone.databinding.ArtistInformationFragmentBinding
-import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel
+import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * ArtistInformationFragment
  * @author Sergio Belda Galbis (@serbelga)
  */
+@AndroidEntryPoint
 class ArtistInformationFragment : Fragment() {
-    private lateinit var binding: ArtistInformationFragmentBinding
+    private var _binding: ArtistInformationFragmentBinding? = null
+    private val binding: ArtistInformationFragmentBinding get() = _binding!!
 
-    private lateinit var artistDetailViewModel: ArtistDetailViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        artistDetailViewModel = activity?.run {
-            ViewModelProvider(this).get(ArtistDetailViewModel::class.java)
-        } ?: throw Exception("Invalid Activity")
-    }
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.artist_information_fragment, container, false)
-        binding.lifecycleOwner = this
-        binding.viewmodel = artistDetailViewModel
+    ): View {
+        _binding = ArtistInformationFragmentBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mainViewModel.bio.observe(viewLifecycleOwner) {
+            binding.bio.text = it?.content
+        }
     }
 
     companion object {

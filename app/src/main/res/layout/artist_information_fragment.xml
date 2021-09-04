@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="120dp"
+    tools:context=".ui.mylibrary.artists.ArtistInformationFragment">
 
-    <data>
-        <variable
-                name="viewmodel"
-                type="com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel" />
-    </data>
-
-    <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingTop="8dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="120dp"
-            tools:context=".ui.mylibrary.artists.ArtistInformationFragment">
-
-        <TextView
-                style="?textAppearanceBody1"
-                tools:text="@tools:sample/lorem/random"
-                android:id="@+id/bio"
-                android:text="@{viewmodel.bio.summary}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-    </androidx.core.widget.NestedScrollView>
-</layout>
+    <TextView
+        android:id="@+id/bio"
+        style="?textAppearanceBody1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:text="@tools:sample/lorem/random" />
+</androidx.core.widget.NestedScrollView>

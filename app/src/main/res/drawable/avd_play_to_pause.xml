@@ -1,5 +1,4 @@
-<animated-vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
         <vector
@@ -17,7 +16,7 @@
                     android:name="path"
                     android:pathData="M 8 5 L 8 19 L 19 12 Z"
                     android:fillColor="#000"
-                    android:strokeWidth="1"/>
+                    android:strokeWidth="1" />
             </group>
         </vector>
     </aapt:attr>
@@ -29,7 +28,7 @@
                 android:valueFrom="M 8 12.029 L 8 19 L 18.999 12.001 L 19 12 L 19 12 L 8 12.029 M 8 5 L 8 5.012 L 8 12.029 L 19 12 L 19 12 L 8 5"
                 android:valueTo="M 5 14 L 5 18 L 19 18 L 19 18 L 19 14 L 5 14 M 5 6 L 5 10 L 5 10 L 19 10 L 19 6 L 5 6"
                 android:valueType="pathType"
-                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                android:interpolator="@android:interpolator/fast_out_slow_in" />
         </aapt:attr>
     </target>
     <target android:name="group">
@@ -40,7 +39,7 @@
                 android:valueFrom="0"
                 android:valueTo="90"
                 android:valueType="floatType"
-                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                android:interpolator="@android:interpolator/fast_out_slow_in" />
         </aapt:attr>
     </target>
 </animated-vector>
