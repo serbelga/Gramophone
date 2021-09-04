@@ -24,17 +24,20 @@ import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.MainActivityBinding
 import com.android.sergiobelda.gramophone.mediaplayer.MediaPlayerHolder
 import com.android.sergiobelda.gramophone.ui.preferences.SettingsActivity
 import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * MainActivity
  * @author Sergio Belda Galbis - (@serbelga)
  */
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var playerBottomSheetBehavior: BottomSheetBehavior<View>
     private lateinit var mediaPlayer: MediaPlayer
@@ -61,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.track.observe(this) {
             Log.d(TAG, "Selected $it")
-            collapseBottomSheet()
+            expandBottomSheet()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.coordinator) { v, insets ->
@@ -75,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     private var liked = false
 
     private fun setPlayerClickListeners() {
-         binding.playFabButton.setOnClickListener {
+        binding.playFabButton.setOnClickListener {
             if (playing) binding.playFabButton.setImageDrawable(getDrawable(R.drawable.avd_pause_to_play)) else binding.playFabButton.setImageDrawable(getDrawable(R.drawable.avd_play_to_pause))
             val animatable = binding.playFabButton.drawable as Animatable
             animatable.start()
@@ -97,14 +100,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     private fun checkPermissions() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            != PackageManager.PERMISSION_GRANTED
+        ) {
             // Permission is not granted
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
@@ -113,9 +115,11 @@ class MainActivity : AppCompatActivity() {
                 // sees the explanation, try again to request the permission.
             } else {
                 // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(this,
+                ActivityCompat.requestPermissions(
+                    this,
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
+                    PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
+                )
             }
         } else {
             // Permission has already been granted
@@ -165,7 +169,7 @@ class MainActivity : AppCompatActivity() {
         // If you have a bottomNavigationView with multiple fragments to switch -> AppBarConfiguration(setOf(R.id.fragment1, R.id.fragment2, ...))
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                // R.id.homeFragment,
+                R.id.homeFragment,
                 R.id.myLibraryFragment
                 // R.id.myProfileFragment
             )
@@ -174,7 +178,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Set BottomNavigationView
-        // bottomNavigationView.setupWithNavController(navController)
+        binding.bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {

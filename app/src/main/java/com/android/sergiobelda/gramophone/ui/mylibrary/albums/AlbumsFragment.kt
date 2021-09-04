@@ -18,13 +18,15 @@ import com.android.sergiobelda.gramophone.databinding.AlbumsFragmentBinding
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragmentDirections
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * AlbumsFragment
  * @author Sergio Belda Galbis (@serbelga)
  */
+@AndroidEntryPoint
 class AlbumsFragment : Fragment() {
-    private var _binding : AlbumsFragmentBinding? = null
+    private var _binding: AlbumsFragmentBinding? = null
     private val binding: AlbumsFragmentBinding get() = _binding!!
 
     private val albumsViewModel: AlbumsViewModel by viewModels()

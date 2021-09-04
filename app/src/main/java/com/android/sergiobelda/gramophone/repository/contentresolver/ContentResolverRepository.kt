@@ -5,12 +5,10 @@
 package com.android.sergiobelda.gramophone.repository.contentresolver
 
 import android.content.ContentResolver
-import android.content.ContentUris
 import android.content.Context
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
-import android.util.Size
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.model.Track
@@ -26,12 +24,23 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
             query?.let { cursor ->
                 return if (cursor.count > 0) {
                     cursor.moveToFirst()
-                    val id = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Albums._ID))
+                    val id = cursor.getLong(
+                        cursor.getColumnIndex(MediaStore.Audio.Albums._ID).takeIf { it >= 0 } ?: 0
+                    )
                     val album =
-                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM))
+                        cursor.getString(
+                            cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM).takeIf { it >= 0 }
+                                ?: 0
+                        )
                     val artistId =
-                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST_ID))
-                    val albumCoverUri = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART))
+                        cursor.getString(
+                            cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST_ID)
+                                .takeIf { it >= 0 } ?: 0
+                        )
+                    val albumCoverUri = cursor.getString(
+                        cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART).takeIf { it >= 0 }
+                            ?: 0
+                    )
                     /*
                     val albumUri = ContentUris.appendId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI.buildUpon(), id).build()
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -39,11 +48,20 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                     }
                     */
                     val artist =
-                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST))
+                        cursor.getString(
+                            cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST).takeIf { it >= 0 }
+                                ?: 0
+                        )
                     val albumReleaseYear =
-                        cursor.getShort(cursor.getColumnIndex(MediaStore.Audio.Albums.FIRST_YEAR))
+                        cursor.getShort(
+                            cursor.getColumnIndex(MediaStore.Audio.Albums.FIRST_YEAR)
+                                .takeIf { it >= 0 } ?: 0
+                        )
                     val albumNumTracks =
-                        cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Albums.NUMBER_OF_SONGS))
+                        cursor.getInt(
+                            cursor.getColumnIndex(MediaStore.Audio.Albums.NUMBER_OF_SONGS)
+                                .takeIf { it >= 0 } ?: 0
+                        )
                     cursor.close()
                     Album(
                         id.toString(),
@@ -81,16 +99,35 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
             query?.let { cursor ->
                 if (cursor.count > 0) {
                     while (cursor.moveToNext()) {
-                        val id = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media._ID))
+                        val id = cursor.getString(
+                            cursor.getColumnIndex(MediaStore.Audio.Media._ID).takeIf { it >= 0 }
+                                ?: 0
+                        )
                         val title =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Media.TITLE)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val track =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TRACK))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Media.TRACK)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val artistId =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val artist =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST))
-                        val trackDuration = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
+                        val trackDuration =
+                            cursor.getInt(
+                                cursor.getColumnIndex(MediaStore.Audio.Media.DURATION)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         var trackNumber = 0
                         var cdNumber = 0
                         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
@@ -139,18 +176,36 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                 if (cursor.count > 0) {
                     while (cursor.moveToNext()) {
                         val albumId =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums._ID))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums._ID)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val album =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val artistId =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST_ID))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST_ID)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         // TODO Fix Album Art path null
                         val albumCoverUri =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val artist =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val albumReleaseYear =
-                            cursor.getShort(cursor.getColumnIndex(MediaStore.Audio.Albums.FIRST_YEAR))
+                            cursor.getShort(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.FIRST_YEAR)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
 
                         albumsList.add(
                             Album(
@@ -187,17 +242,35 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                 if (cursor.count > 0) {
                     while (cursor.moveToNext()) {
                         val albumId =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums._ID))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums._ID)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val album =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val artistId =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST_ID))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST_ID)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val albumCoverUri =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val artist =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val albumReleaseYear =
-                            cursor.getShort(cursor.getColumnIndex(MediaStore.Audio.Albums.FIRST_YEAR))
+                            cursor.getShort(
+                                cursor.getColumnIndex(MediaStore.Audio.Albums.FIRST_YEAR)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
 
                         albumsList.add(
                             Album(
@@ -234,9 +307,15 @@ class ContentResolverRepository(val context: Context) : IContentResolverReposito
                 if (cursor.count > 0) {
                     while (cursor.moveToNext()) {
                         val artistId =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Artists._ID))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Artists._ID)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         val artist =
-                            cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Artists.ARTIST))
+                            cursor.getString(
+                                cursor.getColumnIndex(MediaStore.Audio.Artists.ARTIST)
+                                    .takeIf { it >= 0 } ?: 0
+                            )
                         artistsList.add(Artist(artistId, artist, null, null))
                     }
                 }

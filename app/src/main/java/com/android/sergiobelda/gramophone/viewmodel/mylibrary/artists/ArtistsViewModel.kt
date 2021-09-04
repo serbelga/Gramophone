@@ -5,11 +5,15 @@
 package com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.liveData
 import com.android.sergiobelda.gramophone.repository.contentresolver.ContentResolverRepository
-import kotlinx.coroutines.*
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-class ArtistsViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class ArtistsViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
     private val contentResolverRepository = ContentResolverRepository(getApplication())
 
     val artists = liveData(Dispatchers.IO) {

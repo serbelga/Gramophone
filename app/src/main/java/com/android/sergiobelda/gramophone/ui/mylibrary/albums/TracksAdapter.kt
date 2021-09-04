@@ -15,7 +15,7 @@ import com.android.sergiobelda.gramophone.model.Track
 import com.android.sergiobelda.gramophone.util.getMinuteSeconds
 
 class TracksAdapter(private var tracks: ArrayList<Track>) :
-        RecyclerView.Adapter<TracksAdapter.TracksViewHolder>() {
+    RecyclerView.Adapter<TracksAdapter.TracksViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TracksViewHolder {
         val itemView =

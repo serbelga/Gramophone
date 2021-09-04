@@ -4,7 +4,7 @@
 
     <item
             app:showAsAction="ifRoom"
-            android:id="@+id/homeFragment"
+            android:id="@id/homeFragment"
             android:icon="@drawable/ic_home_alt_24dp"
             android:title="@string/home" />
 
@@ -13,10 +13,4 @@
             android:id="@id/myLibraryFragment"
             android:icon="@drawable/ic_outline_library_music_24"
             android:title="@string/my_library" />
-
-    <item
-            app:showAsAction="ifRoom"
-            android:id="@+id/myProfileFragment"
-            android:icon="@drawable/ic_outline_person_outline_24"
-            android:title="@string/my_profile" />
 </menu>

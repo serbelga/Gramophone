@@ -4,17 +4,19 @@
 
 package com.android.sergiobelda.gramophone.ui.preferences
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.SettingsActivityBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * SettingsActivity
  * @author Sergio Belda Galbis (@serbelga)
  */
+@AndroidEntryPoint
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: SettingsActivityBinding
 

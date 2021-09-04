@@ -17,7 +17,9 @@ import com.android.sergiobelda.gramophone.databinding.ArtistGeneralFragmentBindi
 import com.android.sergiobelda.gramophone.model.Album
 import com.android.sergiobelda.gramophone.ui.mylibrary.albums.AlbumsAdapter
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArtistGeneralFragment : Fragment() {
     private var _binding: ArtistGeneralFragmentBinding? = null
     private val binding: ArtistGeneralFragmentBinding get() = _binding!!

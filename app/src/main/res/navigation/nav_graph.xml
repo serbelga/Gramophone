@@ -56,4 +56,10 @@
                 android:id="@+id/navToArtistAlbumDetail"
                 app:destination="@id/albumDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.android.sergiobelda.gramophone.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
+
 </navigation>

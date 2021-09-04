@@ -25,7 +25,9 @@ import com.android.sergiobelda.gramophone.databinding.AlbumDetailFragmentBinding
 import com.android.sergiobelda.gramophone.model.Track
 import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums.AlbumDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlbumDetailFragment : Fragment() {
     private val args: AlbumDetailFragmentArgs by navArgs()
 

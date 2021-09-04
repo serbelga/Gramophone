@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -19,14 +20,17 @@ import androidx.transition.TransitionInflater
 import com.android.sergiobelda.gramophone.R
 import com.android.sergiobelda.gramophone.databinding.ArtistDetailFragmentBinding
 import com.android.sergiobelda.gramophone.ui.ErrorFragment
+import com.android.sergiobelda.gramophone.viewmodel.MainViewModel
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * ArtistDetailFragment
  * @author Sergio Belda Galbis (@serbelga)
  */
+@AndroidEntryPoint
 class ArtistDetailFragment : Fragment() {
-    private lateinit var artistId : String
+    private lateinit var artistId: String
 
     private val args: ArtistDetailFragmentArgs by navArgs()
 
@@ -34,6 +38,8 @@ class ArtistDetailFragment : Fragment() {
     private val binding: ArtistDetailFragmentBinding get() = _binding!!
 
     private val artistDetailViewModel: ArtistDetailViewModel by viewModels()
+
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +70,7 @@ class ArtistDetailFragment : Fragment() {
             artistId = it
             artistDetailViewModel.getAlbums(artistId)
         }
-        artistDetailViewModel.getArtistInfo(args.name!!)
+        mainViewModel.getArtistInfo(args.name!!)
     }
 
     private fun bindViews() {

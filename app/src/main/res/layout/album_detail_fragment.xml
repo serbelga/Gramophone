@@ -41,7 +41,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:maxLines="2"
-                    android:text="@{viewmodel.album.title}"
                     android:textAlignment="center"
                     android:textColor="?attr/colorOnSurface"
                     tools:text="Album Title" />

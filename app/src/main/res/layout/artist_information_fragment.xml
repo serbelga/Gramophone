@@ -15,6 +15,5 @@
         style="?textAppearanceBody1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@{viewmodel.bio.summary}"
         tools:text="@tools:sample/lorem/random" />
 </androidx.core.widget.NestedScrollView>

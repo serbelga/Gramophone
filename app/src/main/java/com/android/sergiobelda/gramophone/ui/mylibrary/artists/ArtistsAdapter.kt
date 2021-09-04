@@ -23,7 +23,7 @@ import com.google.android.material.imageview.ShapeableImageView
  * @author Sergio Belda Galbis (@serbelga)
  */
 class ArtistsAdapter(private var context: Context, private var artists: ArrayList<Artist>) :
-        RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>() {
+    RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_list_artist, parent, false)
@@ -55,10 +55,11 @@ class ArtistsAdapter(private var context: Context, private var artists: ArrayLis
                 this.transitionName = artist.imageUri
                 Glide.with(context)
                     .load(artist.imageUri)
-                    .apply(RequestOptions()
-                        .placeholder(R.drawable.ic_outline_person_outline_24)
-                        .error(R.drawable.ic_outline_person_outline_24)
-                        .circleCrop()
+                    .apply(
+                        RequestOptions()
+                            .placeholder(R.drawable.ic_outline_person_outline_24)
+                            .error(R.drawable.ic_outline_person_outline_24)
+                            .circleCrop()
                     )
                     .into(this)
             }

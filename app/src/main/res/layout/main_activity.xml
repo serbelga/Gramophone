@@ -80,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@{viewmodel.track.title}"
                 app:layout_constraintStart_toEndOf="@id/cover_small_image_view"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Title" />
@@ -189,7 +188,6 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="@{viewmodel.track.title}"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@id/cover_large_image_view"
             app:layout_constraintStart_toStartOf="@id/cover_large_image_view"
