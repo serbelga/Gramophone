@@ -4,22 +4,19 @@
 
 package com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.sergiobelda.gramophone.model.Album
-import com.android.sergiobelda.gramophone.repository.contentresolver.ContentResolverRepository
+import com.android.sergiobelda.gramophone.repository.contentresolver.IContentResolverRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ArtistDetailViewModel @Inject constructor(
-    application: Application
-) : AndroidViewModel(application) {
-
-    private val contentResolverRepository = ContentResolverRepository(getApplication())
+    private val contentResolverRepository: IContentResolverRepository
+) : ViewModel() {
 
     val albums = MutableLiveData<ArrayList<Album>>()
 

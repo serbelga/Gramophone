@@ -4,17 +4,17 @@
 
 package com.android.sergiobelda.gramophone.viewmodel.mylibrary.albums
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.android.sergiobelda.gramophone.repository.contentresolver.ContentResolverRepository
+import com.android.sergiobelda.gramophone.repository.contentresolver.IContentResolverRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 @HiltViewModel
-class AlbumsViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
-    private val contentResolverRepository = ContentResolverRepository(getApplication())
+class AlbumsViewModel @Inject constructor(
+    private val contentResolverRepository: IContentResolverRepository
+) : ViewModel() {
 
     val albums = liveData(Dispatchers.IO) {
         val albums = contentResolverRepository.loadAlbums()

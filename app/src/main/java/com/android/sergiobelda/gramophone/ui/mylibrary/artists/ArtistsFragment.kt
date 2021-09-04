@@ -18,11 +18,13 @@ import com.android.sergiobelda.gramophone.databinding.ArtistsFragmentBinding
 import com.android.sergiobelda.gramophone.model.Artist
 import com.android.sergiobelda.gramophone.ui.mylibrary.MyLibraryFragmentDirections
 import com.android.sergiobelda.gramophone.viewmodel.mylibrary.artists.ArtistsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * ArtistsFragment
  * @author Sergio Belda Galbis (@serbelga)
  */
+@AndroidEntryPoint
 class ArtistsFragment : Fragment() {
     private var _binding: ArtistsFragmentBinding? = null
     private val binding: ArtistsFragmentBinding get() = _binding!!
