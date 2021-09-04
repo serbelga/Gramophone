@@ -5,7 +5,9 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 def localProperties = new Properties()
-localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+if (rootProject.file("local.properties").exists()) {
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+}
 
 android {
     compileSdkVersion 31
@@ -17,7 +19,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "LASTFM_API_KEY", localProperties['LASTFM_KEY'])
+        buildConfigField("String", "LASTFM_API_KEY", localProperties.getProperty('LASTFM_KEY', '""'))
     }
     buildTypes {
         release {
